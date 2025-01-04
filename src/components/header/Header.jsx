@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
 
     const [scrolling, setScrolling] = useState(false);  
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [timer, setTimer] = useState(null);
+
     const navigate = useNavigate();
 
     const handleScroll = () => {  
@@ -19,6 +22,21 @@ const Header = () => {
             window.removeEventListener('scroll', handleScroll);  
         };  
     }, []);
+
+    const handleMouseEnter = () => {
+        if (timer) {
+          clearTimeout(timer); // Si el temporizador existe, lo cancelamos
+        }
+        setMenuOpen(true); // Abre el menú inmediatamente
+      };
+    
+      const handleMouseLeave = () => {
+        const newTimer = setTimeout(() => {
+          setMenuOpen(false); // Cierra el menú después del tiempo de espera
+        }, 300); // 500ms es el retraso, puedes ajustarlo
+    
+        setTimer(newTimer); // Guardamos el temporizador en el estado
+      };
 
     const solutionsHandler = () => {
         navigate("/solutions");
@@ -42,43 +60,77 @@ const Header = () => {
 
     return(
         <>
-            <nav className={`flex flex-col shadow-md bg-white fixed w-full top-0 left-0 z-50 transition-all duration-300 ease-in-out ${scrolling ? 'py-0' : 'pb-3'}`}>  
-                <div className="bg-sky-600 h-1" />  
-                <div className="flex justify-around items-center">  
-                    <div className='flex basis-52'>  
-                        <img onClick={dashboardHandler} src="../../../public/logos/Logo-header.png" width={250} alt="Logo"/>  
+            <nav className="flex flex-col shadow-md bg-white fixed w-full top-0 left-0 z-50 transition-all duration-300">  
+                <div className={`bg-sky-600 h-1 transition-all duration-300 ${scrolling ? 'pt-0' : 'pt-2'}`}/>  
+                <div className={`flex justify-around items-center transition-all duration-300 ${scrolling ? 'pt-0' : 'pt-2'}`}>  
+                    <button className='flex basis-52 bg-white border-hidden'>  
+                        <img onClick={dashboardHandler} src="../../../public/logos/Logo-header.png" width={250} alt="Logo" />  
+                    </button>  
+                    <div 
+                        className="relative group"
+                        onMouseEnter={handleMouseEnter} 
+                        onMouseLeave={handleMouseLeave}  
+                    >
+                        <button onClick={solutionsHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative hover:text-sky-600 transition-colors duration-300">
+                            SOLUCIONES
+                            <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                        </button>
+
+                        {/* Menú desplegable */}
+                        {menuOpen && (
+                            <div className="absolute left-0 mt-2 bg-white text-sky-600 shadow-lg rounded-md z-50" style={{width:'500px'}}>
+                                <div className="grid grid-cols-2 p-4 gap-4">
+                                    <div>
+                                        <div className='flex justify-center'>
+                                        <h3 className="font-bold flex justify-center p-1"><p className='bg-sky-600 text-white px-2 me-1 rounded-md'>SECTORES</p>PRINCIPALES</h3>
+                                        </div>
+                                        <ul>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">SECTOR 1</li>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">SECTOR 2</li>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">SECTOR 3</li>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">SECTOR 4</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                    <div className='flex justify-center'>
+                                        <h3 className="font-bold flex justify-center p-1"><p className='bg-sky-600 text-white px-2 me-1 rounded-md'>TIPOS</p> DE MAQUINAS</h3>
+                                        </div>
+                                        <ul>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">MAQ 1</li>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">MAQ 2</li>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">MAQ 3</li>
+                                            <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">MAQ 4</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>  
-                    <div className="">  
-                        <button onClick={solutionsHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 transition-colors duration-300">  
-                            SOLUCIONES  
-                            <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
-                        </button>  
-                        <button onClick={newsHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600">  
-                            NOVEDADES  
-                            <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600  scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
-                        </button>  
-                        <button onClick={companyHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600">  
-                            LA EMPRESA  
-                            <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
-                        </button>  
-                        <button onClick={contactHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600">  
-                            CONTACTO  
-                            <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
-                        </button>  
-                        <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">  
-                            COTIZÁ GRATIS  
-                        </button>  
-                    </div> 
+                    <button onClick={newsHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600">  
+                        NOVEDADES  
+                        <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
+                    </button>  
+                    <button onClick={companyHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600">  
+                        LA EMPRESA  
+                        <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
+                    </button>  
+                    <button onClick={contactHandler} className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600">  
+                        CONTACTO  
+                        <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />  
+                    </button>  
+                    <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">  
+                        COTIZÁ GRATIS  
+                    </button>  
                     <div className=''>  
                         <FontAwesomeIcon icon={faGlobe} />  
-                        <select className="border-slate-950 border ">  
+                        <select className=" border-slate-950">  
                             <option>ESP</option>  
                             <option>ENG</option>  
                             <option>POR</option>  
                         </select>  
                     </div>   
                 </div>  
-            </nav> 
+            </nav>  
         </>
     )
 }

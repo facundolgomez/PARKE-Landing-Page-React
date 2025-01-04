@@ -7,6 +7,7 @@ import Contact from "./components/contact/Contact";
 import CompanyInfo from "./components/companyInfo/CompanyInfo";
 import Login from "./components/login/Login";
 import PageNotFound from "./components/errors/pageNotFound/PageNotFound";
+import News from "./components/news/News";
 
 function App() {
 
@@ -16,9 +17,10 @@ function App() {
       element: <LayOut/>,
       children: [
         {path: "/", element: <Dashboard/>},
-        {path: "solutions", element: <Solutions/>},
-        {path: "contact", element: <Contact/>},
-        {path: "company", element: <CompanyInfo/>},
+        {path: "/solutions", element: <Solutions/>},
+        {path: "/news", element: <News/>},
+        {path: "/contact", element: <Contact/>},
+        {path: "/company", element: <CompanyInfo/>},
       ],
     },
     {

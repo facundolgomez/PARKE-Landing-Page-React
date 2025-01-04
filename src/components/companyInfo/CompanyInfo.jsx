@@ -2,7 +2,7 @@ const CompanyInfo = () => {
 
     return(
         <>
-            <h1>La Empresa</h1>
+            <h1 className="pt-28">La Empresa</h1>
         </>
     )
 }

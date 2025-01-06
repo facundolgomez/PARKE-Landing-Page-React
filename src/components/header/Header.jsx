@@ -65,9 +65,7 @@ const Header = () => {
     <>
       <nav className="flex flex-col shadow-md bg-white fixed w-full top-0 left-0 z-50 transition-all duration-300">
         <div
-          className={`bg-sky-600 h-1 transition-all duration-300${
-            scrolling ? "pt-0" : "pt-2"
-          }`}
+          className={`bg-sky-600 h-1 transition-all duration-300 ${scrolling ? "pt-0" : "pt-2"}`}
         />
         <div
           className={`flex justify-around items-center transition-all duration-300 ${

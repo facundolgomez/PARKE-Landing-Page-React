@@ -1,0 +1,38 @@
+import { useState } from "react";
+
+const ImageZoom = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+
+    setPosition({ x, y });
+  };
+
+  return (
+    <div className="relative w-full h-[500px] overflow-hidden" onMouseMove={handleMouseMove}>
+      <img
+        src="/img/imagen1.png"
+        alt="Imagen con zoom estilo lupa"
+        className="w-full h-full object-cover"
+      />
+      <div
+        className="absolute border-4 border-white rounded-full"
+        style={{
+          width: "100px",
+          height: "100px",
+          top: `calc(${position.y}% - 50px)`,
+          left: `calc(${position.x}% - 50px)`,
+          backgroundImage: "url('/img/imagen1.png')",
+          backgroundSize: "200% 200%",
+          backgroundPosition: `${position.x}% ${position.y}%`,
+          pointerEvents: "none",
+        }}
+      />
+    </div>
+  );
+};
+
+export default ImageZoom;

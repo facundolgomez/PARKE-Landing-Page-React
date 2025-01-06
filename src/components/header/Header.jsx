@@ -63,11 +63,11 @@ const Header = () => {
 
   return (
     <>
-      <nav className="flex flex-row shadow-md bg-white fixed w-full top-0 left-0 z-50 transition-all duration-300">
+      <nav className="flex flex-col shadow-md bg-white fixed w-full top-0 left-0 z-50 transition-all duration-300">
         <div
-          className={`bg-sky-600 h-1 transition-all duration-300 ${
+          className={`bg-sky-600 h-1 transition-all duration-300${
             scrolling ? "pt-0" : "pt-2"
-          } ml-56`}
+          }`}
         />
         <div
           className={`flex justify-around items-center transition-all duration-300 ${
@@ -79,10 +79,10 @@ const Header = () => {
               onClick={dashboardHandler}
               src="../../../public/logos/Logo-header.png"
               width={250}
+              className="min-h-10 min-w-40"
               alt="Logo"
             />
           </button>
-
           <div
             className="relative group"
             onMouseEnter={handleMouseEnter}
@@ -90,7 +90,7 @@ const Header = () => {
           >
             <button
               onClick={solutionsHandler}
-              className="bg-transparent border-hidden py-4 text-sky-600 relative hover:text-sky-600 transition-colors duration-300 hidden md:flex mr-6"
+              className="bg-transparent border-hidden py-4 text-sky-600 relative hover:text-sky-600 transition-colors duration-300 hidden md:flex"
             >
               SOLUCIONES
               <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
@@ -157,38 +157,37 @@ const Header = () => {
           </div>
           <button
             onClick={newsHandler}
-            className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex mr-10"
+            className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex"
           >
             NOVEDADES
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
           <button
             onClick={companyHandler}
-            className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex mr-10"
+            className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex"
           >
             LA EMPRESA
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
           <button
             onClick={contactHandler}
-            className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex mr-10"
+            className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex"
           >
             CONTACTO
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
-          <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110 hidden md:flex mr-10">
+          <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110 hidden md:flex">
             COTIZÁ GRATIS
           </button>
           <div className="bg-white p-4 rounded text-black">
             <FontAwesomeIcon icon={faGlobe} className="text-black" />
-            <select className="border border-black bg-white text-black rounded ml-2">
+            <select className="border border-black bg-white text-black rounded">
               <option>ESP</option>
               <option>ENG</option>
               <option>POR</option>
             </select>
           </div>
-        </div>
-        <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center">
           <button
             onClick={MobileMenuHandler}
             className="text-sky-600 bg-transparent border-none p-4 z-50"
@@ -228,6 +227,7 @@ const Header = () => {
               </div>
             </div>
           )}
+        </div>
         </div>
       </nav>
     </>

@@ -29,6 +29,7 @@ const ImageZoom = () => {
           backgroundSize: "200% 200%",
           backgroundPosition: `${position.x}% ${position.y}%`,
           pointerEvents: "none",
+          
         }}
       />
     </div>

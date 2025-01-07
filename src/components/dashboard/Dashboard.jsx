@@ -57,7 +57,6 @@ const Dashboard = () => {
             "@media (max-width: 680px)": {
               width: "50px", // Reducir tamaño de la lupa en pantallas móviles
               height: "50px",
-              transform: "scale(0.5)", // Reducir tamaño de la lupa en pantallas móviles
             },
           }}
         />
@@ -66,50 +65,53 @@ const Dashboard = () => {
       <div className="py-8 px-4 sm:px-8 bg-gray-100">
         <h2 className="text-2xl sm:text-2xl text-center mb-6">SOLUCIONES</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-6 items-center">
           {/* Industrias */}
           <div>
             <h3 className="text-xl font-bold text-center mb-4">Industrias</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500"></i>
+                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
                 <span>Industria Alimentaria</span>
               </li>
               <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500"></i>
+                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
                 <span>Industria Farmacéutica</span>
               </li>
               <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500"></i>
+                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
                 <span>Industria Química</span>
               </li>
               <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500"></i>
+                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
                 <span>Industria Cosmética</span>
               </li>
             </ul>
           </div>
+
+          {/* Separador */}
+          <div className="bg-gray-300 w-[2px] h-full mx-auto sm:my-0"></div>
 
           {/* Máquinas */}
           <div>
             <h3 className="text-xl font-bold text-center mb-4">
               Tipo de Máquina
             </h3>
-            <ul className="space-y-2">
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="text-green-500"></i>
+            <ul className="space-y-4">
+              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
+                <i className="fas fa"></i>
                 <span>Máquinas de Embolsado</span>
               </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="text-green-500"></i>
+              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
+                <i className="fas fa"></i>
                 <span>Máquinas de Paletizado</span>
               </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="text-green-500"></i>
+              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
+                <i className="fas fa"></i>
                 <span>Máquinas de Envoltura</span>
               </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="text-green-500"></i>
+              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
+                <i className="fas fa"></i>
                 <span>Máquinas de Transporte</span>
               </li>
             </ul>

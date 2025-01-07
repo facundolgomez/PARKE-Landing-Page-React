@@ -20,12 +20,12 @@ const Dashboard = () => {
         </h1>
 
         <div className="flex flex-col sm:flex-row justify-center items-center absolute top-[30%] sm:top-[40%] lg:top-[65%] w-full z-10 space-y-2 sm:space-y-0 sm:space-x-4">
-          <button className="bg-[#6cdcf3] w-[150px] h-[35px] text-sm sm:w-[200px] sm:h-[40px] sm:text-base lg:w-[250px] lg:h-[50px] lg:text-lg text-white font-bold whitespace-nowrap">
+          <button className="bg-sky-600 w-[80px] sm:w-[120px] md:w-[250px] lg:w-[300px] text-[5px] sm:text-xs lg:text-sm h-[20px] sm:h-[30px] lg:h-[45px] text-white font-bold">
             NUESTROS PRODUCTOS
           </button>
           <button
             onClick={() => window.open("https://wa.me/3413708391", "_blank")}
-            className="bg-[#25D366] w-[180px] sm:w-[200px] h-[40px] sm:h-[50px] text-white font-bold"
+            className="bg-[#25D366] w-[80px] sm:w-[120px] md:w-[250px] lg:w-[300px] text-[5px] sm:text-xs lg:text-sm h-[20px] sm:h-[30px] lg:h-[45px] text-white font-bold"
           >
             WHATSAPP
           </button>

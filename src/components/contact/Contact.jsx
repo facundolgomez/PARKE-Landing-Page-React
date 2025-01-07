@@ -59,16 +59,18 @@ const Contact = () => {
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
-                <span className="mb-4 block text-base font-semibold text-primary">
-                  Contact Us
+                <span className="mb-4 block text-base font-semibold text-sky-600">
+                  Hablemos
                 </span>
                 <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                  GET IN TOUCH WITH US
+                  Póngase en contacto con nosotros!
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eius tempor incididunt ut labore e dolore magna aliqua. Ut
-                  enim adiqua minim veniam quis nostrud exercitation ullamco
+                Estamos disponibles para despejar todas sus dudas, consultas o cuestiones
+                que contribuyan a brindarle un mejor asesoramiento técnico y profesional.
+                <br/>
+                <h3 className="text-xl text-sky-600 my-2">Por favor, complete el formulario con su consulta.</h3>
+                <h3 className="text-2xl  text-red-700 my-2">A la brevedad nos pondremos en contacto con usted.</h3>
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -87,10 +89,13 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                      Our Location
+                      Nuestra ubicación
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                    Ruta AO12 Km 47.6
+                    Roldán,
+                    Santa Fe,
+                    Argentina
                     </p>
                   </div>
                 </div>
@@ -127,10 +132,10 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                      Phone Number
+                      Teléfono
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      (+62)81 414 257 9980
+                      +54 3416456481
                     </p>
                   </div>
                 </div>
@@ -152,10 +157,10 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                      Email Address
+                      Correo Electrónico
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      info@yourdomain.com
+                      info@parke.com.ar
                     </p>
                   </div>
                 </div>
@@ -167,30 +172,30 @@ const Contact = () => {
                   <ContactInputBox
                     type="text"
                     name="name"
-                    placeholder="Your Name"
+                    placeholder="Ingrese su nombre"
                   />
                   <ContactInputBox
                     type="text"
                     name="email"
-                    placeholder="Your Email"
+                    placeholder="Ingrese su mail"
                   />
                   <ContactInputBox
                     type="text"
                     name="phone"
-                    placeholder="Your Phone"
+                    placeholder="Ingrese su teléfono"
                   />
                   <ContactTextArea
                     row="6"
-                    placeholder="Your Message"
+                    placeholder="Ingrese su mensaje..."
                     name="details"
                     defaultValue=""
                   />
                   <div>
                     <button
                       type="submit"
-                      className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
+                      className="w-full rounded border bg-sky-600 p-3 text-white transition hover:bg-sky-400"
                     >
-                      Send Message
+                      Enviar consulta
                     </button>
                   </div>
                 </form>

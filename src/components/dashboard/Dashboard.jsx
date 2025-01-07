@@ -57,6 +57,68 @@ const Dashboard = () => {
           }}
         />
       </div>
+      {/* Sección de "Soluciones" con lista */}
+      <div className="py-8 px-4 sm:px-8 bg-gray-100">
+        <h2 className="text-2xl sm:text-2xl text-center mb-6">SOLUCIONES</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Industrias */}
+          <div>
+            <h3 className="text-xl font-bold text-center mb-4">Industrias</h3>
+            <ul className="space-y-2">
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="fas fa-check-circle text-blue-500"></i>
+                <span>Industria Alimentaria</span>
+              </li>
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="fas fa-check-circle text-blue-500"></i>
+                <span>Industria Farmacéutica</span>
+              </li>
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="fas fa-check-circle text-blue-500"></i>
+                <span>Industria Química</span>
+              </li>
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="fas fa-check-circle text-blue-500"></i>
+                <span>Industria Cosmética</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Máquinas */}
+          <div>
+            <h3 className="text-xl font-bold text-center mb-4">
+              Tipo de Máquina
+            </h3>
+            <ul className="space-y-2">
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="text-green-500"></i>
+                <span>Máquinas de Embolsado</span>
+              </li>
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="text-green-500"></i>
+                <span>Máquinas de Paletizado</span>
+              </li>
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="text-green-500"></i>
+                <span>Máquinas de Envoltura</span>
+              </li>
+              <li className="text-lg text-gray-700 flex items-center space-x-3">
+                <i className="text-green-500"></i>
+                <span>Máquinas de Transporte</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="relative mt-8">
+        <img
+          src="/img/industria.webp"
+          alt="Imagen de fondo"
+          className="absolute inset-0 w-full h-full object-cover opacity-40" // Ajusta la opacidad aquí
+        />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center"></div>
+      </div>
     </>
   );
 };

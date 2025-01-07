@@ -1,69 +1,57 @@
-import { useNavigate, useLocation } from "react-router-dom";
 const Footer = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleLogoClick = () => {
-    if (location.pathname === "/") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else {
-      navigate("/");
-    }
-  };
   return (
-    <div className="w-full flex flex-col sm:flex-row justify-center items-start sm:justify-around bg-[#030C20] text-white pt-6 pb-6 sm:pt-12 sm:pb-12 text-base sm:text-lg sm:gap-x-8 relative">
-      <div>
-        <button onClick={handleLogoClick} className="flex bg-[#030C20]">
+    <footer className="bg-[#020c21] w-full">
+      <div className="w-full mx-auto max-w-screen-xl p-6 md:flex md:items-start md:justify-between">
+        {/* Logo */}
+        <div className="mb-6 md:mb-0">
           <img
             src="../../../public/logos/logoFooter.png"
-            className="w-40 sm:w-64"
-            alt="Logo"
+            alt="Logo PARKE SRL"
+            width={200}
+            className="mx-auto md:mx-0"
           />
-        </button>
+        </div>
+
+        {/* Más sobre nosotros */}
+        <div className="mb-6 md:mb-0">
+          <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
+            Más sobre nosotros
+          </h4>
+          <ul className="text-sm text-gray-500 dark:text-gray-400">
+            <li className="mb-2 hover:underline cursor-pointer">La empresa</li>
+            <li className="mb-2 hover:underline cursor-pointer">Novedades</li>
+          </ul>
+        </div>
+
+        {/* Contacto */}
+        <div>
+          <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
+            Contacto
+          </h4>
+          <ul className="text-sm text-gray-500 dark:text-gray-400">
+            <li className="mb-2 hover:underline">
+              Ruta AO12 Km 47.6Roldán | Santa Fe | Argentina
+            </li>
+            <li className="mb-2 hover:underline">+54 3416456481</li>
+            <li className="mb-2 hover:underline">info@parke.com.ar</li>
+            <li className="mb-2">Lunes a viernes 8:00 a 17:00 hs</li>
+          </ul>
+        </div>
       </div>
 
-      <ul className="mt-4 sm:mt-0 flex flex-col gap-4 px-4 list-disc marker:text-white-400 ">
-        <li className="no-hover  list-none font-bold">MAS SOBRE NOSOTROS</li>
-        <li className="hover:text-[#6cdcf3] cursor-pointer">Quiénes somos</li>
-        <li className="hover:text-[#6cdcf3] cursor-pointer">Noticias</li>
-        <li className="hover:text-[#6cdcf3] cursor-pointer">
-          Galeria de imagenes
-        </li>
-        <li className="hover:text-[#6cdcf3] cursor-pointer">
-          Preguntas frecuentes
-        </li>
-      </ul>
-
-      <ul className="mt-4 sm:mt-0 flex flex-col gap-4 list-disc marker:text-white-400 ">
-        <li className="no-hover list-none font-bold">CONTACTO</li>
-        <li>Ruta AO12 Km 47.6 Roldán | Santa Fe | Argentina</li>
-        <li>
-          <a
-            className="no-underline text-[#6cdcf3]"
-            href="https://wa.me/3413708391"
-            target="_blank"
-          >
-            +54 3416456481
+      {/* Derechos reservados */}
+      <div className="w-full mt-6 border-t border-gray-200 dark:border-gray-700 pt-4 text-center">
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          © 2025{" "}
+          <a href="https://parke.com/" className="hover:underline">
+            PARKE SRL™
           </a>
-        </li>
-        <li>
-          <a
-            className="no-underline text-[#6cdcf3]"
-            href="mailto:info@parkesrl.com.ar?body=My custom mail body"
-          >
-            info@parkesrl.com.ar
-          </a>
-        </li>
-        <li>Lunes a viernes 8:00 a 17:00 hs</li>
-      </ul>
-      <p className="mt-auto text-sm text-gray-400 mt-4 sm:mt-0">
-        © {new Date().getFullYear()} PARKE. Todos los derechos reservados.
-      </p>
-    </div>
+          . Todos los derechos reservados.
+        </span>
+      </div>
+    </footer>
   );
 };
 
 export default Footer;
+

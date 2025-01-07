@@ -41,7 +41,7 @@ const Dashboard = () => {
         <img
           src="/img/imagen1.png"
           alt="Imagen con zoom estilo lupa"
-          className="w-full h-full object-cover"
+          className="w-full h-auto object-cover"
         />
         <div
           className="absolute border-4 border-white rounded-full"
@@ -54,6 +54,11 @@ const Dashboard = () => {
             backgroundSize: "300% 300%", // Tamaño de zoom de la imagen dentro de la lupa
             backgroundPosition: `${position.x}% ${position.y}%`, // Ubicación de la lupa
             pointerEvents: "none", // Evitar que el cursor interfiera con el movimiento
+            "@media (max-width: 680px)": {
+              width: "50px", // Reducir tamaño de la lupa en pantallas móviles
+              height: "50px",
+              transform: "scale(0.5)", // Reducir tamaño de la lupa en pantallas móviles
+            },
           }}
         />
       </div>

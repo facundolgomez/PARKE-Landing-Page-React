@@ -49,6 +49,9 @@ const Footer = () => {
           . Todos los derechos reservados.
         </span>
       </div>
+      <div className="w-full py-2 text-center text-white">
+        Desarrollado por FGA Software
+      </div>
     </footer>
   );
 };

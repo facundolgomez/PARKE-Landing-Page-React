@@ -1,60 +1,26 @@
-const Contact = () => {  
+import {
+  Button,
+  Form,
+} from "react-bootstrap";
 
-    const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
-        return (
-          <>
-            <div className="mb-6">
-              <textarea
-                rows={row}
-                placeholder={placeholder}
-                name={name}
-                className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:text-dark-6"
-                defaultValue={defaultValue}
-              />
-            </div>
-          </>
-        );
-      };
-      
-      const ContactInputBox = ({ type, placeholder, name }) => {
-        return (
-          <>
-            <div className="mb-6">
-              <input
-                type={type}
-                placeholder={placeholder}
-                name={name}
-                className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:text-dark-6"
-              />
-            </div>
-          </>
-        );
-      };
-
-    return (  
-        <>  
-            <div className="relative">  
-                <img   
-                    src="../../../public/imagenes-de-fondo/imagen-contacto-2.jpg"   
-                    className="w-full brightness-75"
-                    style={{height:'400px'}}
-                />
-                <section   
-                    className="absolute bottom-0 left-0 mb-4 bg-transparent dark:bg-dark"  
-                >  
-                    <div className="mx-auto sm:container">  
-                        <div className="flex flex-col text-white">  
-                            <h1 className="text-2xl font-semibold bg-sky-600 text-white px-4 py-2">  
-                                Contacto  
-                            </h1>  
-                            <p className="text-sm font-medium text-body-color dark:text-dark-6 bg-black px-4 py-2">  
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
-                            </p>  
-                        </div>  
-                    </div>  
-                </section>  
-            </div>
-            <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
+const Contact = () => {
+  return (
+    <>
+      <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: 'url("../../../public/imagenes-de-fondo/imagen-contacto-2.jpg")' }}>  
+        <section className="absolute bottom-0 left-0 mb-4 bg-transparent dark:bg-dark">  
+            <div className="mx-auto sm:container">  
+                <div className="flex flex-col text-white">  
+                    <h1 className="text-2xl font-semibold bg-sky-600 text-white px-4 py-2">  
+                        Contacto  
+                    </h1>  
+                    <p className="text-sm font-medium text-body-color justify-center items-center text-center dark:text-dark-6 bg-black px-4 py-2">  
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+                    </p>  
+                </div>  
+            </div>  
+        </section>  
+      </div>
+      <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
@@ -66,11 +32,16 @@ const Contact = () => {
                   Póngase en contacto con nosotros!
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                Estamos disponibles para despejar todas sus dudas, consultas o cuestiones
-                que contribuyan a brindarle un mejor asesoramiento técnico y profesional.
-                <br/>
-                <h3 className="text-xl text-sky-600 my-2">Por favor, complete el formulario con su consulta.</h3>
-                <h3 className="text-2xl  text-red-700 my-2">A la brevedad nos pondremos en contacto con usted.</h3>
+                  Estamos disponibles para despejar todas sus dudas, consultas o
+                  cuestiones que contribuyan a brindarle un mejor asesoramiento
+                  técnico y profesional.
+                  <br />
+                  <h3 className="text-xl text-sky-600 my-2">
+                    Por favor, complete el formulario con su consulta.
+                  </h3>
+                  <h3 className="text-2xl  text-red-700 my-2">
+                    A la brevedad nos pondremos en contacto con usted.
+                  </h3>
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -92,10 +63,7 @@ const Contact = () => {
                       Nuestra ubicación
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                    Ruta AO12 Km 47.6
-                    Roldán,
-                    Santa Fe,
-                    Argentina
+                      Ruta AO12 Km 47.6 Roldán, Santa Fe, Argentina
                     </p>
                   </div>
                 </div>
@@ -168,37 +136,33 @@ const Contact = () => {
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form>
-                  <ContactInputBox
-                    type="text"
-                    name="name"
-                    placeholder="Ingrese su nombre"
-                  />
-                  <ContactInputBox
-                    type="text"
-                    name="email"
-                    placeholder="Ingrese su mail"
-                  />
-                  <ContactInputBox
-                    type="text"
-                    name="phone"
-                    placeholder="Ingrese su teléfono"
-                  />
-                  <ContactTextArea
-                    row="6"
-                    placeholder="Ingrese su mensaje..."
-                    name="details"
-                    defaultValue=""
-                  />
-                  <div>
-                    <button
-                      type="submit"
-                      className="w-full rounded border bg-sky-600 p-3 text-white transition hover:bg-sky-400"
-                    >
-                      Enviar consulta
-                    </button>
-                  </div>
-                </form>
+                <Form className="flex flex-column">
+                  <Form.Group className="p-2 py-3">
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder="Nombre y apellido"
+                    />
+                  </Form.Group>
+                  <Form.Group className="p-2 py-3">
+                    <Form.Control type="text" required placeholder="Empresa" />
+                  </Form.Group>
+                  <Form.Group className="p-2 py-3">
+                    <Form.Control type="text" required placeholder="Teléfono" />
+                  </Form.Group>
+                  <Form.Group className="p-2 py-3">
+                    <Form.Control type="text" required placeholder="Email" />
+                  </Form.Group>
+                  <Form.Group className="p-2 py-3">
+                    <Form.Control
+                      as="textarea"
+                      rows={8}
+                      required
+                      placeholder="Mensaje"
+                    />
+                  </Form.Group>
+                  <Button className="flex justify-center items-center text-lg rounded-full mx-2">Enviar consulta</Button>
+                </Form>
                 <div>
                   <span className="absolute -right-9 -top-10 z-[-1]">
                     <svg
@@ -1012,8 +976,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-        </>  
-    );  
-};  
+    </>
+  );
+};
 
-export default Contact;  
+export default Contact;

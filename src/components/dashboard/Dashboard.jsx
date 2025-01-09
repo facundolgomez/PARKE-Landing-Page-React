@@ -130,99 +130,14 @@ const Dashboard = () => {
             WHATSAPP  
         </button>  
     </div>  
-</div>  
-      <div
-        className="relative w-full h-[300px] sm:h-[500px] overflow-hidden"
-        onMouseMove={handleMouseMove}
-      >
-        <img
-          src="/img/imagen1.png"
-          alt="Imagen con zoom estilo lupa"
-          className="w-full h-auto object-cover"
-        />
-        <div
-          className="absolute border-4 border-white rounded-full"
-          style={{
-            width: "300px", // Tamaño de la lupa
-            height: "300px", // Tamaño de la lupa
-            top: `calc(${position.y}% - 50px)`, // Centrar lupa verticalmente
-            left: `calc(${position.x}% - 50px)`, // Centrar lupa horizontalmente
-            backgroundImage: "url('/img/imagen1.png')", // Imagen dentro de la lupa
-            backgroundSize: "300% 300%", // Tamaño de zoom de la imagen dentro de la lupa
-            backgroundPosition: `${position.x}% ${position.y}%`, // Ubicación de la lupa
-            pointerEvents: "none", // Evitar que el cursor interfiera con el movimiento
-            "@media (max-width: 680px)": {
-              width: "50px", // Reducir tamaño de la lupa en pantallas móviles
-              height: "50px",
-            },
-          }}
-        />
-      </div>
-      {/* Sección de "Soluciones" con lista */}
-      <div className="py-8 px-4 sm:px-8 bg-gray-100">
-        <h2 className="text-2xl sm:text-2xl text-center mb-6">SOLUCIONES</h2>
+</div>
+<div>
+  <img src="/img/imagen1.png" alt="Zoom Imagen" className="w-full" />
+</div>
+      
 
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-6 items-center">
-          {/* Industrias */}
-          <div>
-            <h3 className="text-xl font-bold text-center mb-4">Industrias</h3>
-            <ul className="space-y-4">
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
-                <span>Industria Alimentaria</span>
-              </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
-                <span>Industria Farmacéutica</span>
-              </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
-                <span>Industria Química</span>
-              </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3">
-                <i className="fas fa-check-circle text-blue-500 ml-36"></i>
-                <span>Industria Cosmética</span>
-              </li>
-            </ul>
-          </div>
 
-          {/* Separador */}
-          <div className="bg-gray-300 w-[2px] h-full mx-auto sm:my-0"></div>
-
-          {/* Máquinas */}
-          <div>
-            <h3 className="text-xl font-bold text-center mb-4">
-              Tipo de Máquina
-            </h3>
-            <ul className="space-y-4">
-              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
-                <i className="fas fa"></i>
-                <span>Máquinas de Embolsado</span>
-              </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
-                <i className="fas fa"></i>
-                <span>Máquinas de Paletizado</span>
-              </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
-                <i className="fas fa"></i>
-                <span>Máquinas de Envoltura</span>
-              </li>
-              <li className="text-lg text-gray-700 flex items-center space-x-3 ml-36">
-                <i className="fas fa"></i>
-                <span>Máquinas de Transporte</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="relative mt-8">
-        <img
-          src="/img/industria.webp"
-          alt="Imagen de fondo"
-          className="absolute inset-0 w-full h-full object-cover opacity-40" // Ajusta la opacidad aquí
-        />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center"></div>
-      </div>
+    
     </>
   );
 };

@@ -146,15 +146,86 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="h-32 w-full bg-gradient-to-t from-sky-500 to-sky-700 ">
-        
         <div className="flex flex-row justify-around items-center">
-        <div className="flex flex-col">
-        <h1 className=" text-white text-2xl md:text-4xl font-bold mt-2 md:mt-3 ml-2 "> Soluciones a medida</h1>
-        <p className="text-white ml-2">  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, dignissimos cum? Si</p>
+          <div className="flex flex-col">
+            <h1 className=" text-white text-2xl md:text-4xl font-bold mt-2 md:mt-3 ml-2 ">
+              {" "}
+              Soluciones a medida
+            </h1>
+            <p className="text-white ml-2">
+              {" "}
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Perferendis, dignissimos cum? Si
+            </p>
+          </div>
+          <button className=" bg-white text-sky-600 rounded-full py-2 px-4 mt-4 md:mt-10 scale-75 md:scale-125 ">
+            COTIZÁ GRATIS
+          </button>
         </div>
-        <button className=" bg-white text-sky-600 rounded-full py-2 px-4 mt-4 md:mt-10 scale-75 md:scale-125 ">
-          COTIZÁ GRATIS
-        </button>
+      </div>
+      <div className="flex h-60 my-2">
+        <div className="flex-1 bg-white ml-2">
+          <h1 className="flex justify-center font-bold mb-4 text-3xl">
+            Soluciones por industria
+          </h1>
+          <ul className="text-center space-y-3 font-extrabold text-2xl">
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Industria 1
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Industria 2
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Industria 3
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Industria 4
+            </li>
+          </ul>
+        </div>
+        <div className="h-60 w-1 bg-black rounded-full" ></div>
+        <div className="flex-1 bg-white ml-2">
+          <h1 className="flex justify-center font-bold mb-4 text-3xl">
+            Soluciones por tipo de máquina
+          </h1>
+          <ul className="text-center space-y-4 font-extrabold text-2xl">
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Máquina 1
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Máquina 2
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Máquina 3
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <span className="inline-block w-4 h-4 mr-2 text-sky-600">
+                &#10003;
+              </span>
+              Máquina 4
+            </li>
+          </ul>
         </div>
       </div>
       <div
@@ -163,14 +234,14 @@ const Dashboard = () => {
       >
         {/* Imagen desenfocada */}
         <img
-          src="/img/imagen1.png"
+          src="/img/imagen1.jpg"
           alt="Image Blur"
-          className="w-full h-full object-cover filter blur-sm"
+          className="w-full h-full object-cover md:filter md:blur-sm"
         />
 
         {/* Máscara del círculo */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none hidden md:block"
           style={{
             background: `radial-gradient(circle 100px at ${mousePosition.x}px ${mousePosition.y}px, transparent, rgba(0, 0, 0, 0.2))`,
           }}
@@ -178,9 +249,9 @@ const Dashboard = () => {
 
         {/* Imagen revelada */}
         <img
-          src="/img/imagen1.png"
+          src="/img/imagen1.jpg"
           alt="Image Revealed"
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 w-full h-full object-cover hidden md:block"
           style={{
             clipPath: `circle(150px at ${mousePosition.x}px ${mousePosition.y}px)`,
           }}

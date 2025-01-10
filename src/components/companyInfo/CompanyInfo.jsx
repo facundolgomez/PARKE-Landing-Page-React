@@ -1,29 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import UpScreen from "../upscreen/UpScreen";
 
 const CompanyInfo = () => {
   return (
     <>
       <>
-        <div className="relative">
-          <img
-            src="../../../public/imagenes-de-fondo/imagen-la-empresa.jpg"
-            className="w-full brightness-75"
-            style={{ height: "400px" }}
-          />
-          <section className="absolute bottom-0 left-0 mb-4 bg-transparent dark:bg-dark">
-            <div className="mx-auto sm:container">
-              <div className="flex flex-col text-white">
-                <h1 className="text-2xl font-semibold bg-sky-600 text-white px-4 py-2">
-                  La Empresa
-                </h1>
-                <p className="text-sm font-medium text-body-color dark:text-dark-6 bg-black px-4 py-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-          </section>
-        </div>
+        <UpScreen
+          pathImage={"../../../public/imagenes-de-fondo/imagen-la-empresa.jpg"}
+          title={"La empresa"}
+          paragraph={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+        />
         <div className="flex justify-start bg-sky-600 h-auto my-2.5 flex-col items-center pt-4 pb-4 px-4 sm:px-8 relative">
           <div className="text-white text-4xl font-bold whitespace-nowrap">
             NUESTRA ACTIVIDAD

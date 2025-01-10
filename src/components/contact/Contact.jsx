@@ -4,7 +4,11 @@ import UpScreen from "../upscreen/UpScreen";
 const Contact = () => {
   return (
     <>
-      <UpScreen/>
+      <UpScreen
+        pathImage={"../../../public/imagenes-de-fondo/imagen-contacto-2.jpg"}
+        title={"Contacto"}
+        paragraph={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+      />
       <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap lg:justify-between">

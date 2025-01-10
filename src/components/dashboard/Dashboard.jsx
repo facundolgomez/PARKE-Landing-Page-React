@@ -145,14 +145,72 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="h-32 w-full bg-gradient-to-t from-sky-500 to-sky-800 ">
+      <div className="flex h-100 bg-gradient-to-t from-sky-300 to-sky-600">
+        <div className="flex-1 ml-2 p-4 sm:p-6 lg:p-8">
+          <h1 className="text-center font-bold mb-3 text-2xl sm:text-3xl lg:text-4xl text-white">
+            Soluciones por industria
+          </h1>
+          <ul className="text-center space-y-5 font-extrabold text-lg sm:text-2xl lg:text-2xl">
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                INDUSTRIA 1
+              </button>
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                INDUSTRIA 2
+              </button>
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                INDUSTRIA 3
+              </button>
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                INDUSTRIA 4
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div className="h-96 w-0.5 bg-gradient-to-t from-sky-500 to-white rounded-full opacity-50"></div>
+        <div className="flex-1 bg-gradient-to-t  from-sky-300 to-sky-600 p-4 sm:p-6 lg:p-8">
+          <h1 className="text-center font-bold mb-4 text-xl sm:text-3xl lg:text-4xl text-white">
+            Soluciones por tipo de máquina
+          </h1>
+          <ul className="text-center space-y-5 font-extrabold text-lg sm:text-2xl lg:text-2xl">
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                MAQUINA 1
+              </button>
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                MAQUINA 2
+              </button>
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                MAQUINA 3
+              </button>
+            </li>
+            <li className="text-black flex items-center justify-center">
+              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+                MAQUINA 4
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="h-32 w-full bg-gradient-to-t  from-white to-sky-300 ">
         <div className="flex flex-row justify-around items-center">
           <div className="flex flex-col">
-            <h1 className=" text-white text-2xl md:text-4xl font-bold mt-2 md:mt-3 ml-2 ">
+            <h1 className=" text-sky-600 text-2xl md:text-4xl font-bold mt-2 md:mt-3 ml-2 ">
               {" "}
               Soluciones a medida
             </h1>
-            <p className="text-white ml-2">
+            <p className="text-sky-400 ml-2">
               {" "}
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Perferendis, dignissimos cum? Si
@@ -161,63 +219,6 @@ const Dashboard = () => {
           <button className=" bg-white text-sky-600 rounded-full py-2 px-4 mt-4 md:mt-10 scale-75 md:scale-125 ">
             COTIZÁ GRATIS
           </button>
-        </div>
-      </div>
-      <div className="flex h-100 bg-gradient-to-t from-white to-sky-500 ">
-        <div className="flex-1  ml-2">
-          <h1 className="flex justify-center font-bold mb-4 text-3xl text-white">
-            Soluciones por industria
-          </h1>
-          <ul className="text-center space-y-3 font-extrabold text-2xl">
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105 ">
-                INDUSTRIA 1
-              </button>
-            </li>
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105 ">
-                INDUSTRIA 2
-              </button>
-            </li>
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105">
-                INDUSTRIA 3
-              </button>
-            </li>
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600  border-black transition-transform duration-300 hover:scale-105">
-                INDUSTRIA 4
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="h-96 w-0.5 bg-gradient-to-t from-sky-500 to-white rounded-full opacity-50"></div>
-        <div className="flex-1 bg-gradient-to-t from-white to-sky-500">
-          <h1 className="flex justify-center font-bold mb-4 text-3xl text-white">
-            Soluciones por tipo de máquina
-          </h1>
-          <ul className="text-center space-y-4 font-extrabold text-2xl">
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105">
-                MAQUINA 1
-              </button>
-            </li>
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105">
-                MAQUINA 2
-              </button>
-            </li>
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105">
-                MAQUINA 3
-              </button>
-            </li>
-            <li className="text-black flex items-center justify-center">
-              <button className=" bg-white text-sky-600 border-black transition-transform duration-300 hover:scale-105">
-                 MAQUINA 4
-              </button>
-            </li>
-          </ul>
         </div>
       </div>
       <div

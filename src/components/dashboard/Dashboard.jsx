@@ -147,27 +147,27 @@ const Dashboard = () => {
       </div>
       <div className="flex h-100 bg-gradient-to-t from-sky-300 to-sky-600">
         <div className="flex-1 ml-2 p-4 sm:p-6 lg:p-8">
-          <h1 className="text-center font-bold mb-3 text-2xl sm:text-3xl lg:text-4xl text-white">
+          <h1 className="text-center font-bold mb-4 text-xl sm:text-lg lg:text-xl text-white">
             Soluciones por industria
           </h1>
           <ul className="text-center space-y-5 font-extrabold text-lg sm:text-2xl lg:text-2xl">
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong ">
                 INDUSTRIA 1
               </button>
             </li>
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 INDUSTRIA 2
               </button>
             </li>
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 INDUSTRIA 3
               </button>
             </li>
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 INDUSTRIA 4
               </button>
             </li>
@@ -176,27 +176,27 @@ const Dashboard = () => {
 
         <div className="h-96 w-0.5 bg-gradient-to-t from-sky-500 to-white rounded-full opacity-50"></div>
         <div className="flex-1 bg-gradient-to-t  from-sky-300 to-sky-600 p-4 sm:p-6 lg:p-8">
-          <h1 className="text-center font-bold mb-4 text-xl sm:text-3xl lg:text-4xl text-white">
+          <h1 className="text-center font-bold mb-4 text-xl sm:text-lg lg:text-xl text-white">
             Soluciones por tipo de máquina
           </h1>
           <ul className="text-center space-y-5 font-extrabold text-lg sm:text-2xl lg:text-2xl">
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 MAQUINA 1
               </button>
             </li>
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 MAQUINA 2
               </button>
             </li>
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 MAQUINA 3
               </button>
             </li>
             <li className="text-black flex items-center justify-center">
-              <button className="bg-white text-sky-600 border border-black px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105">
+              <button className="mb-2 block w-full rounded bg-sky-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                 MAQUINA 4
               </button>
             </li>
@@ -206,17 +206,17 @@ const Dashboard = () => {
       <div className="h-32 w-full bg-gradient-to-t  from-white to-sky-300 ">
         <div className="flex flex-row justify-around items-center">
           <div className="flex flex-col">
-            <h1 className=" text-sky-600 text-2xl md:text-4xl font-bold mt-2 md:mt-3 ml-2 ">
+            <h1 className=" text-slate-800 text-2xl md:text-4xl font-bold mt-0 md:mt-3 ml-2 ">
               {" "}
               Soluciones a medida
             </h1>
-            <p className="text-sky-400 ml-2">
+            <p className="text-slate-700 ml-2">
               {" "}
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Perferendis, dignissimos cum? Si
             </p>
           </div>
-          <button className=" bg-white text-sky-600 rounded-full py-2 px-4 mt-4 md:mt-10 scale-75 md:scale-125 ">
+          <button className=" bg-white text-sky-600 rounded-full py-2 px-4 mt-0 md:mt-10 scale-75 md:scale-125 ">
             COTIZÁ GRATIS
           </button>
         </div>

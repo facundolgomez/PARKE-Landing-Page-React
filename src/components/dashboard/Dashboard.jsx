@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Video from "../video/Video";
+import ClientCarousel from "../clientCarousel/ClientCarousel";
 
 const Dashboard = () => {
   const [indice, setIndice] = useState(0);
@@ -250,7 +251,10 @@ const Dashboard = () => {
           }}
         />
       </div>
-      /
+      
+      <div>
+        <ClientCarousel/>
+      </div>
     </>
   );
 };

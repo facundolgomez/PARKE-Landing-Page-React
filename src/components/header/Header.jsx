@@ -44,6 +44,7 @@ const Header = () => {
 
   const dashboardHandler = () => {
     navigate("/");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const newsHandler = () => {
@@ -72,7 +73,7 @@ const Header = () => {
             scrolling ? "pt-0" : "pt-2"
           }`}
         >
-          <button className="flex basis-52 bg-white border-hidden">
+          <button className="bg-white border-hidden">
             <img
               onClick={dashboardHandler}
               src="../../../public/logos/Logo-header.png"
@@ -177,7 +178,7 @@ const Header = () => {
           <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110 hidden md:flex">
             COTIZÁ GRATIS
           </button>
-          <div className="bg-white p-4 rounded text-black">
+          <div className="bg-white rounded text-black">
             <FontAwesomeIcon icon={faGlobe} className="text-black" />
             <select className="border border-black bg-white text-black rounded">
               <option>ESP</option>

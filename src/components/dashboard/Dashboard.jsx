@@ -70,7 +70,12 @@ const Dashboard = () => {
 
         {/* Video para pantallas grandes */}
         <div className="absolute inset-0 hidden sm:block">
+
           <Video className="w-full h-full object-cover" />
+          
+          {/* Carrusel de textos */}
+
+          
         </div>
 
         <div className="flex flex-col">
@@ -78,7 +83,7 @@ const Dashboard = () => {
             <button
               id="left-button"
               onClick={prevText}
-              className="bg-gray-100 bg-opacity-30 ms-5 border-hidden transform transition-transform duration-300 hover:scale-125 hover:bg-opacity-70"
+              className="bg-gray-100 scale-50 sm:scale-100 bg-opacity-30 ms-5 border-hidden transform transition-transform duration-300 hover:scale-125 hover:bg-opacity-70"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,15 +115,15 @@ const Dashboard = () => {
             {textos[indice]}
           </h1>
 
-          <div className="absolute top-[35%] sm:top-[30%] lg:top-[50%] left-full transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <div className="absolute top-[35%] sm:top-[30%] lg:top-[50%] left-full transform -translate-x-full -translate-y-1/2 z-10">
             <button
               id="right-button"
               onClick={nextText}
-              className="bg-gray-100 bg-opacity-40 me-5 border-hidden transform transition-transform duration-300 hover:scale-125 hover:bg-opacity-70"
+              className="bg-gray-100 scale-50 sm:scale-100 bg-opacity-40 border-hidden transform transition-transform duration-300 hover:scale-125 hover:bg-opacity-70"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 inline-block"
+                className="h-6 inline-block"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

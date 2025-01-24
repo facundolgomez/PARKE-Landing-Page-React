@@ -1,17 +1,18 @@
 import ReCAPTCHA from "react-google-recaptcha";
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 
-const ReCAPTCHAvalitadion = () => {
-
-    const [captchaValidation, setCaptchaValidation] = useState(false)
+const ReCAPTCHAvalitadion = ({ onValidationChange }) => {
 
     const captcha = useRef(null);
 
     const captchaSubmit = () => {
         if (captcha.current.getValue()) {
-            setCaptchaValidation(true)
+          onValidationChange(true); // Notifica al padre que el reCAPTCHA está validado
+          console.log("Validado!");
+        } else {
+          onValidationChange(false); // Notifica al padre que el reCAPTCHA no está validado
         }
-    }
+      };
 
     return(
         <div>
@@ -20,7 +21,6 @@ const ReCAPTCHAvalitadion = () => {
                 sitekey="6Ldng8IqAAAAADjh0lizzBwLpXS3THXNfXh2cncZ"
                 onChange={captchaSubmit}
             />
-            {captchaValidation && <p className="text-green-600">¡reCAPTCHA validado correctamente!</p>}
         </div>
     )
 }

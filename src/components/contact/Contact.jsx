@@ -1,7 +1,21 @@
 import { Button, Form } from "react-bootstrap";
 import UpScreen from "../upscreen/UpScreen";
+import { useState } from "react";
+import ReCAPTCHAvalitadion from "../reCAPTCHAvalidation/ReCAPTCHAvalidation";
 
 const Contact = () => {
+
+  const [captchaValidated, setCaptchaValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (captchaValidated) {
+      alert("formulario enviado correctamente");
+    }
+    else{
+      alert("Por favor, completa el reCAPTCHA.")
+    }
+  }
 
   return (
     <>
@@ -126,7 +140,7 @@ const Contact = () => {
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <Form className="flex flex-column">
+                <Form className="flex flex-column" onSubmit={handleSubmit}>
                   <Form.Group className="p-2 py-3">
                     <Form.Control
                       type="text"
@@ -151,7 +165,15 @@ const Contact = () => {
                       placeholder="Mensaje"
                     />
                   </Form.Group>
-                  <Button className="flex justify-center items-center text-lg rounded-full mx-2">
+                  <Form.Group className="p-2 py-3">
+                  <ReCAPTCHAvalitadion onValidationChange={setCaptchaValidated}/>
+                  {!captchaValidated && <p className=" pt-3 text-xl text-red-700">Por favor, para enviar su consulta primero valide el captcha.</p>}
+                  </Form.Group>
+                  <Button 
+                    className="text-lg rounded-full mx-2 mt-3" 
+                    type="submit"
+                    disabled={!captchaValidated}
+                  >
                     Enviar consulta
                   </Button>
                 </Form>

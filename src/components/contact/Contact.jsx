@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import UpScreen from "../upscreen/UpScreen";
 
 const Contact = () => {
+
   return (
     <>
       <UpScreen

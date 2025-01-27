@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthenticationContext } from "../services/AuthenticationContext";
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [timer, setTimer] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user } = useContext(AuthenticationContext);
 
   const navigate = useNavigate();
 
@@ -57,6 +59,15 @@ const Header = () => {
 
   const companyHandler = () => {
     navigate("/company");
+  };
+  const clientHandler = () => {
+    if (!user) {
+      // Si no está autenticado, redirigir al login
+      navigate("/login");
+    } else {
+      // Si está autenticado, redirigir a portalCliente
+      navigate("/portalCliente");
+    }
   };
   const MobileMenuHandler = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -174,6 +185,9 @@ const Header = () => {
           >
             CONTACTO
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+          </button>
+          <button onClick={clientHandler} className="bg-white">
+            PORTAL CLIENTES
           </button>
           <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110 hidden md:flex">
             COTIZÁ GRATIS

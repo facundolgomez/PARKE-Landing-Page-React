@@ -11,11 +11,16 @@ const Contact = () => {
     event.preventDefault();
     if (captchaValidated) {
       alert("formulario enviado correctamente");
+      
     }
     else{
       alert("Por favor, completa el reCAPTCHA.")
     }
   }
+
+  const handleValidationChange = (isValid) => {  
+    setCaptchaValidated(isValid); // Actualiza el estado según la validación  
+  };
 
   return (
     <>
@@ -166,7 +171,7 @@ const Contact = () => {
                     />
                   </Form.Group>
                   <Form.Group className="p-2 py-3">
-                  <ReCAPTCHAvalitadion onValidationChange={setCaptchaValidated}/>
+                  <ReCAPTCHAvalitadion onValidationChange={handleValidationChange}/>
                   {!captchaValidated && <p className=" pt-3 text-xl text-red-700">Por favor, para enviar su consulta primero valide el captcha.</p>}
                   </Form.Group>
                   <Button 

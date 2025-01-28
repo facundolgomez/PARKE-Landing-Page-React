@@ -7,6 +7,8 @@ const Dashboard = () => {
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState("right");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activePopup, setActivePopup] = useState(null);
+  
 
   const textos = [
     "SOLUCIONES PARA EMBOLSADO, PALETIZADO, ENVOLTURA y TRANSPORTE",
@@ -51,6 +53,9 @@ const Dashboard = () => {
       y: e.clientY - rect.top,
     });
   };
+  const togglePopup = (id) => {
+    setActivePopup((prev) => (prev === id ? null : id));
+  };
 
   // ------------------------------------------------------------------------------------------------
 
@@ -70,12 +75,9 @@ const Dashboard = () => {
 
         {/* Video para pantallas grandes */}
         <div className="absolute inset-0 hidden sm:block">
-
           <Video className="w-full h-full object-cover" />
-          
-          {/* Carrusel de textos */}
 
-          
+          {/* Carrusel de textos */}
         </div>
 
         <div className="flex flex-col">
@@ -228,37 +230,121 @@ const Dashboard = () => {
         </div>
       </div>
       <div
-        className="relative w-full h-full overflow-hidden"
-        onMouseMove={handleMouseMove}
+      className="relative w-full h-full overflow-hidden"
+      onMouseMove={handleMouseMove}
+    >
+      {/* Imagen desenfocada */}
+      <img
+        src="/img/imagen1.jpg"
+        alt="Image Blur"
+        className="w-full h-full object-cover md:filter md:blur-sm"
+      />
+
+      {/* Máscara del círculo */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden md:block"
+        style={{
+          background: `radial-gradient(circle 100px at ${mousePosition.x}px ${mousePosition.y}px, transparent, rgba(0, 0, 0, 0))`,
+        }}
+      ></div>
+
+      {/* Imagen revelada */}
+      <img
+        src="/img/imagen1.jpg"
+        alt="Image Revealed"
+        className="absolute top-0 left-0 w-full h-full object-cover hidden md:block"
+        style={{
+          clipPath: `circle(150px at ${mousePosition.x}px ${mousePosition.y}px)`,
+        }}
+      />
+
+      {/* Botón 1 */}
+      <button
+        onClick={() => togglePopup(1)}
+        className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+        style={{
+          top: "30%", // Ajusta la posición vertical
+          left: "25%", // Ajusta la posición horizontal
+        }}
       >
-        {/* Imagen desenfocada */}
-        <img
-          src="/img/imagen1.jpg"
-          alt="Image Blur"
-          className="w-full h-full object-cover md:filter md:blur-sm"
-        />
-
-        {/* Máscara del círculo */}
+      </button>
+      {activePopup === 1 && (
         <div
-          className="absolute inset-0 pointer-events-none hidden md:block"
+          className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
           style={{
-            background: `radial-gradient(circle 100px at ${mousePosition.x}px ${mousePosition.y}px, transparent, rgba(0, 0, 0, 0))`,
+            top: "30%", // Mismo valor que el botón
+            left: "35%", // Posición al lado del botón
           }}
-        ></div>
+        >
+          <p>Ventana emergente</p>
+          <button
+            onClick={() => togglePopup(1)}
+            className="mt-2 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            Cerrar
+          </button>
+        </div>
+      )}
 
-        {/* Imagen revelada */}
-        <img
-          src="/img/imagen1.jpg"
-          alt="Image Revealed"
-          className="absolute top-0 left-0 w-full h-full object-cover hidden md:block"
+      {/* Botón 2 */}
+      <button
+        onClick={() => togglePopup(2)}
+        className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+        style={{
+          top: "40%", // Ajusta la posición vertical
+          left: "75%", // Ajusta la posición horizontal
+        }}
+      >
+      </button>
+      {activePopup === 2 && (
+        <div
+          className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
           style={{
-            clipPath: `circle(150px at ${mousePosition.x}px ${mousePosition.y}px)`,
+            top: "40%", // Mismo valor que el botón
+            left: "65%", // Posición al lado del botón
           }}
-        />
-      </div>
-      
+        >
+          <p>Ventana emergente</p>
+          <button
+            onClick={() => togglePopup(2)}
+            className="mt-2 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            Cerrar
+          </button>
+        </div>
+      )}
+
+      {/* Botón 3 */}
+      <button
+        onClick={() => togglePopup(3)}
+        className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+        style={{
+          top: "50%", // Ajusta la posición vertical
+          left: "50%", // Ajusta la posición horizontal
+        }}
+      >
+      </button>
+      {activePopup === 3 && (
+        <div
+          className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
+          style={{
+            top: "50%", // Mismo valor que el botón
+            left: "60%", // Posición al lado del botón
+          }}
+        >
+          <p>Ventana emergente</p>
+          <button
+            onClick={() => togglePopup(3)}
+            className="mt-2 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            Cerrar
+          </button>
+        </div>
+      )}
+    </div>
+
       <div>
-        <ClientCarousel/>
+        <ClientCarousel />
       </div>
     </>
   );

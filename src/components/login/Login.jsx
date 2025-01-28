@@ -1,6 +1,7 @@
 import { useRef, useState, useContext } from "react";
 import { AuthenticationContext } from "../services/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
+import Header from "../header/Header";
 
 const Login = () => {
   const { handleLogin } = useContext(AuthenticationContext);
@@ -34,7 +35,10 @@ const Login = () => {
   };
 
   return (
-    <form
+    
+    <div>
+      <Header />
+      <form
       onSubmit={loginHandler}
       className="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 bg-white shadow-lg rounded-lg w-full max-w-sm"
     >
@@ -64,6 +68,7 @@ const Login = () => {
         Iniciar sesión
       </button>
     </form>
+    </div>
   );
 };
 

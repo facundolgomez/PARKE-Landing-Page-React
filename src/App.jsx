@@ -8,7 +8,9 @@ import CompanyInfo from "./components/companyInfo/CompanyInfo";
 import Login from "./components/login/Login";
 import PageNotFound from "./components/errors/pageNotFound/PageNotFound";
 import News from "./components/news/News";
-import Footer from "./components/footer/Footer";
+import PortalClient from "./components/portalClient/PortalClient";
+import Protected from "./components/protected/Protected";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -21,9 +23,19 @@ function App() {
         { path: "/news", element: <News /> },
         { path: "/contact", element: <Contact /> },
         { path: "/company", element: <CompanyInfo /> },
-        { path: "/footer", element: <Footer /> },
+        {
+          path: "/portalCliente",
+          element: <Protected />,
+          children: [
+            {
+              path: "/portalCliente",
+              element: <PortalClient />,
+            },
+          ],
+        },
       ],
     },
+    
     {
       path: "/login",
       element: <Login />,
@@ -34,7 +46,7 @@ function App() {
     },
   ]);
 
-  return <>{<RouterProvider router={router} />}</>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

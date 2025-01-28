@@ -106,8 +106,10 @@ const ClientCarousel = () => {
     <section className="our-client sectpad">
       <div className="container clearfix">
         <div className="section_header">
-          <h2 className="text-2xl text-pretty">ALGUNOS DE NUESTROS CLIENTES</h2>
-          <hr />
+          <h2 className="text-3xl py-5 font-bold text-gray-900 relative inline-block">
+            ALGUNOS DE NUESTROS CLIENTES
+            <span className="block w-16 h-1 bg-sky-600 mt-1"></span>
+          </h2>
         </div>
         <Swiper
           ref={swiperRef}

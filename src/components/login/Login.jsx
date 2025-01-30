@@ -2,68 +2,233 @@ import { useRef, useState, useContext } from "react";
 import { AuthenticationContext } from "../services/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 import Header from "../header/Header";
+import { jwtDecode } from "jwt-decode";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
+
   const { handleLogin } = useContext(AuthenticationContext);
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
+  
+  const usernameRef = useRef(null);  
+  const passwordRef = useRef(null);
 
-  const loginHandler = (event) => {
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+
+  const [showErrorLogin, setShowErrorLogin] = useState(false); // variable que utilizo para mostrar un mensaje en caso de que las credenciales sean incorrectas
+
+  const navigate = useNavigate();
+
+  const [errors, setErrors] = useState({
+    username: false,
+    password: false,
+  });
+
+  const [selectedOption, setSelectedOption] = useState("Client");
+
+  const usernameHandler = (event) => {
+    setErrors({...errors, username: false});
+    setEnteredUsername(event.target.value);
+    setShowErrorLogin(false);
+  }
+
+  const passwordHandler = (event) => {
+    setErrors({...errors, password: false});
+    setEnteredPassword(event.target.value);
+    setShowErrorLogin(false);
+  }
+
+  const toggleOption = () => {
+    if (selectedOption === "Admin") {
+      setSelectedOption("Client");
+    }
+    if (selectedOption === "Client") {
+      setSelectedOption("Admin");
+    }
+
+    console.log(selectedOption);
+  }
+
+  const submitLogin = async (event) => {
     event.preventDefault();
 
-    const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    const username = usernameRef.current.value;
 
-    if (email.length === 0) {
-      emailRef.current.focus();
-      setErrors({ ...errors, email: true });
-      return;
+    if (selectedOption === "Client") {
+      if (username.length === 0) {
+        usernameRef.current.focus();
+        setErrors({ ...errors, username: true });
+        return;
+      }
+  
+      if (password.length === 0) {
+        passwordRef.current.focus();
+        setErrors({ ...errors, password: true });
+        return;
+      }
+      
+
+      const isSuccess = await loginHandler(username, password);
+
+      if(isSuccess) {
+        console.log("logueado!!!!")
+        onLogin();  // notifico al resto de la App que el usuario se ha logueado correctamente
+        navigate("/portalCliente");  // navega al portal de clientes
+      }
+      else {
+        setErrors({ ...errors, username: false, password: false });
+        setShowErrorLogin(true);
+      }
+
+      setEnteredUsername("");
+      setEnteredPassword("");
     }
 
-    if (password.length === 0) {
-      passwordRef.current.focus();
-      setErrors({ ...errors, password: true });
-      return;
-    }
+    else {
+      if (username.length === 0) {
+        usernameRef.current.focus();
+        setErrors({ ...errors, username: true });
+        return;
+      }
+  
+      if (password.length === 0) {
+        passwordRef.current.focus();
+        setErrors({ ...errors, password: true });
+        return;
+      }
+  
+      const isSuccess = await loginHandler(enteredUsername, enteredPassword);
 
-    alert(`Iniciaste sesión con el email: ${email}`);
-    handleLogin(email);
-    navigate("/portalCliente");
-    console.log(email);
+      if(isSuccess) {
+        console.log("logueado!!!!")
+        onLogin();  // notifico al resto de la App que el usuario se ha logueado correctamente
+        navigate("/news");  // navega a novedades
+      }
+      else {
+        setErrors({ ...errors, username: false, password: false });
+        setShowErrorLogin(true);
+      }
+
+      setEnteredUsername("");
+      setEnteredPassword("");
+    }
   };
+
+  const loginHandler = async (username, password) => {
+    const endpoint = selectedOption === "Admin" 
+      ? "https://localhost:7185/api/Authentication/AuthenticateAdmin" 
+      : "https://localhost:7185/api/Authentication/AuthenticateClient";
+
+    try{
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({username, password}),
+      });
+
+      if (!res.ok) {
+        // si la respuesta no fue OK lanza un error
+        const errorData = await res.json(); // detalles del error  
+        throw new Error(errorData.message || "Login failed");
+      }
+
+      const data = await res.text();
+
+      localStorage.setItem("user-token", data);
+      decodeTokenAndSetRole(data, selectedOption); // pasamos el token y el tipo de usuario
+      return true;
+    }
+    catch(error) {
+      setErrors({username: false, password: true})
+      console.log(error);
+      return false;
+    }
+  };
+
+  const decodeTokenAndSetRole = (token, userType) => {
+    try {
+      const decoded = jwtDecode(token);
+      handleLogin(decoded.given_name, userType); // Usar userType en lugar de role
+    } catch (error) {
+      console.error("Error decoding token:", error);
+    }
+  };
+  
 
   return (
     
     <div>
       <Header />
       <form
-      onSubmit={loginHandler}
+      onSubmit={submitLogin}
       className="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 bg-white shadow-lg rounded-lg w-full max-w-sm"
     >
       <h2 className="text-2xl font-semibold text-center mb-6">
         Iniciar sesión
       </h2>
-      <div className="mb-4">
-        <input
-          type="email"
-          ref={emailRef}
-          placeholder="Email"
-          className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
+      
+      <label   
+        htmlFor="Toggle3"   
+        className="rounded-md cursor-pointer text-center"    
+      >  
+        <input   
+          id="Toggle3"   
+          type="checkbox"   
+          className="hidden peer"    
+        />  
+        <span className={`px-4 rounded-s-full transition-colors duration-300 ease-in-out ${selectedOption === "Client" ? 'bg-sky-600 text-white' : 'bg-gray-100 text-dark'}`}>
+          <button onClick={toggleOption} className="bg-transparent border-hidden">
+            Cliente
+          </button>  
+        </span>  
+        <span className={`px-4 rounded-e-full transition-colors duration-300 ease-in-out ${selectedOption === "Admin" ? 'bg-sky-600 text-white' : 'bg-gray-100 text-dark'}`}>  
+          <button onClick={toggleOption} className="bg-transparent border-hidden">
+            Admin
+          </button> 
+        </span>
+        <p className="text-x1 text-sky-600 font-bold mb-3">A continuación, ingrese sus credenciales de usuario {selectedOption === "Admin"? "Administrador" : "Cliente"}</p>
+      </label>  
+
+
+        <div className="mb-4">
+          <input
+            type="text"
+            ref={usernameRef}
+            placeholder="Nombre de usuario"
+            onChange={usernameHandler}
+            value={enteredUsername}
+            
+            className={errors.username == true ? "w-full p-3 border bg-white border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" :"w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"}
+          />
+        </div>
+
       <div className="mb-6">
         <input
           type="password"
           ref={passwordRef}
           placeholder="Contraseña"
-          className="w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={passwordHandler}
+          value={enteredPassword}
+
+          className={errors.password == true ? "w-full p-3 border bg-white border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" :"w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"}
         />
       </div>
+
+      <p className="text-warning py-2">
+        {errors.username || errors.password
+          ? "Debe completar todos los campos para iniciar sesión."
+          : ""}
+      </p>
+      {showErrorLogin && ( 
+        <p className="text-danger">Usuario o contraseña inválido/s. Por favor, intente nuevamente.</p> 
+      )}
+
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300"
+        className="w-full bg-blue-500 text-white p-3 my-2 rounded-lg hover:bg-blue-600 transition duration-300"
       >
         Iniciar sesión
       </button>

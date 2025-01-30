@@ -118,11 +118,10 @@ const CompanyInfo = () => {
             </h1>
             <p className="text-white ml-2">
               {" "}
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Perferendis, dignissimos cum? Si
+              ¡Estamos disponible para usted! Presione el botón y rellene el formulario de contacto.
             </p>
           </div>
-          <button className=" bg-white text-sky-600 rounded-full py-2 px-4 mt-0 md:mt-10 scale-75 md:scale-125 ">
+          <button className=" bg-white text-sky-600 rounded-full border-hidden py-2 px-4 mt-0 md:mt-10 scale-75 md:scale-125 transform transition-transform duration-300 hover:scale-150">
             CONTÁCTCANOS
           </button>
         </div>

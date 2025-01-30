@@ -10,9 +10,17 @@ import PageNotFound from "./components/errors/pageNotFound/PageNotFound";
 import News from "./components/news/News";
 import PortalClient from "./components/portalClient/PortalClient";
 import Protected from "./components/protected/Protected";
+import { useState } from "react";
 
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // Estado que me define si el usuario esta logueado o no
+
+  const handleLogin = () => {          // funcion que cambia el estado de logeueo
+    setIsLoggedIn(!isLoggedIn);
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -25,11 +33,11 @@ function App() {
         { path: "/company", element: <CompanyInfo /> },
         {
           path: "/portalCliente",
-          element: <Protected />,
+          element: <Protected isSignedIn={isLoggedIn}/>,
           children: [
             {
               path: "/portalCliente",
-              element: <PortalClient />,
+              element: <PortalClient isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>,
             },
           ],
         },
@@ -38,7 +46,7 @@ function App() {
     
     {
       path: "/login",
-      element: <Login />,
+      element: <Login onLogin={handleLogin}/>,
     },
     {
       path: "*",

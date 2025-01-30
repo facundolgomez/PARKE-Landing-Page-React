@@ -1,13 +1,15 @@
-import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { AuthenticationContext } from "../services/AuthenticationContext";
+import PropTypes from "prop-types";
 
-const Protected = () => {
-  const { user } = useContext(AuthenticationContext);
-  if (!user) {
+const Protected = ({ isSignedIn }) => {
+  if (!isSignedIn) {
     return <Navigate to="/login" replace />;
   }
   return <Outlet />;
+};
+
+Protected.propTypes = {
+  isSignedIn: PropTypes.bool,
 };
 
 export default Protected;

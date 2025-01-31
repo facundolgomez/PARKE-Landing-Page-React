@@ -4,22 +4,42 @@ import { useState } from "react";
 import ReCAPTCHAvalitadion from "../reCAPTCHAvalidation/ReCAPTCHAvalidation";
 
 const Contact = () => {
-
   const [captchaValidated, setCaptchaValidated] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (captchaValidated) {
-      alert("formulario enviado correctamente");
-      
-    }
-    else{
-      alert("Por favor, completa el reCAPTCHA.")
-    }
-  }
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData.entries());
 
-  const handleValidationChange = (isValid) => {  
-    setCaptchaValidated(isValid); // Actualiza el estado según la validación  
+      try {
+        const response = await fetch(
+          "https://localhost:7185/api/contact/send",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Error al enviar el formulario");
+        }
+
+        alert("Formulario enviado correctamente");
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar el formulario.");
+      }
+    } else {
+      alert("Por favor, completa el reCAPTCHA.");
+    }
+  };
+
+  const handleValidationChange = (isValid) => {
+    setCaptchaValidated(isValid);
   };
 
   return (
@@ -151,16 +171,40 @@ const Contact = () => {
                       type="text"
                       required
                       placeholder="Nombre y apellido"
+                      name="name"
                     />
                   </Form.Group>
                   <Form.Group className="p-2 py-3">
-                    <Form.Control type="text" required placeholder="Empresa" />
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder="Empresa"
+                      name="company"
+                    />
                   </Form.Group>
                   <Form.Group className="p-2 py-3">
-                    <Form.Control type="text" required placeholder="Teléfono" />
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder="Teléfono"
+                      name="phone"
+                    />
                   </Form.Group>
                   <Form.Group className="p-2 py-3">
-                    <Form.Control type="text" required placeholder="Email" />
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder="Email"
+                      name="email"
+                    />
+                  </Form.Group>
+                  <Form.Group className="p-2 py-3">
+                    <Form.Control
+                      type="text"
+                      required
+                      placeholder="Asunto"
+                      name="subject"
+                    />
                   </Form.Group>
                   <Form.Group className="p-2 py-3">
                     <Form.Control
@@ -168,14 +212,22 @@ const Contact = () => {
                       rows={8}
                       required
                       placeholder="Mensaje"
+                      name="message"
                     />
                   </Form.Group>
                   <Form.Group className="p-2 py-3">
-                  <ReCAPTCHAvalitadion onValidationChange={handleValidationChange}/>
-                  {!captchaValidated && <p className=" pt-3 text-xl text-red-700">Por favor, para enviar su consulta primero valide el captcha.</p>}
+                    <ReCAPTCHAvalitadion
+                      onValidationChange={handleValidationChange}
+                    />
+                    {!captchaValidated && (
+                      <p className=" pt-3 text-xl text-red-700">
+                        Por favor, para enviar su consulta primero valide el
+                        captcha.
+                      </p>
+                    )}
                   </Form.Group>
-                  <Button 
-                    className="text-lg rounded-full mx-2 mt-3" 
+                  <Button
+                    className="text-lg rounded-full mx-2 mt-3"
                     type="submit"
                     disabled={!captchaValidated}
                   >

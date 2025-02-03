@@ -10,12 +10,20 @@ import PageNotFound from "./components/errors/pageNotFound/PageNotFound";
 import News from "./components/news/News";
 import PortalClient from "./components/portalClient/PortalClient";
 import Protected from "./components/protected/Protected";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);  // Estado que me define si el usuario esta logueado o no
+
+  // Verificar si hay un token al cargar la aplicación
+  useEffect(() => {
+    const token = localStorage.getItem("user-token");
+    if (token) {
+      setIsLoggedIn(true); // Si hay un token, el usuario está logueado
+    }
+  }, []);
 
   const handleLogin = () => {          // funcion que cambia el estado de logeueo
     setIsLoggedIn(!isLoggedIn);

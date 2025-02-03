@@ -26,16 +26,31 @@ const Header = () => {
     };
   }, []);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnterSolutions = () => {
     if (timer) {
       clearTimeout(timer); // Si el temporizador existe, lo cancelamos
     }
     setMenuOpen(true); // Abre el menú inmediatamente
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeaveSolutions = () => {
     const newTimer = setTimeout(() => {
       setMenuOpen(false); // Cierra el menú después del tiempo de espera
+    }, 300); // 500ms es el retraso, puedes ajustarlo
+
+    setTimer(newTimer); // Guardamos el temporizador en el estado
+  };
+
+  const handleMouseEnterServices = () => {
+    if (timer) {
+      clearTimeout(timer); // Si el temporizador existe, lo cancelamos
+    }
+    setMenuServicesOpen(true); // Abre el menú inmediatamente
+  };
+
+  const handleMouseLeaveServices = () => {
+    const newTimer = setTimeout(() => {
+      setMenuServicesOpen(false); // Cierra el menú después del tiempo de espera
     }, 300); // 500ms es el retraso, puedes ajustarlo
 
     setTimer(newTimer); // Guardamos el temporizador en el estado
@@ -99,8 +114,8 @@ const Header = () => {
           </button>
           <div
             className="relative group"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnterSolutions}
+            onMouseLeave={handleMouseLeaveSolutions}
           >
             <button
               onClick={solutionsHandler}
@@ -193,8 +208,8 @@ const Header = () => {
 
           <div
             className="relative"
-            onMouseEnter={() => setMenuServicesOpen(true)}
-            onMouseLeave={() => setMenuServicesOpen(false)}
+            onMouseEnter={handleMouseEnterServices}
+            onMouseLeave={handleMouseLeaveServices}
           >
             <button className="bg-transparent border-none py-4 text-sky-600 relative hover:text-sky-600 flex items-center">
               SERVICIOS
@@ -205,7 +220,7 @@ const Header = () => {
             {menuServicesOpen && (
               <div className="absolute left-0 mt-2 bg-white text-sky-600 shadow-lg rounded-md z-50 opacity-100 scale-y-100 transform transition-all duration-300 origin-top w-[300px]">
                 <ul>
-                  <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                  <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer" onClick={() => navigate("/portalCliente")}>
                     PORTAL CLIENTES
                   </li>
                   <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">

@@ -98,7 +98,7 @@ const Login = ({ onLogin }) => {
       if (isSuccess) {
         console.log("logueado!!!!");
         onLogin(); // notifico al resto de la App que el usuario se ha logueado correctamente
-        navigate("/news"); // navega a novedades
+        navigate("/portalCliente"); // navega al portal de Clientes
       } else {
         setErrors({ ...errors, username: false, password: false });
         setShowErrorLogin(true);

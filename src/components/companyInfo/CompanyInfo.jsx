@@ -2,8 +2,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import UpScreen from "../upscreen/UpScreen";
 import ClientCarousel from "../clientCarousel/ClientCarousel";
+import { useNavigate } from "react-router-dom";
 
 const CompanyInfo = () => {
+
+  const navigate = useNavigate()
+
+  const buttonContactHandler = () => {
+    navigate("/contact");
+  }
+
   return (
     <>
       <>
@@ -121,7 +129,10 @@ const CompanyInfo = () => {
               ¡Estamos disponible para usted! Presione el botón y rellene el formulario de contacto.
             </p>
           </div>
-          <button className=" bg-white text-sky-600 rounded-full border-hidden py-2 px-4 mt-0 md:mt-10 scale-75 md:scale-125 transform transition-transform duration-300 hover:scale-150">
+          <button 
+            className=" bg-white text-sky-600 rounded-full border-hidden py-2 px-4 mt-0 md:mt-10 scale-75 md:scale-125 transform transition-transform duration-300 hover:scale-150"
+            onClick={buttonContactHandler}
+          >
             CONTÁCTCANOS
           </button>
         </div>

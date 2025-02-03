@@ -3,7 +3,6 @@ import { AuthenticationContext } from "../services/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 import Header from "../header/Header";
 import { jwtDecode } from "jwt-decode";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const Login = ({ onLogin }) => {
   const { handleLogin } = useContext(AuthenticationContext);

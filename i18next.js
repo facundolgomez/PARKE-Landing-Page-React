@@ -33,15 +33,12 @@ i18n
               subtitleOfCustomSolutionsText:
                 "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, dignissimos cum? Si",
               freeQuoteButton: "GET A FREE QUOTE",
+              solutionsBySectorButton: "Solutions by sector",
+              solutionsByMachineTypeButton: "Solutions by machine type",
               typeOfSolution: {
                 solutionsByIndustry: {
-                  title: "Solutions by Industry",
-                  items: [
-                    "Industry 1",
-                    "Industry 2",
-                    "Industry 3",
-                    "Industry 4",
-                  ],
+                  title: "Solutions by sector",
+                  items: ["Sector 1", "Sector 2", "Sector 3", "Sector 4"],
                 },
                 solutionsByMachineType: {
                   title: "Solutions by machine type",
@@ -72,7 +69,15 @@ i18n
                 text: "Developed by FGA Software",
               },
             },
-            fixedButton: "Do you have any questions? Contact us.",
+            fixedButton: {
+              text: "Do you have any questions? Contact us.",
+              modal: {
+                title: "¡Contact us!",
+                subtitle: "Choose a means of contact.",
+                contactFormButton: "Contact form",
+                whatsappButton: "Whatsapp",
+              },
+            },
           },
         },
       },
@@ -101,15 +106,12 @@ i18n
               subtitleOfCustomSolutionsText:
                 "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, dignissimos cum? Si",
               freeQuoteButton: "COTIZÁ GRATIS",
+              solutionsBySectorButton: "Soluciones por sectores",
+              solutionsByMachineTypeButton: "Soluciones por tipo de máquina",
               typeOfSolution: {
-                solutionsByIndustry: {
-                  title: "Soluciones por industria",
-                  items: [
-                    "Industria 1",
-                    "Industria 2",
-                    "Industria 3",
-                    "Industria 4",
-                  ],
+                solutionsBySectors: {
+                  title: "Soluciones por sectores",
+                  items: ["SECTOR 1", "SECTOR 2", "SECTOR 3", "SECTOR 4"],
                 },
                 solutionsByMachineType: {
                   title: "Soluciones por tipo de máquina",
@@ -140,7 +142,15 @@ i18n
                 text: "Desarrollado por FGA Software",
               },
             },
-            fixedButton: "¿Tiene consultas? Contactenos",
+            fixedButton: {
+              text: "¿Tiene consultas? Contactenos",
+              modal: {
+                title: "¡Contáctanos!",
+                subtitle: "Elija un medio de contacto.",
+                contactFormButton: "Formulario de contacto",
+                whatsappButton: "Whatsapp",
+              },
+            },
           },
         },
       },
@@ -169,15 +179,12 @@ i18n
               subtitleOfCustomSolutionsText:
                 "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, dignissimos cum? Si",
               freeQuoteButton: "ORÇAMENTO GRATUITO",
+              solutionsBySectorButton: "Soluções por setor",
+              solutionsByMachineTypeButton: "Soluções por tipo de máquina",
               typeOfSolution: {
                 solutionsByIndustry: {
-                  title: "Soluções por indústria",
-                  items: [
-                    "Indústria 1",
-                    "Indústria 2",
-                    "Indústria 3",
-                    "Indústria 4",
-                  ],
+                  title: "Soluções por setores",
+                  items: ["Setor 1", "Setor 2", "Setor 3", "Setor 4"],
                 },
                 solutionsByMachineType: {
                   title: "Soluções por tipo de máquina",
@@ -208,7 +215,15 @@ i18n
                 text: "Desenvolvido por FGA Software",
               },
             },
-            fixedButton: "Tem dúvidas? Entre em contato conosco.",
+            fixedButton: {
+              text: "Tem dúvidas? Entre em contato conosco.",
+              modal: {
+                title: "Entre em contato!",
+                subtitle: "Escolha um meio de contato.",
+                contactFormButton: "Formulário de contato",
+                whatsappButton: "Whatsapp",
+              },
+            },
           },
         },
       },

@@ -3,7 +3,6 @@ import { AuthenticationContext } from "../services/AuthenticationContext";
 import { useNavigate } from "react-router-dom";
 import Header from "../header/Header";
 import { jwtDecode } from "jwt-decode";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const Login = ({ onLogin }) => {
   const { handleLogin } = useContext(AuthenticationContext);
@@ -98,7 +97,7 @@ const Login = ({ onLogin }) => {
       if (isSuccess) {
         console.log("logueado!!!!");
         onLogin(); // notifico al resto de la App que el usuario se ha logueado correctamente
-        navigate("/news"); // navega a novedades
+        navigate("/portalCliente"); // navega al portal de Clientes
       } else {
         setErrors({ ...errors, username: false, password: false });
         setShowErrorLogin(true);

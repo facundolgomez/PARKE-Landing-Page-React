@@ -1,10 +1,14 @@
 import { Button, Form } from "react-bootstrap";
 import UpScreen from "../upscreen/UpScreen";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReCAPTCHAvalitadion from "../reCAPTCHAvalidation/ReCAPTCHAvalidation";
 
 const Contact = () => {
   const [captchaValidated, setCaptchaValidated] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Desplaza la página al principio
+  }, []); // Se ejecuta solo una vez al montar el componente
 
   const handleSubmit = async (event) => {
     event.preventDefault();

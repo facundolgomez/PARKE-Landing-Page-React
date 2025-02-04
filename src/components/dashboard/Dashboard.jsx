@@ -10,6 +10,8 @@ const Dashboard = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [activePopup, setActivePopup] = useState(null);
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState("sectores");
+
   const textos = [
     t("home.homeCarousel.text1"),
     t("home.homeCarousel.text2"),
@@ -55,6 +57,9 @@ const Dashboard = () => {
   };
   const togglePopup = (id) => {
     setActivePopup((prev) => (prev === id ? null : id));
+  };
+  const handleClick = (tab) => {
+    setActiveTab(tab);
   };
 
   // ------------------------------------------------------------------------------------------------
@@ -219,6 +224,85 @@ const Dashboard = () => {
             ))}
           </ul>
         </div>
+
+        {/* Condicionalmente renderiza los grids según el estado */}
+        {activeTab === "sectores" ? (
+          <div className="grid grid-cols-3 gap-4 h-72 p-10">
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                SECTOR 1
+              </div>
+            </div>
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                SECTOR 2
+              </div>
+            </div>
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                SECTOR 3
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-4 gap-4 h-72 p-10">
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                MAQUINA 1
+              </div>
+            </div>
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                MAQUINA 2
+              </div>
+            </div>
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                MAQUINA 3
+              </div>
+            </div>
+            <div className="bg-blue-300 text-center w-full relative">
+              <img
+                src="/img/imagen1.jpg"
+                alt=""
+                className="object-cover w-full h-full brightness-50"
+              />
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                MAQUINA 4
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <div
@@ -264,7 +348,7 @@ const Dashboard = () => {
             className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
             style={{
               top: "30%", // Mismo valor que el botón
-              left: "35%", // Posición al lado del botón
+              left: "30%", // Posición al lado del botón
             }}
           >
             <p>Ventana emergente</p>
@@ -291,7 +375,7 @@ const Dashboard = () => {
             className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
             style={{
               top: "40%", // Mismo valor que el botón
-              left: "65%", // Posición al lado del botón
+              left: "80%", // Posición al lado del botón
             }}
           >
             <p>Ventana emergente</p>
@@ -318,7 +402,7 @@ const Dashboard = () => {
             className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
             style={{
               top: "50%", // Mismo valor que el botón
-              left: "60%", // Posición al lado del botón
+              left: "55%", // Posición al lado del botón
             }}
           >
             <p>Ventana emergente</p>

@@ -1,9 +1,14 @@
-
+import { AuthenticationContext } from "../services/AuthenticationContext";
+import { useContext } from "react";
 
 const PortalClient = ({ isLoggedIn, setIsLoggedIn }) => {
 
+    const { handleLogout } = useContext(AuthenticationContext);
+
     const logOutHandler = () => {
-        setIsLoggedIn(!isLoggedIn);
+
+        handleLogout(); // Borra los datos del localStorage
+        setIsLoggedIn(!isLoggedIn); // Cambia el estado de isLoggedIn, lo cual redirecciona al login
     }
 
     return(

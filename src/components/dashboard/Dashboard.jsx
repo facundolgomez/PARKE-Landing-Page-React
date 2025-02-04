@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Video from "../video/Video";
 import ClientCarousel from "../clientCarousel/ClientCarousel";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
   const [indice, setIndice] = useState(0);
@@ -8,11 +9,11 @@ const Dashboard = () => {
   const [direction, setDirection] = useState("right");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [activePopup, setActivePopup] = useState(null);
-
+  const { t } = useTranslation();
   const textos = [
-    "SOLUCIONES PARA EMBOLSADO, PALETIZADO, ENVOLTURA y TRANSPORTE",
-    "TODA LA EXPERIENCIA AL SERVICIO DE NUESTROS CLIENTES",
-    "DESARROLLO DE SOLUCIONES ESPECIALES SOBRE REQUERIMIENTOS ESPECÍFICOS",
+    t("home.homeCarousel.text1"),
+    t("home.homeCarousel.text2"),
+    t("home.homeCarousel.text3"),
   ];
 
   useEffect(() => {
@@ -142,53 +143,54 @@ const Dashboard = () => {
 
         <div className="flex flex-col sm:flex-row justify-center items-center absolute top-[45%] sm:top-[40%] lg:top-[65%] w-full z-10 space-y-2 sm:space-y-0 sm:space-x-8">
           <button className="bg-sky-600 w-[120px] sm:w-[120px] md:w-[250px] lg:w-[300px] border-hidden text-xs sm:text-xs lg:text-sm h-[45px] text-white font-bold transform transition-transform duration-300 hover:scale-110 hover:bg-sky-400">
-            NUESTROS PRODUCTOS
+            {t("home.homeCarousel.ourProductsButton")}
           </button>
           <button
             onClick={() => window.open("https://wa.me/3413708391", "_blank")}
             className="bg-[#1fb154] w-[120px] sm:w-[120px] md:w-[250px] lg:w-[300px] border-hidden text-xs sm:text-xs lg:text-sm h-[45px] text-white font-bold transform transition-transform duration-300 hover:scale-110 hover:bg-[#27dd6a]"
           >
-            WHATSAPP
+            {t("home.homeCarousel.whatsappButton")}
           </button>
         </div>
       </div>
       <div className="w-full bg-white p-4 flex justify-center items-center h-30">
-  <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
-    {/* Contenido de texto */}
-    <div className="flex-1 text-center md:text-left">
-      <h1 className="text-slate-800 text-2xl md:text-4xl font-bold mb-2 md:mb-3">
-        Soluciones a medida
-      </h1>
-      <p className="text-slate-700 text-sm md:text-base">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis,
-        dignissimos cum? Si
-      </p>
-    </div>
+        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
+          {/* Contenido de texto */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-slate-800 text-2xl md:text-4xl font-bold mb-2 md:mb-3">
+              {t("home.customSolutions.customSolutionsText")}
+            </h1>
+            <p className="text-slate-700 text-sm md:text-base">
+              {t("home.customSolutions.subtitleOfCustomSolutionsText")}
+            </p>
+          </div>
 
-    {/* Botón */}
-    <button className="mt-6 md:mt-0 bg-sky-600 text-white rounded-full py-2 px-6 text-sm md:text-base scale-100 md:scale-125 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">
-      COTIZÁ GRATIS
-    </button>
-  </div>
-</div>
-
+          {/* Botón */}
+          <button className="mt-6 md:mt-0 bg-sky-600 text-white rounded-full py-2 px-6 text-sm md:text-base scale-100 md:scale-125 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">
+            {t("home.customSolutions.freeQuoteButton")}
+          </button>
+        </div>
+      </div>
 
       <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-t from-white via-sky-300 to-sky-600 text-white">
         {/* Sección izquierda */}
         <div className="flex-1 flex flex-col justify-center items-center p-4 sm:p-6">
           <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
-            Soluciones por industria
+            {t("home.customSolutions.typeOfSolution.solutionsByIndustry.title")}
           </h1>
           <ul className="w-full max-w-sm space-y-4">
-            {["Industria 1", "Industria 2", "Industria 3", "Industria 4"].map(
-              (industria, index) => (
-                <li key={index}>
-                  <button className="w-full rounded-lg bg-sky-600 py-3 sm:py-4 text-sm sm:text-lg font-medium tracking-wide backdrop-blur-md transition hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30">
-                    {industria}
-                  </button>
-                </li>
-              )
-            )}
+            {t(
+              "home.customSolutions.typeOfSolution.solutionsByIndustry.items",
+              {
+                returnObjects: true,
+              }
+            ).map((industria, index) => (
+              <li key={index}>
+                <button className="w-full rounded-lg bg-sky-600 py-3 sm:py-4 text-sm sm:text-lg font-medium tracking-wide backdrop-blur-md transition hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30">
+                  {industria}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -198,18 +200,23 @@ const Dashboard = () => {
         {/* Sección derecha */}
         <div className="flex-1 flex flex-col justify-center items-center p-4 sm:p-6">
           <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
-            Soluciones por tipo de máquina
+            {t(
+              "home.customSolutions.typeOfSolution.solutionsByMachineType.title"
+            )}
           </h1>
           <ul className="w-full max-w-sm space-y-4">
-            {["Máquina 1", "Máquina 2", "Máquina 3", "Máquina 4"].map(
-              (maquina, index) => (
-                <li key={index}>
-                  <button className="w-full rounded-lg bg-sky-600 py-3 sm:py-4 text-sm sm:text-lg font-medium tracking-wide backdrop-blur-md transition hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30">
-                    {maquina}
-                  </button>
-                </li>
-              )
-            )}
+            {t(
+              "home.customSolutions.typeOfSolution.solutionsByMachineType.items",
+              {
+                returnObjects: true,
+              }
+            ).map((maquina, index) => (
+              <li key={index}>
+                <button className="w-full rounded-lg bg-sky-600 py-3 sm:py-4 text-sm sm:text-lg font-medium tracking-wide backdrop-blur-md transition hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30">
+                  {maquina}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

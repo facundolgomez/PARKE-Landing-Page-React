@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Navigation } from "swiper/modules";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const clientLogos = [
   "../../../public/img/logos-clientes/aca.jpg",
@@ -90,6 +91,8 @@ const clientLogos = [
 ];
 
 const ClientCarousel = () => {
+  const { t } = useTranslation();
+
   const swiperRef = useRef(null);
 
   useEffect(() => {
@@ -107,7 +110,7 @@ const ClientCarousel = () => {
       <div className="container clearfix">
         <div className="section_header">
           <h2 className="text-3xl py-5 font-bold text-gray-900 relative inline-block">
-            ALGUNOS DE NUESTROS CLIENTES
+            {t("home.customSolutions.textAboutSomeOfOurClients")}
             <span className="block w-16 h-1 bg-sky-600 mt-1"></span>
           </h2>
         </div>

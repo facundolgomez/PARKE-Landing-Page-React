@@ -2,7 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AuthenticationContext } from "../services/AuthenticationContext";
+import i18n from "../../../i18next.js";
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -11,12 +13,24 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useContext(AuthenticationContext);
   const [menuServicesOpen, setMenuServicesOpen] = useState(false);
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
   const handleScroll = () => {
     const isScrolling = window.scrollY > 0;
     setScrolling(isScrolling);
+  };
+
+  // Función para cambiar el idioma
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+
+  // Handler para el cambio de idioma
+  const handleLanguageChange = (event) => {
+    const selectedLanguage = event.target.value;
+    changeLanguage(selectedLanguage);
   };
 
   useEffect(() => {
@@ -106,7 +120,7 @@ const Header = () => {
               onClick={solutionsHandler}
               className="bg-transparent border-hidden py-4 text-sky-600 relative hover:text-sky-600 transition-colors duration-300 hidden md:flex"
             >
-              SOLUCIONES
+              {t("home.homeHeader.solutions")}
               <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
             </button>
 
@@ -173,21 +187,21 @@ const Header = () => {
             onClick={newsHandler}
             className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex"
           >
-            NOVEDADES
+            {t("home.homeHeader.news")}
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
           <button
             onClick={companyHandler}
             className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex"
           >
-            LA EMPRESA
+            {t("home.homeHeader.company")}
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
           <button
             onClick={contactHandler}
             className="bg-transparent border-hidden py-4 text-sky-600 relative group hover:text-sky-600 hidden md:flex"
           >
-            CONTACTO
+            {t("home.homeHeader.contact")}
             <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-600 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
 
@@ -197,8 +211,11 @@ const Header = () => {
             onMouseLeave={() => setMenuServicesOpen(false)}
           >
             <button className="bg-transparent border-none py-4 text-sky-600 relative hover:text-sky-600 flex items-center">
-              SERVICIOS
-              <span className={`absolute inset-x-0 bottom-0 h-1 bg-sky-600 transition-transform duration-300 ${menuServicesOpen ? "scale-x-100" : "scale-x-0"}`} 
+              {t("home.homeHeader.services")}
+              <span
+                className={`absolute inset-x-0 bottom-0 h-1 bg-sky-600 transition-transform duration-300 ${
+                  menuServicesOpen ? "scale-x-100" : "scale-x-0"
+                }`}
               />
             </button>
 
@@ -217,14 +234,18 @@ const Header = () => {
           </div>
 
           <button className="bg-sky-600 text-white rounded-full border-hidden py-1 px-4 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110 hidden md:flex">
-            COTIZÁ GRATIS
+            {t("home.homeHeader.quote")}
           </button>
           <div className="bg-white rounded text-black">
             <FontAwesomeIcon icon={faGlobe} className="text-black" />
-            <select className="border border-black bg-white text-black rounded">
-              <option>ESP</option>
-              <option>ENG</option>
-              <option>POR</option>
+            <select
+              className="border border-black bg-white text-black rounded"
+              onChange={handleLanguageChange} // Cambia el idioma cuando se selecciona una opción
+              value={i18n.language} // Esto mantiene el valor seleccionado correctamente
+            >
+              <option value="es">ESP</option>
+              <option value="en">ENG</option>
+              <option value="pt">POR</option>
             </select>
           </div>
           <div className="md:hidden flex items-center">

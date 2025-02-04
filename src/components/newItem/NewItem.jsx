@@ -1,25 +1,39 @@
-import ReadMoreButton from "../readMoreButton/ReadMoreButton";
-const NewItem = ({ id, title, description, date, image }) => {
-  return (
-    <div className="flex flex-col items-start p-6 bg-white rounded-lg shadow-md max-w-full lg:max-w-4xl xl:max-w-5xl">
-      <img
-        src={image}
-        alt={title}
-        className="w-full md:w-2/3 lg:w-1/2 xl:w-2/3 h-auto object-cover rounded-lg mb-6"
-      />
 
-      <small className="text-gray-500 mb-3 text-left">{date}</small>
+const NewItem = ({ id, title, description, image }) => {  
+  return (  
+    <div key={id} className="relative flex flex-col md:flex-row my-6 bg-white shadow-sm border border-slate-200 w-3/4 max-w-7xl mx-auto">  
+      {/* Columna de la imagen */}  
+      <div className="w-full md:w-1/3 flex-shrink-0">  
+        <div className="w-full h-48 md:h-full overflow-hidden">  
+          <img  
+            src={image}  
+            alt={title}  
+            className="w-full h-full object-cover"  
+          />  
+        </div>  
+      </div>  
+      {/* Columna del texto */}  
+      <div className="p-6 flex flex-col justify-center flex-grow">  
+        <div className="mb-4 rounded-full bg-teal-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">  
+          NOVEDAD  
+        </div>  
+        <h4 className="mb-2 text-slate-800 text-xl font-semibold">  
+          {title}  
+        </h4>  
+        <p className="mb-8 text-slate-600 leading-normal font-light">  
+          {description}  
+        </p>  
+        <div>  
+          <a href="#" className="text-slate-800 font-semibold text-sm hover:underline flex items-center">  
+            Leer más  
+            <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">  
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />  
+            </svg>  
+          </a>  
+        </div>  
+      </div>  
+    </div>  
+  );  
+};  
 
-      <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800 text-left mb-4">
-        {title}
-      </h1>
-
-      <p className="text-sm md:text-base lg:text-lg text-gray-600 text-left mb-6">
-        {description}
-      </p>
-
-      <ReadMoreButton />
-    </div>
-  );
-};
 export default NewItem;

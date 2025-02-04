@@ -73,11 +73,11 @@ const News = () => {
 
   const submitNewHandler = (event) => {
     event.preventDefault();
+    console.log("se mandó el formulario")
     const newNew = {
       title: title,
       description: description,
-      date: null,
-      imageUrl: imageUrl,
+      image: imageUrl,
     };
 
     saveDataNewHandler(newNew);   // FUNCION DE LLAMADO A LA API
@@ -94,6 +94,7 @@ const News = () => {
     })
       .then((response) => {
         if (response.ok) {
+          console.log("todo joya")
           return response.json(); // manejar respuesta exitosa
         } else {
           throw new Error("La respuesta tiene algunos errores.");
@@ -108,6 +109,7 @@ const News = () => {
       })
       .catch((error) => {
         console.log(error);
+        console.log("error")
         // ACA PODRIA IR UN MENSAJE ESPECIFICO BASADO EN EL ERROR (MIRAR CODIGO DE 'PIEZAS PARKE')
       });
   };
@@ -115,19 +117,20 @@ const News = () => {
 
 
   // MAPEAR LAS NOVEDADES OBTENIDAS DE LA API
-  const newsMapped = news.map((prop) => (
-    <>
-      <div key={prop.id} className="d-flex flex-column">
-        <NewItem
-          id={prop.id}
-          title={prop.title}
-          description={prop.description}
-          date={prop.date}
-          image={prop.image}
-        />
-      </div>
-    </>
-  ));
+  const newsMapped = news  
+  .slice() // Creamos una copia del array original para no modificarlo directamente  
+  .reverse() // Invertimos el array  
+  .map((prop) => (  
+    <div key={prop.id} className="d-flex flex-column">  
+      <NewItem  
+        id={prop.id}  
+        title={prop.title}  
+        description={prop.description}  
+        image={prop.image}
+        loadNews={fetchNews}
+      />  
+    </div>  
+  ));  
 
   return (
     <>
@@ -192,7 +195,7 @@ const News = () => {
       {loading ? (
         <div>Cargando novedades...</div>
       ) : (
-        <div className="flex flex-col items-center space-y-4 mt-6 mb-6">
+        <div className="flex flex-col items-center space-y-4 mt-6 mb-6 justify-center">
           {newsMapped}
         </div>
       )}

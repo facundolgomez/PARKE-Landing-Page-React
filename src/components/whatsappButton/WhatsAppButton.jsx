@@ -25,7 +25,7 @@ const WhatsAppButton = () => {
         className="fixed bottom-4 right-40 sm:bottom-8 sm:right-8 md:bottom-12 md:right-40 text-white bg-sky-500 rounded hover:bg-blue-700 p-3 sm:p-5 border-hidden shadow-lg transition-transform transform hover:scale-125 z-50 animate-bounce md:text-lg lg:text-xl "
         onClick={() => setIsOpen(true)}
       >
-        {t("home.fixedButton")}
+        {t("home.fixedButton.text")}
       </button>
 
       {/* Modal */}
@@ -39,10 +39,10 @@ const WhatsAppButton = () => {
               ✕
             </button>
             <h2 className="text-xl font-bold flex justify-center items-center">
-              ¡CONTACTANOS!
+              {t("home.fixedButton.modal.title")}
             </h2>
             <p className="mt-4 flex justify-center items-center">
-              Elija un medio de contacto.
+              {t("home.fixedButton.modal.subtitle")}
             </p>
             <div className="flex flex-col">
               <button
@@ -52,7 +52,7 @@ const WhatsAppButton = () => {
                   setIsOpen(false);
                 }}
               >
-                Formulario de Contacto
+                {t("home.fixedButton.modal.contactFormButton")}
               </button>
 
               <button className="mt-6 px-4 py-2 text-white bg-green-500 hover:bg-green-600">
@@ -61,7 +61,7 @@ const WhatsAppButton = () => {
                   href="https://wa.me/3413708391"
                   target="_blank"
                 >
-                  WhatsApp
+                  {t("home.fixedButton.modal.whatsappButton")}
                 </a>
               </button>
             </div>

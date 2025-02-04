@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Video from "../video/Video";
 import ClientCarousel from "../clientCarousel/ClientCarousel";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
   const [indice, setIndice] = useState(0);
@@ -9,11 +10,12 @@ const Dashboard = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [activePopup, setActivePopup] = useState(null);
   const [activeTab, setActiveTab] = useState("sectores");
+  const { t } = useTranslation();
 
   const textos = [
-    "SOLUCIONES PARA EMBOLSADO, PALETIZADO, ENVOLTURA y TRANSPORTE",
-    "TODA LA EXPERIENCIA AL SERVICIO DE NUESTROS CLIENTES",
-    "DESARROLLO DE SOLUCIONES ESPECIALES SOBRE REQUERIMIENTOS ESPECÍFICOS",
+    t("home.homeCarousel.text1"),
+    t("home.homeCarousel.text2"),
+    t("home.homeCarousel.text3"),
   ];
 
   useEffect(() => {
@@ -61,7 +63,14 @@ const Dashboard = () => {
   };
 
   // ------------------------------------------------------------------------------------------------
-
+  const sectors = t(
+    "home.customSolutions.typeOfSolution.solutionsByIndustry.items",
+    { returnObjects: true }
+  );
+  const machines = t(
+    "home.customSolutions.typeOfSolution.solutionsByMachineType.items",
+    { returnObjects: true }
+  );
   return (
     <>
       <div className="dashboard-container relative w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-screen">
@@ -146,13 +155,13 @@ const Dashboard = () => {
 
         <div className="flex flex-col sm:flex-row justify-center items-center absolute top-[45%] sm:top-[40%] lg:top-[65%] w-full z-10 space-y-2 sm:space-y-0 sm:space-x-8">
           <button className="bg-sky-600 w-[120px] sm:w-[120px] md:w-[250px] lg:w-[300px] border-hidden text-xs sm:text-xs lg:text-sm h-[45px] text-white font-bold transform transition-transform duration-300 hover:scale-110 hover:bg-sky-400">
-            NUESTROS PRODUCTOS
+            {t("home.homeCarousel.ourProductsButton")}
           </button>
           <button
             onClick={() => window.open("https://wa.me/3413708391", "_blank")}
             className="bg-[#1fb154] w-[120px] sm:w-[120px] md:w-[250px] lg:w-[300px] border-hidden text-xs sm:text-xs lg:text-sm h-[45px] text-white font-bold transform transition-transform duration-300 hover:scale-110 hover:bg-[#27dd6a]"
           >
-            WHATSAPP
+            {t("home.homeCarousel.whatsappButton")}
           </button>
         </div>
       </div>
@@ -161,17 +170,16 @@ const Dashboard = () => {
           {/* Contenido de texto */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-slate-800 text-2xl md:text-4xl font-bold mb-2 md:mb-3">
-              Soluciones a medida
+              {t("home.customSolutions.customSolutionsText")}
             </h1>
             <p className="text-slate-700 text-sm md:text-base">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Perferendis, dignissimos cum? Si
+              {t("home.customSolutions.subtitleOfCustomSolutionsText")}
             </p>
           </div>
 
           {/* Botón */}
           <button className="mt-6 md:mt-0 bg-sky-600 text-white rounded-full py-2 px-6 text-sm md:text-base scale-100 md:scale-125 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">
-            COTIZÁ GRATIS
+            {t("home.customSolutions.freeQuoteButton")}
           </button>
         </div>
       </div>
@@ -186,7 +194,7 @@ const Dashboard = () => {
             }`}
             onClick={() => handleClick("sectores")}
           >
-            Soluciones por sectores
+            {t("home.customSolutions.solutionsBySectorButton")}
           </button>
           <button
             className={`h-10 w-96 ${
@@ -196,86 +204,46 @@ const Dashboard = () => {
             }`}
             onClick={() => handleClick("maquinas")}
           >
-            Soluciones por tipo de máquina
+            {t("home.customSolutions.solutionsByMachineTypeButton")}
           </button>
         </div>
 
         {/* Condicionalmente renderiza los grids según el estado */}
         {activeTab === "sectores" ? (
           <div className="grid grid-cols-3 gap-4 h-72 p-10">
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                SECTOR 1
+            {sectors.map((sector, index) => (
+              <div
+                key={index}
+                className="bg-blue-300 text-center w-full relative"
+              >
+                <img
+                  src="/img/imagen1.jpg"
+                  alt=""
+                  className="object-cover w-full h-full brightness-50"
+                />
+                <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                  {sector}
+                </div>
               </div>
-            </div>
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                SECTOR 2
-              </div>
-            </div>
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                SECTOR 3
-              </div>
-            </div>
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-4 h-72 p-10">
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                MAQUINA 1
+            {machines.map((machine, index) => (
+              <div
+                key={index}
+                className="bg-blue-300 text-center w-full relative"
+              >
+                <img
+                  src="/img/imagen1.jpg"
+                  alt=""
+                  className="object-cover w-full h-full brightness-50"
+                />
+                <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
+                  {machine}
+                </div>
               </div>
-            </div>
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                MAQUINA 2
-              </div>
-            </div>
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                MAQUINA 3
-              </div>
-            </div>
-            <div className="bg-blue-300 text-center w-full relative">
-              <img
-                src="/img/imagen1.jpg"
-                alt=""
-                className="object-cover w-full h-full brightness-50"
-              />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                MAQUINA 4
-              </div>
-            </div>
+            ))}
           </div>
         )}
       </div>

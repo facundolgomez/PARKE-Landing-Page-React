@@ -126,7 +126,8 @@ const News = () => {
         id={prop.id}  
         title={prop.title}  
         description={prop.description}  
-        image={prop.image}  
+        image={prop.image}
+        loadNews={fetchNews}
       />  
     </div>  
   ));  

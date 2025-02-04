@@ -2,9 +2,10 @@ import { Button, Form } from "react-bootstrap";
 import UpScreen from "../upscreen/UpScreen";
 import { useState, useEffect } from "react";
 import ReCAPTCHAvalitadion from "../reCAPTCHAvalidation/ReCAPTCHAvalidation";
-
+import { useTranslation } from "react-i18next";
 const Contact = () => {
   const [captchaValidated, setCaptchaValidated] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0); // Desplaza la página al principio
@@ -50,8 +51,8 @@ const Contact = () => {
     <>
       <UpScreen
         pathImage={"../../../public/imagenes-de-fondo/imagen-contacto-2.jpg"}
-        title={"Contacto"}
-        paragraph={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+        title={t("contact.title")}
+        paragraph={t("contact.paragraph")}
       />
       <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
         <div className="container">
@@ -59,21 +60,19 @@ const Contact = () => {
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
                 <span className="mb-4 block text-base font-semibold text-sky-600">
-                  Hablemos
+                  {t("contact.letsTalk")}
                 </span>
                 <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                  Póngase en contacto con nosotros!
+                  {t("contact.contactUs")}
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Estamos disponibles para despejar todas sus dudas, consultas o
-                  cuestiones que contribuyan a brindarle un mejor asesoramiento
-                  técnico y profesional.
+                  {t("contact.availabilityText")}
                   <br />
                   <h3 className="text-xl text-sky-600 my-2">
-                    Por favor, complete el formulario con su consulta.
+                    {t("contact.formInstructions")}
                   </h3>
                   <h3 className="text-2xl  text-red-700 my-2">
-                    A la brevedad nos pondremos en contacto con usted.
+                    {t("contact.responseTime")}
                   </h3>
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
@@ -93,10 +92,10 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                      Nuestra ubicación
+                      {t("contact.locationTitle")}
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      Ruta AO12 Km 47.6 Roldán, Santa Fe, Argentina
+                      {t("contact.location")}
                     </p>
                   </div>
                 </div>
@@ -133,7 +132,7 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                      Teléfono
+                      {t("contact.phoneTitle")}
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
                       +54 3416456481
@@ -158,7 +157,7 @@ const Contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                      Correo Electrónico
+                      {t("contact.emailTitle")}
                     </h4>
                     <p className="text-base text-body-color dark:text-dark-6">
                       info@parke.com.ar
@@ -174,7 +173,7 @@ const Contact = () => {
                     <Form.Control
                       type="text"
                       required
-                      placeholder="Nombre y apellido"
+                      placeholder={t("contact.form.0")}
                       name="name"
                     />
                   </Form.Group>
@@ -182,7 +181,7 @@ const Contact = () => {
                     <Form.Control
                       type="text"
                       required
-                      placeholder="Empresa"
+                      placeholder={t("contact.form.1")}
                       name="company"
                     />
                   </Form.Group>
@@ -190,7 +189,7 @@ const Contact = () => {
                     <Form.Control
                       type="text"
                       required
-                      placeholder="Teléfono"
+                      placeholder={t("contact.form.2")}
                       name="phone"
                     />
                   </Form.Group>
@@ -198,7 +197,7 @@ const Contact = () => {
                     <Form.Control
                       type="text"
                       required
-                      placeholder="Email"
+                      placeholder={t("contact.form.3")}
                       name="email"
                     />
                   </Form.Group>
@@ -206,7 +205,7 @@ const Contact = () => {
                     <Form.Control
                       type="text"
                       required
-                      placeholder="Asunto"
+                      placeholder={t("contact.form.4")}
                       name="subject"
                     />
                   </Form.Group>
@@ -215,7 +214,7 @@ const Contact = () => {
                       as="textarea"
                       rows={8}
                       required
-                      placeholder="Mensaje"
+                      placeholder={t("contact.form.5")}
                       name="message"
                     />
                   </Form.Group>
@@ -225,8 +224,7 @@ const Contact = () => {
                     />
                     {!captchaValidated && (
                       <p className=" pt-3 text-xl text-red-700">
-                        Por favor, para enviar su consulta primero valide el
-                        captcha.
+                        {t("contact.form.6")}
                       </p>
                     )}
                   </Form.Group>
@@ -235,7 +233,7 @@ const Contact = () => {
                     type="submit"
                     disabled={!captchaValidated}
                   >
-                    Enviar consulta
+                    {t("contact.form.7")}
                   </Button>
                 </Form>
                 <div>

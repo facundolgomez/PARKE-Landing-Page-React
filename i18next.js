@@ -77,9 +77,8 @@ i18n
                 whatsappButton: "Whatsapp",
               },
             },
-            
           },
-          company:{
+          company: {
             companyInfo: {
               title: "THE COMPANY",
               activityTitle: "OUR ACTIVITY",
@@ -100,8 +99,34 @@ i18n
                 button: "CONTACT US",
               },
             },
-          }
-
+          },
+          contact: {
+            title: "Contact",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            letsTalk: "Let's Talk",
+            contactUs: "Contact Us!",
+            availabilityText:
+              "We are available to answer all your questions, inquiries, or issues that contribute to providing you with better technical and professional advice.",
+            formInstructions: "Please fill out the form with your inquiry.",
+            responseTime: "We will contact you shortly.",
+            locationTitle: "Our Location",
+            location: "Route AO12 Km 47.6 Roldán, Santa Fe, Argentina",
+            phoneTitle: "Phone",
+            phone: "+54 3416456481",
+            emailTitle: "Email",
+            email: "info@parke.com.ar",
+            form: [
+              "Full Name",
+              "Company",
+              "Phone",
+              "Email",
+              "Subject",
+              "Message",
+              "Please validate the captcha to send your inquiry.",
+              "Send Inquiry",
+            ],
+          },
         },
       },
       es: {
@@ -174,9 +199,8 @@ i18n
                 whatsappButton: "Whatsapp",
               },
             },
-            
           },
-          company:{
+          company: {
             companyInfo: {
               title: "LA EMPRESA",
               activityTitle: "NUESTRA ACTIVIDAD",
@@ -197,7 +221,35 @@ i18n
                 button: "CONTÁCTANOS",
               },
             },
-          }
+          },
+          contact: {
+            title: "Contacto",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            letsTalk: "Hablemos",
+            contactUs: "¡Póngase en contacto con nostros!",
+            availabilityText:
+              "Estamos disponibles para responder todas tus preguntas, consultas o problemas que contribuyan a brindarte una mejor asesoría técnica y profesional.",
+            formInstructions:
+              "Por favor, complete el formulario con tu consulta.",
+            responseTime: "Nos pondremos en contacto contigo en breve.",
+            locationTitle: "Nuestra Ubicación",
+            location: "Ruta AO12 Km 47.6 Roldán, Santa Fe, Argentina",
+            phoneTitle: "Teléfono",
+            phone: "+54 3416456481",
+            emailTitle: "Correo Electrónico",
+            email: "info@parke.com.ar",
+            form: [
+              "Nombre Completo",
+              "Empresa",
+              "Teléfono",
+              "Correo Electrónico",
+              "Asunto",
+              "Mensaje",
+              "Por favor, valida el captcha para enviar tu consulta.",
+              "Enviar Consulta",
+            ],
+          },
         },
       },
       pt: {
@@ -270,9 +322,8 @@ i18n
                 whatsappButton: "Whatsapp",
               },
             },
-            
           },
-          company:{
+          company: {
             companyInfo: {
               title: "A EMPRESA",
               activityTitle: "NOSSA ATIVIDADE",
@@ -293,6 +344,34 @@ i18n
                 button: "CONTATE-NOS",
               },
             },
+          },
+          contact: {
+            title: "Contato",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            letsTalk: "Vamos Conversar",
+            contactUs: "Entre em Contato!",
+            availabilityText:
+              "Estamos disponíveis para responder todas as suas perguntas, consultas ou problemas que contribuam para fornecer um melhor aconselhamento técnico e profissional.",
+            formInstructions:
+              "Por favor, preencha o formulário com sua consulta.",
+            responseTime: "Entraremos em contato com você em breve.",
+            locationTitle: "Nossa Localização",
+            location: "Rota AO12 Km 47.6 Roldán, Santa Fe, Argentina",
+            phoneTitle: "Telefone",
+            phone: "+54 3416456481",
+            emailTitle: "E-mail",
+            email: "info@parke.com.ar",
+            form: [
+              "Nome Completo",
+              "Empresa",
+              "Telefone",
+              "E-mail",
+              "Assunto",
+              "Mensagem",
+              "Por favor, valide o captcha para enviar sua consulta.",
+              "Enviar Consulta",
+            ],
           },
         },
       },

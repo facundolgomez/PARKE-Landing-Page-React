@@ -210,7 +210,7 @@ const Dashboard = () => {
 
         {/* Condicionalmente renderiza los grids según el estado */}
         {activeTab === "sectores" ? (
-          <div className="grid grid-cols-3 gap-4 h-72 p-10">
+          <div className="grid grid-cols-3 gap-4 h-64 p-10">
             {sectors.map((sector, index) => (
               <div
                 key={index}

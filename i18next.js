@@ -1,11 +1,10 @@
-//ARCHIVO PARA LA CONFIGURACIÓN DE IDIOMAS
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 i18n
-  .use(LanguageDetector) // Detecta el idioma del navegador
-  .use(initReactI18next) // Configuración con React
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
     resources: {
       en: {
@@ -78,7 +77,31 @@ i18n
                 whatsappButton: "Whatsapp",
               },
             },
+            
           },
+          company:{
+            companyInfo: {
+              title: "THE COMPANY",
+              activityTitle: "OUR ACTIVITY",
+              objectivesTitle: "OUR OBJECTIVE",
+              activityItems: [
+                "Develop, manufacture, and commission machines for bagging, palletizing, wrapping, transport, and accessories.",
+                "Commission and provide technical support for all weighing equipment as requested, in addition to standard equipment production.",
+                "Develop, manufacture, and commission special designs based on customer needs, differentiating ourselves and providing specific market solutions.",
+                "Meet all customer needs while continuously improving our production processes.",
+              ],
+              objectivesParagraphs: [
+                "Our commitment is to be fully engaged with the needs of our customers regarding technology requirements for load control, unloading, automatic weighing processes, automatic bagging, special weighing systems, palletizing, wrapping, and transport of bags and pallets, as well as complementary processes requiring specialized machinery. To this end, PARKE has trained technical personnel responsible for advising and resolving various situations so that customers benefit from over 20 years of market experience, installing the most suitable equipment and meeting assigned objectives in the shortest possible time.",
+                "PARKE designs, develops, and manufactures all the equipment it offers in its industrial plant and sources pneumatic, hydraulic, actuator, PLC, and PC components from top brands or those suggested by the customer. This is done under quality standards required not only for the local market but also for the international market.",
+              ],
+              contactSection: {
+                title: "If you have any questions...",
+                text: "We are available for you! Click the button and fill out the contact form.",
+                button: "CONTACT US",
+              },
+            },
+          }
+
         },
       },
       es: {
@@ -151,7 +174,30 @@ i18n
                 whatsappButton: "Whatsapp",
               },
             },
+            
           },
+          company:{
+            companyInfo: {
+              title: "LA EMPRESA",
+              activityTitle: "NUESTRA ACTIVIDAD",
+              objectivesTitle: "NUESTRO OBJETIVO",
+              activityItems: [
+                "Desarrollar, fabricar y poner en servicio, máquinas para embolsado, paletizado, envoltura, transporte y accesorios.",
+                "Poner en servicio y prestar atención técnica de todos los equipos de pesaje que se nos soliciten, además de una producción de equipamiento estándar.",
+                "Desarrollar, fabricar y poner en servicio, diseños especiales conforme a la necesidad del cliente, diferenciándonos y aportando así, soluciones específicas al mercado.",
+                "Satisfacer todas las necesidades de cada uno de nuestros clientes, como así también sostener la continua mejora de nuestros procesos productivos.",
+              ],
+              objectivesParagraphs: [
+                "Es nuestro compromiso, estar absolutamente compenetrados de las necesidades de nuestros clientes en cuanto al requerimiento de tecnología para control de cargas, descargas, procesos de pesaje automático, embolsado automático, sistemas de pesaje especiales, paletizado, envoltura y transporte de bolsas y palets, y procesos complementarios a éstos que necesiten maquinaria adecuada de desarrollo especial. Para tales cuestiones, PARKE ha capacitado al personal técnico encargado de asesorar y resolver situaciones de las más variadas, para que el cliente sea beneficiado con la experiencia adquirida a través de más de 20 años en el mercado, instalando el equipamiento más adecuado y cumpliendo con el objetivo asignado en el menor tiempo posible.",
+                "PARKE diseña, desarrolla y produce en su planta industrial todos los equipamientos que ofrece, y se provee de elementos de neumática, hidráulica, actuadores, PLC’s, PC’s, de primera marca o marcas sugeridas por nuestro cliente interesado en el producto, todo ello bajo normas de calidad exigidas no solo para el mercado local sino también para el internacional.",
+              ],
+              contactSection: {
+                title: "Ante cualquier duda o consulta...",
+                text: "¡Estamos disponibles para usted! Presione el botón y rellene el formulario de contacto.",
+                button: "CONTÁCTANOS",
+              },
+            },
+          }
         },
       },
       pt: {
@@ -224,11 +270,34 @@ i18n
                 whatsappButton: "Whatsapp",
               },
             },
+            
+          },
+          company:{
+            companyInfo: {
+              title: "A EMPRESA",
+              activityTitle: "NOSSA ATIVIDADE",
+              objectivesTitle: "NOSSO OBJETIVO",
+              activityItems: [
+                "Desenvolver, fabricar e colocar em serviço máquinas para ensacamento, paletização, embalagem, transporte e acessórios.",
+                "Colocar em serviço e prestar atendimento técnico para todos os equipamentos de pesagem solicitados, além da produção de equipamentos padrão.",
+                "Desenvolver, fabricar e colocar em serviço projetos especiais de acordo com as necessidades do cliente, diferenciando-nos e oferecendo soluções específicas para o mercado.",
+                "Atender a todas as necessidades de nossos clientes e manter a melhoria contínua de nossos processos produtivos.",
+              ],
+              objectivesParagraphs: [
+                "Nosso compromisso é estar totalmente envolvidos com as necessidades de nossos clientes em relação à tecnologia para controle de cargas, descargas, processos de pesagem automática, ensacamento automático, sistemas de pesagem especiais, paletização, embalagem e transporte de sacos e paletes, bem como processos complementares que requerem máquinas especializadas. Para isso, a PARKE capacitou pessoal técnico responsável por aconselhar e resolver as mais diversas situações, para que o cliente se beneficie da experiência adquirida ao longo de mais de 20 anos no mercado, instalando os equipamentos mais adequados e cumprindo os objetivos no menor tempo possível.",
+                "A PARKE projeta, desenvolve e fabrica em sua planta industrial todos os equipamentos que oferece e adquire componentes pneumáticos, hidráulicos, atuadores, PLCs e PCs de marcas líderes ou conforme a sugestão do cliente. Tudo isso sob normas de qualidade exigidas não apenas para o mercado local, mas também para o internacional.",
+              ],
+              contactSection: {
+                title: "Se tiver dúvidas...",
+                text: "Estamos disponíveis para você! Clique no botão e preencha o formulário de contato.",
+                button: "CONTATE-NOS",
+              },
+            },
           },
         },
       },
     },
-    fallbackLng: "en", // Idioma por defecto si no encuentra otro
+    fallbackLng: "en",
     interpolation: {
       escapeValue: false,
     },

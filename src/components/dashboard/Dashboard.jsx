@@ -243,7 +243,7 @@ const Dashboard = () => {
                 <img
                   src="/img/imagen1.jpg"
                   alt=""
-                  className="object-cover w-full h-full brightness-50"
+                  className="object-cover w-full h-72 brightness-50"
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
                   {machine}

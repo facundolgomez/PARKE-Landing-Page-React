@@ -18,6 +18,12 @@ const Dashboard = () => {
     t("home.homeCarousel.text3"),
   ];
 
+  const imgSectors = [
+    { image: "/img/sector1.jpg" },
+    { image: "/img/sector2.jpg" },
+    { image: "/img/sector3.jpg" },
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       nextText(); // Cambia automáticamente el texto
@@ -64,7 +70,7 @@ const Dashboard = () => {
 
   // ------------------------------------------------------------------------------------------------
   const sectors = t(
-    "home.customSolutions.typeOfSolution.solutionsByIndustry.items",
+    "home.customSolutions.typeOfSolution.solutionsBySectors.items",
     { returnObjects: true }
   );
   const machines = t(
@@ -187,7 +193,7 @@ const Dashboard = () => {
         {/* Botones */}
         <div className="w-full h-20 flex justify-center gap-1 mt-4">
           <button
-            className={`h-10 w-80 sm:w-80 md:w-80 lg:w-96 ${
+            className={`h-12 w-80 sm:w-80 md:w-80 lg:w-96 text-sm sm:text-2x1 md:text-2x1 lg:text-2x1 p-2 ${
               activeTab === "sectores"
                 ? "bg-sky-600 text-white"
                 : "bg-white text-sky-600 border-sky-600"
@@ -197,7 +203,7 @@ const Dashboard = () => {
             {t("home.customSolutions.solutionsBySectorButton")}
           </button>
           <button
-            className={`h-10 w-96 ${
+            className={`h-12 w-80 sm:w-96 md:w-96 lg:w-96 text-sm sm:text-2x1 md:text-2x1 lg:text-2x1 p-2 ${
               activeTab === "maquinas"
                 ? "bg-sky-600 text-white"
                 : "bg-white text-sky-600 border-sky-600"
@@ -217,9 +223,9 @@ const Dashboard = () => {
                 className="bg-blue-300 text-center w-full relative"
               >
                 <img
-                  src="/img/imagen1.jpg"
-                  alt=""
-                  className="object-cover w-full h-auto brightness-50"
+                  src={imgSectors[index].image}
+                  alt={`Sector ${index + 1}`} 
+                  className="object-cover w-full h-72 brightness-50"
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
                   {sector}

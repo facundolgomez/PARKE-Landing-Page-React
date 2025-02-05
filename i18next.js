@@ -37,11 +37,11 @@ i18n
               typeOfSolution: {
                 solutionsByIndustry: {
                   title: "Solutions by sector",
-                  items: ["Sector 1", "Sector 2", "Sector 3"],
+                  items: ["Agriculture", "Balanced Feed", "Mining and Chemicals"],
                 },
                 solutionsByMachineType: {
                   title: "Solutions by machine type",
-                  items: ["Machine 1", "Machine 2", "Machine 3", "Machine 4"],
+                  items: ["Bagging Machines", "Palletizers", "Stretch Wrappers", "Weighing Equipment"],
                 },
               },
               textAboutSomeOfOurClients: "SOME OF OUR CLIENTS",
@@ -159,11 +159,11 @@ i18n
               typeOfSolution: {
                 solutionsBySectors: {
                   title: "Soluciones por sectores",
-                  items: ["SECTOR 1", "SECTOR 2", "SECTOR 3"],
+                  items: ["Agricultura", "Alimentos balanceados", "Minería y Química"],
                 },
                 solutionsByMachineType: {
                   title: "Soluciones por tipo de máquina",
-                  items: ["Máquina 1", "Máquina 2", "Máquina 3", "Máquina 4"],
+                  items: ["Embolsadoras", "Paletizadoras", "Envolvedoras ", "Equipos de pesaje"],
                 },
               },
               textAboutSomeOfOurClients: "ALGUNOS DE NUESTROS CLIENTES",
@@ -282,11 +282,11 @@ i18n
               typeOfSolution: {
                 solutionsByIndustry: {
                   title: "Soluções por setores",
-                  items: ["Setor 1", "Setor 2", "Setor 3"],
+                  items: ["Agricultura", "Alimentos balanceados", "Mineração e Química"],
                 },
                 solutionsByMachineType: {
                   title: "Soluções por tipo de máquina",
-                  items: ["Máquina 1", "Máquina 2", "Máquina 3", "Máquina 4"],
+                  items: ["Embaladoras", "Paletizadoras", "Envolvendedoras", "Equipamentos de pesagem"],
                 },
               },
               textAboutSomeOfOurClients: "ALGUNS DOS NOSSOS CLIENTES",

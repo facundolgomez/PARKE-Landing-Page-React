@@ -187,7 +187,7 @@ const Dashboard = () => {
         {/* Botones */}
         <div className="w-full h-20 flex justify-center gap-1 mt-4">
           <button
-            className={`h-10 w-96 ${
+            className={`h-10 w-80 sm:w-80 md:w-80 lg:w-96 ${
               activeTab === "sectores"
                 ? "bg-sky-600 text-white"
                 : "bg-white text-sky-600 border-sky-600"
@@ -210,7 +210,7 @@ const Dashboard = () => {
 
         {/* Condicionalmente renderiza los grids según el estado */}
         {activeTab === "sectores" ? (
-          <div className="grid grid-cols-3 gap-4 h-64 p-10">
+          <div className="grid grid-cols-1 gap-2 h-auto p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             {sectors.map((sector, index) => (
               <div
                 key={index}
@@ -219,7 +219,7 @@ const Dashboard = () => {
                 <img
                   src="/img/imagen1.jpg"
                   alt=""
-                  className="object-cover w-full h-full brightness-50"
+                  className="object-cover w-full h-auto brightness-50"
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
                   {sector}
@@ -228,7 +228,7 @@ const Dashboard = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-4 gap-4 h-72 p-10">
+          <div className="grid gap-4 h-auto p-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {machines.map((machine, index) => (
               <div
                 key={index}

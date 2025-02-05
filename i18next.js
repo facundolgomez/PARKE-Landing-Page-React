@@ -37,7 +37,7 @@ i18n
               typeOfSolution: {
                 solutionsByIndustry: {
                   title: "Solutions by sector",
-                  items: ["Sector 1", "Sector 2", "Sector 3", "Sector 4"],
+                  items: ["Sector 1", "Sector 2", "Sector 3"],
                 },
                 solutionsByMachineType: {
                   title: "Solutions by machine type",
@@ -159,7 +159,7 @@ i18n
               typeOfSolution: {
                 solutionsBySectors: {
                   title: "Soluciones por sectores",
-                  items: ["SECTOR 1", "SECTOR 2", "SECTOR 3", "SECTOR 4"],
+                  items: ["SECTOR 1", "SECTOR 2", "SECTOR 3"],
                 },
                 solutionsByMachineType: {
                   title: "Soluciones por tipo de máquina",
@@ -282,7 +282,7 @@ i18n
               typeOfSolution: {
                 solutionsByIndustry: {
                   title: "Soluções por setores",
-                  items: ["Setor 1", "Setor 2", "Setor 3", "Setor 4"],
+                  items: ["Setor 1", "Setor 2", "Setor 3"],
                 },
                 solutionsByMachineType: {
                   title: "Soluções por tipo de máquina",

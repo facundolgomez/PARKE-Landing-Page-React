@@ -35,13 +35,22 @@ i18n
               solutionsBySectorButton: "Solutions by sector",
               solutionsByMachineTypeButton: "Solutions by machine type",
               typeOfSolution: {
-                solutionsByIndustry: {
+                solutionsBySectors: {
                   title: "Solutions by sector",
-                  items: ["Agriculture", "Balanced Feed", "Mining and Chemicals"],
+                  items: [
+                    "Agriculture",
+                    "Balanced Feed",
+                    "Mining and Chemicals",
+                  ],
                 },
                 solutionsByMachineType: {
                   title: "Solutions by machine type",
-                  items: ["Bagging Machines", "Palletizers", "Stretch Wrappers", "Weighing Equipment"],
+                  items: [
+                    "Bagging Machines",
+                    "Palletizers",
+                    "Stretch Wrappers",
+                    "Weighing Equipment",
+                  ],
                 },
               },
               textAboutSomeOfOurClients: "SOME OF OUR CLIENTS",
@@ -159,11 +168,20 @@ i18n
               typeOfSolution: {
                 solutionsBySectors: {
                   title: "Soluciones por sectores",
-                  items: ["Agricultura", "Alimentos balanceados", "Minería y Química"],
+                  items: [
+                    "Agricultura",
+                    "Alimentos balanceados",
+                    "Minería y Química",
+                  ],
                 },
                 solutionsByMachineType: {
                   title: "Soluciones por tipo de máquina",
-                  items: ["Embolsadoras", "Paletizadoras", "Envolvedoras ", "Equipos de pesaje"],
+                  items: [
+                    "Embolsadoras",
+                    "Paletizadoras",
+                    "Envolvedoras ",
+                    "Equipos de pesaje",
+                  ],
                 },
               },
               textAboutSomeOfOurClients: "ALGUNOS DE NUESTROS CLIENTES",
@@ -280,13 +298,22 @@ i18n
               solutionsBySectorButton: "Soluções por setor",
               solutionsByMachineTypeButton: "Soluções por tipo de máquina",
               typeOfSolution: {
-                solutionsByIndustry: {
+                solutionsBySectors: {
                   title: "Soluções por setores",
-                  items: ["Agricultura", "Alimentos balanceados", "Mineração e Química"],
+                  items: [
+                    "Agricultura",
+                    "Alimentos balanceados",
+                    "Mineração e Química",
+                  ],
                 },
                 solutionsByMachineType: {
                   title: "Soluções por tipo de máquina",
-                  items: ["Embaladoras", "Paletizadoras", "Envolvendedoras", "Equipamentos de pesagem"],
+                  items: [
+                    "Embaladoras",
+                    "Paletizadoras",
+                    "Envolvendedoras",
+                    "Equipamentos de pesagem",
+                  ],
                 },
               },
               textAboutSomeOfOurClients: "ALGUNS DOS NOSSOS CLIENTES",

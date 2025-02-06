@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Video from "../video/Video";
 import ClientCarousel from "../clientCarousel/ClientCarousel";
 import { useTranslation } from "react-i18next";
+import SectorCard from "../sectorCard/SectorCard";
 
 const Dashboard = () => {
   const [indice, setIndice] = useState(0);
@@ -215,22 +216,15 @@ const Dashboard = () => {
         </div>
 
         {/* Condicionalmente renderiza los grids según el estado */}
+
         {activeTab === "sectores" ? (
           <div className="grid grid-cols-1 gap-2 h-auto p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             {sectors.map((sector, index) => (
-              <div
+              <SectorCard
                 key={index}
-                className="bg-blue-300 text-center w-full relative"
-              >
-                <img
-                  src={imgSectors[index].image}
-                  alt={`Sector ${index + 1}`} 
-                  className="object-cover w-full h-72 brightness-50"
-                />
-                <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                  {sector}
-                </div>
-              </div>
+                sector={sector.toLowerCase()}
+                image={imgSectors[index].image}
+              />
             ))}
           </div>
         ) : (

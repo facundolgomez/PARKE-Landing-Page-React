@@ -1,13 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { solutionsBySectors } from "../data/solutionsBySector/SolutionsBySector";
+
 const SubSectorButton = ({ sector }) => {
-  // Eliminar el espacio y poner en formato camelCase
   const formattedSector = sector.replace(/\s+/g, "").toLowerCase();
 
-  console.log("Sector recibido en SubSectorButton:", sector);
-  console.log("Sector formateado:", formattedSector);
+  const navigate = useNavigate();
 
   const subSectors = solutionsBySectors[formattedSector] || [];
-  console.log("Subsectores para", formattedSector, ":", subSectors);
 
   return (
     <div className="flex flex-col gap-2">
@@ -16,6 +15,7 @@ const SubSectorButton = ({ sector }) => {
           <button
             key={index}
             className="px-4 py-2 bg-white text-blue-700 font-bold rounded shadow-md hover:bg-gray-200 transition"
+            onClick={() => navigate(`/subsector/${sub.toLowerCase()}`)} // Aquí va la navegación
           >
             {sub}
           </button>

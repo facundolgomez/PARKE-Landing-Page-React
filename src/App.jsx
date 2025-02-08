@@ -11,11 +11,10 @@ import News from "./components/news/News";
 import PortalClient from "./components/portalClient/PortalClient";
 import Protected from "./components/protected/Protected";
 import { useState, useEffect } from "react";
-
+import SubSectorPage from "./components/subSectorPage/SubSectorPage";
 
 function App() {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);  // Estado que me define si el usuario esta logueado o no
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
 
   // Verificar si hay un token al cargar la aplicación
   useEffect(() => {
@@ -25,9 +24,10 @@ function App() {
     }
   }, []);
 
-  const handleLogin = () => {          // funcion que cambia el estado de logeueo
+  const handleLogin = () => {
+    // funcion que cambia el estado de logeueo
     setIsLoggedIn(!isLoggedIn);
-  }
+  };
 
   const router = createBrowserRouter([
     {
@@ -40,21 +40,30 @@ function App() {
         { path: "/contact", element: <Contact /> },
         { path: "/company", element: <CompanyInfo /> },
         {
+          path: "/subsector/:subsectorName",
+          element: <SubSectorPage />,
+        },
+        {
           path: "/portalCliente",
-          element: <Protected isSignedIn={isLoggedIn}/>,
+          element: <Protected isSignedIn={isLoggedIn} />,
           children: [
             {
               path: "/portalCliente",
-              element: <PortalClient isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>,
+              element: (
+                <PortalClient
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              ),
             },
           ],
         },
       ],
     },
-    
+
     {
       path: "/login",
-      element: <Login onLogin={handleLogin}/>,
+      element: <Login onLogin={handleLogin} />,
     },
     {
       path: "*",

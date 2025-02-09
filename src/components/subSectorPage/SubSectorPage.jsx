@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import SubSector from "../subSector/SubSector";
-import { ListGroupItem } from "react-bootstrap";
+
 
 const subsectorImages = {
   agricultura: {

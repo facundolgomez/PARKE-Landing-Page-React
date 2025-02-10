@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import SubSector from "../subSector/SubSector";
 
-
 const subsectorImages = {
   agricultura: {
     fertilizantes: "/subsector-imgs/fertilizantes.jpg",

@@ -225,7 +225,7 @@ const Header = () => {
             onMouseEnter={handleMouseEnterServices}
             onMouseLeave={handleMouseLeaveServices}
           >
-            <button className="bg-transparent border-none py-4 text-sky-600 relative hover:text-sky-600 flex items-center">
+            <button className="bg-transparent border-none py-4 text-sky-600 relative hover:text-sky-600 items-center hidden md:flex">
               {t("home.homeHeader.services")}
               <span
                 className={`absolute inset-x-0 bottom-0 h-1 bg-sky-600 transition-transform duration-300 ${

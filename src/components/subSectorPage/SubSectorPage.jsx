@@ -1,14 +1,18 @@
 import { useParams } from "react-router-dom";
 import SubSector from "../subSector/SubSector";
+import ClientCarousel from "../clientCarousel/ClientCarousel";
+import { useTranslation } from "react-i18next";
+
+
 
 const subsectorData = {
   agricultura: {
     fertilizantes: {
       image: "/subsector-imgs/fertilizantes.jpg",
       typeOfSubSector: "Fertilizantes",
-      description: "Lorem ipsum dolor sit amet",
+      description: "Lorem ipsum dolor sit amet ",
       title: "Los mejores fertilizantes", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
+      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
       images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
     },
     semillasygranos: {
@@ -89,11 +93,13 @@ const subsectorData = {
       images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
 
     }
+    
   },
 };
 
 const SubSectorPage = () => {
   const { subsectorName } = useParams();
+  const { t } = useTranslation();
 
   // Eliminar los espacios para coincidir con las claves del objeto
   const formattedSubsectorName = subsectorName
@@ -119,6 +125,7 @@ const SubSectorPage = () => {
   }
 
   return (
+    <>
     <SubSector
       image={foundImage}
       typeOfSubSector={subsectorName.toUpperCase()}
@@ -127,6 +134,26 @@ const SubSectorPage = () => {
       descriptionText={descriptionText}
       images={images}
     />
+    <ClientCarousel/>
+    <div className="w-full bg-gray-100 p-4 flex justify-center items-center h-30">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
+          {/* Contenido de texto */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-slate-800 text-2xl md:text-4xl font-bold mb-2 md:mb-3">
+              {t("home.customSolutions.customSolutionsText")}
+            </h1>
+            <p className="text-slate-700 text-sm md:text-base">
+              {t("home.customSolutions.subtitleOfCustomSolutionsText")}
+            </p>
+          </div>
+
+          {/* Botón */}
+          <button className="mt-6 md:mt-0 bg-sky-600 text-white rounded-full py-2 px-6 text-sm md:text-base scale-100 md:scale-125 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">
+            {t("home.customSolutions.freeQuoteButton")}
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 

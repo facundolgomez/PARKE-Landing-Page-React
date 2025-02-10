@@ -33,7 +33,7 @@ const SubSector = ({ image, typeOfSubSector, description, title, descriptionText
         <p>{descriptionText}</p>
       </div>
       <ImageGallery images={images} />
-      <div>
+      <div className="w-full max-h-screen">
         <img src="/subsector-imgs/imagen-subsectores-esquema_.jpg" alt="" />
       </div>
       <div className="relative w-full h-full overflow-hidden" onMouseMove={handleMouseMove}>

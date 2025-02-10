@@ -1,11 +1,17 @@
 import ImageGallery from "../imageGalery/ImageGalery";
 import UpScreen from "../upscreen/UpScreen";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 
-const SubSector = ({ image, typeOfSubSector, description, title, descriptionText, images }) => {
-  
-  const { t } = useTranslation();
+
+const SubSector = ({
+  image,
+  typeOfSubSector,
+  description,
+  title,
+  descriptionText,
+  images,
+}) => {
+ 
   const [activePopup, setActivePopup] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -24,21 +30,35 @@ const SubSector = ({ image, typeOfSubSector, description, title, descriptionText
   return (
     <>
       <div>
-        <UpScreen pathImage={image} title={typeOfSubSector} paragraph={description} />
+        <UpScreen
+          pathImage={image}
+          title={typeOfSubSector}
+          paragraph={description}
+        />
       </div>
       <div>
-        <h1>{title}</h1>
+        <h1 className="p-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-wide text-center inline-block relative pb-2">
+          {title}
+          <span className="absolute left-0 bottom-0 w-full h-1 bg-sky-600 rounded"></span>
+        </h1>
       </div>
-      <div>
+      <div className="p-5 font-sans flex flex-col">
         <p>{descriptionText}</p>
       </div>
       <ImageGallery images={images} />
       <div className="w-full max-h-screen">
         <img src="/subsector-imgs/imagen-subsectores-esquema_.jpg" alt="" />
       </div>
-      <div className="relative w-full h-full overflow-hidden" onMouseMove={handleMouseMove}>
+      <div
+        className="relative w-full h-full overflow-hidden"
+        onMouseMove={handleMouseMove}
+      >
         {/* Imagen desenfocada */}
-        <img src="/img/imagen1.jpg" alt="Image Blur" className="w-full h-full object-cover md:filter md:blur-sm" />
+        <img
+          src="/img/imagen1.jpg"
+          alt="Image Blur"
+          className="w-full h-full object-cover md:filter md:blur-sm"
+        />
 
         {/* Máscara del círculo */}
         <div
@@ -59,13 +79,17 @@ const SubSector = ({ image, typeOfSubSector, description, title, descriptionText
         />
 
         {/* Botones emergentes */}
-        {[{ top: "30%", left: "25%" }, { top: "40%", left: "75%" }, { top: "50%", left: "50%" }].map((pos, index) => {
+        {[
+          { top: "30%", left: "25%" },
+          { top: "40%", left: "75%" },
+          { top: "50%", left: "50%" },
+        ].map((pos, index) => {
           const id = index + 1;
           return (
             <div key={id}>
               <button
                 onClick={() => togglePopup(id)}
-                className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+                className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110 hidden sm:block"
                 style={{ top: pos.top, left: pos.left }}
               ></button>
               {activePopup === id && (
@@ -89,24 +113,7 @@ const SubSector = ({ image, typeOfSubSector, description, title, descriptionText
           );
         })}
       </div>
-      <div className="w-full bg-gray-100 p-4 flex justify-center items-center h-30">
-        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
-          {/* Contenido de texto */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-slate-800 text-2xl md:text-4xl font-bold mb-2 md:mb-3">
-              {t("home.customSolutions.customSolutionsText")}
-            </h1>
-            <p className="text-slate-700 text-sm md:text-base">
-              {t("home.customSolutions.subtitleOfCustomSolutionsText")}
-            </p>
-          </div>
-
-          {/* Botón */}
-          <button className="mt-6 md:mt-0 bg-sky-600 text-white rounded-full py-2 px-6 text-sm md:text-base scale-100 md:scale-125 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">
-            {t("home.customSolutions.freeQuoteButton")}
-          </button>
-        </div>
-      </div>
+      
     </>
   );
 };

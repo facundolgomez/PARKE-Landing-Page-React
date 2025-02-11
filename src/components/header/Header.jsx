@@ -240,7 +240,7 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer" onClick={() => navigate("/portalCliente")}>
                     PORTAL CLIENTES
                   </li>
-                  <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                  <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer" onClick={() => navigate("/technicalService")}>
                     SERVICIO TÉCNICO
                   </li>
                 </ul>

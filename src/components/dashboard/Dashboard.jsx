@@ -3,6 +3,8 @@ import Video from "../video/Video";
 import ClientCarousel from "../clientCarousel/ClientCarousel";
 import { useTranslation } from "react-i18next";
 import SectorCard from "../sectorCard/SectorCard";
+import MachineCard from "../machineCard/MachineCard";
+import { solutionsByMachineType } from "../data/solutionsByMachineType/SolutionsByMachineType";
 
 const Dashboard = () => {
   const [indice, setIndice] = useState(0);
@@ -12,7 +14,7 @@ const Dashboard = () => {
   const [activePopup, setActivePopup] = useState(null);
   const [activeTab, setActiveTab] = useState("sectores");
   const { t } = useTranslation();
-
+  const machineTypes = Object.keys(solutionsByMachineType);
   const textos = [
     t("home.homeCarousel.text1"),
     t("home.homeCarousel.text2"),
@@ -229,21 +231,15 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="grid gap-4 h-auto p-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {machines.map((machine, index) => (
-              <div
-                key={index}
-                className="bg-blue-300 text-center w-full relative"
-              >
-                <img
-                  src="/img/imagen1.jpg"
-                  alt=""
-                  className="object-cover w-full h-72 brightness-50"
+            {machineTypes.map((machineType, index) => {
+              return (
+                <MachineCard
+                  key={index}
+                  machine={machineType}
+                  data={solutionsByMachineType[machineType]}
                 />
-                <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-white text-2xl font-bold">
-                  {machine}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

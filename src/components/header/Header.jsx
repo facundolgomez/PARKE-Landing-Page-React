@@ -157,13 +157,28 @@ const Header = () => {
                     </div>
                     <ul>
                       <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SECTOR 1
+                        FERTILIZANTES
                       </li>
                       <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SECTOR 2
+                        SEMILLAS Y GRANOS
                       </li>
                       <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SECTOR 3
+                        VERDURAS
+                      </li>
+                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                        ALIMENTOS BALANCEADOS GRANULADOS
+                      </li>
+                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                        ALIMENTOS BALANCEADOS POLVOS
+                      </li>
+                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                        ALIMENTOS BALANCEADOS PELLETS
+                      </li>
+                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                        SECTOR 4
+                      </li>
+                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
+                        SECTOR 4
                       </li>
                       <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
                         SECTOR 4

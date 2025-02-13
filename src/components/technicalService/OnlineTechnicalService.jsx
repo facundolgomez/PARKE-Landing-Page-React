@@ -28,10 +28,45 @@ const OnlineTechnicalService = () => {
       setCaptchaValidated(isValid);
     };
 
-    const submitHandler = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
-      setFormPaymentSended(true);
-    }
+      if (captchaValidated) {
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        // Agregar propiedades usando spread operator
+        const updatedData = { 
+          ...data, 
+          Subject: "Consentimiento de Pago", 
+          Message: "Declaro estar de acuerdo con el cobro de una tarifa por parte de PARKE S.R.L. en concepto de servicio técnico especializado brindado vía telefónica."
+        };
+        try {
+          const response = await fetch(
+            "https://localhost:7185/api/contact/send",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(updatedData),
+            }
+          );
+  
+          if (!response.ok) {
+            throw new Error("Error al enviar el formulario");
+            
+          }
+  
+          alert("Formulario enviado correctamente");
+          setFormPaymentSended(true);
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Hubo un problema al enviar el formulario.");
+        }
+      } else {
+        alert("Por favor, completa el reCAPTCHA.");
+      }
+    };
 
     return(
         <>
@@ -115,7 +150,7 @@ const OnlineTechnicalService = () => {
                       </p>
                     </Card.Header>
                     <Card.Body>
-                      <Form className="flex flex-col rounded-lg bg-sky-600 text-white" onSubmit={submitHandler}>
+                      <Form className="flex flex-col rounded-lg bg-sky-600 text-white" onSubmit={handleSubmit}>
                       <Form.Group className="p-2 py-3">
                         <Form.Label className="font-bold">
                         {t("technicalService.OnlineTS.paymentTechSup.form.formLabel.0")}
@@ -135,7 +170,7 @@ const OnlineTechnicalService = () => {
                           type="text"
                           required
                           placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.1")}
-                          name="name"
+                          name="company"
                         />
                       </Form.Group>
                       <Form.Group className="p-2 py-3">
@@ -146,7 +181,7 @@ const OnlineTechnicalService = () => {
                           type="tel"
                           required
                           placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.2")}
-                          name="name"
+                          name="phone"
                         />
                       </Form.Group>
                       <Form.Group className="p-2 py-3">
@@ -157,7 +192,7 @@ const OnlineTechnicalService = () => {
                           type="email"
                           required
                           placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.3")}
-                          name="name"
+                          name="email"
                         />
                       </Form.Group>
                       <Form.Group controlId="termsCheckbox" className="flex flex-row">

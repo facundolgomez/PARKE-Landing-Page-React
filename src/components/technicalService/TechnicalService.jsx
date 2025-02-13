@@ -1,8 +1,11 @@
 import UpScreen from "../upscreen/UpScreen";
 import { useState, useRef } from "react";
 import OnlineTechnicalService from "./OnlineTechnicalService.jsx";
+import { useTranslation } from "react-i18next";
 
 const TechnicalService = () => {
+
+    const { t } = useTranslation();
 
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -50,16 +53,16 @@ const TechnicalService = () => {
         <>
             <UpScreen
                 pathImage={"../../../public/imagenes-de-fondo/imagen-novedades.jpg"}
-                title={"Servicio Técnico"}
-                paragraph={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+                title={t("technicalService.title")}
+                paragraph={t("technicalService.paragraph")}
             />
-            <nav className="flex flex-col md:flex-row justify-around bg-gray-500">
+            <nav className="flex flex-col md:flex-row justify-around bg-black">
                 <div className="w-full md:w-auto">
                      <button
                         className="bg-transparent border-hidden py-3 text-white relative group hover:text-sky-600 hidden md:flex"
                         onClick={() => scrollToComponent(component1Ref)}
                     >
-                        SERVICIO TECNICO ONLINE
+                        {t("technicalService.navBar.sto")}
                         <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-400 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                     </button>
                     
@@ -68,7 +71,7 @@ const TechnicalService = () => {
                      <button
                         className="bg-transparent border-hidden py-3 text-white relative group hover:text-sky-600 hidden md:flex"
                     >
-                        SERVICIO TECNICO PRESENCIAL
+                        {t("technicalService.navBar.stp")}
                         <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-400 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                     </button>
                     
@@ -77,14 +80,14 @@ const TechnicalService = () => {
                      <button
                         className="bg-transparent border-hidden py-3 text-white relative group hover:text-sky-600 hidden md:flex"
                     >
-                        SERVICIO TECNICO POR ZONA
+                        {t("technicalService.navBar.stpz")}
                         <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-400 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                     </button>
                     
                 </div>
             </nav>
             <div className="flex flex-col items-center justify-center py-20 bg-gray-50 p-6">
-                <h1 className="text-3xl text-center font-bold text-gray-800 mb-8">PREGUNTAS FRECUENTES</h1>
+                <h1 className="text-3xl text-center font-bold text-gray-800 mb-8">{t("technicalService.faqs.title")}</h1>
                 <div className="w-full max-w-2xl space-y-4">
                     {faqItems.map((item, index) => (
                     <div key={index} className="bg-white border  rounded-lg">
@@ -138,7 +141,7 @@ const TechnicalService = () => {
                 </div>
             </div>
             <div ref={component1Ref}>
-            <OnlineTechnicalService/>
+                <OnlineTechnicalService/>
             </div>
         </>
     );

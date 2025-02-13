@@ -90,7 +90,7 @@ const NewItem = ({ id, title, description, image, loadNews }) => {
           <h4 className="mb-2 text-slate-800 text-xl font-semibold">  
             {title}  
           </h4>  
-          <p className="mb-8 text-slate-600 leading-normal font-light">  
+          <p className="mb-8 text-slate-600 leading-normal font-light break-words">  
             {shortenDescription(description, 150)}{" "} 
           </p>  
           <button
@@ -117,18 +117,18 @@ const NewItem = ({ id, title, description, image, loadNews }) => {
       </div>
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full mx-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full mx-4 md:mx-6 lg:mx-auto max-h-[90vh] overflow-y-auto">
             {/* Imagen en el modal */}
-            <div className="w-full h-48 md:h-full overflow-hidden">  
+            <div className="flex justify-center w-full max-h-1/2-screen overflow-hidden">  
             <img  
               src={image}  
               alt={title}  
-              className="w-full h-full rounded-md shadow-lg object-cover"  
+              className="w-auto max-h-[40vh] rounded-md shadow-lg object-contain"  
             />  
           </div>
             {/* Título en el modal */}
-            <h2 className="text-2xl font-semibold text-slate-800 mb-4">
+            <h2 className="text-xl md:text-2xl font-semibold text-slate-800 mb-4">
               {title}
             </h2>
             {/* Descripción completa en el modal */}
@@ -136,22 +136,28 @@ const NewItem = ({ id, title, description, image, loadNews }) => {
               {description}
             </p>
             {/* Botón para cerrar el modal */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="bg-sky-600 text-white px-4 py-2 mx-2 rounded-md border-hidden hover:bg-sky-900 transition-all"
-            >
-              Cerrar
-            </button>
-            {showDeleteNewButton ?
-              <button onClick={confirmDeleteHandler} className="bg-red-600 text-white mx-2 border-hidden w-40 hover:bg-red-800">Borrar novedad</button>
-              :
-              ""
-            }
+            <div className="flex flex-col md:flex-row justify-center md:justify-end gap-4">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-sky-600 text-white px-4 py-2 rounded-md hover:bg-sky-900 transition-all"
+              >
+                Cerrar
+              </button>
+              {showDeleteNewButton && (
+                <button 
+                  onClick={confirmDeleteHandler} 
+                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-800"
+                >
+                  Borrar novedad
+                </button>
+              )}
+            </div>
+
             {showConfirmDeleteButton && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
                 <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full mx-4">
                   {/* Mensaje de confirmación */}
-                  <p className="text-slate-800 text-lg font-semibold mb-6">
+                  <p className="text-slate-800 text-lg font-semibold mb-6 text-center">
                     ¿Está seguro que desea eliminar la novedad?
                   </p>
                   {/* Botones de acción */}

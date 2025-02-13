@@ -1,8 +1,17 @@
 import { useState } from "react";
+import { Card, Form, Button } from "react-bootstrap";
+import ReCAPTCHAvalitadion from "../reCAPTCHAvalidation/ReCAPTCHAvalidation";
+import { useTranslation } from "react-i18next";
 
 const OnlineTechnicalService = () => {
 
     const [selectedOption, setSelectedOption] = useState("freeService");
+
+    const [formPaymentSended, setFormPaymentSended] = useState(false);
+
+    const [captchaValidated, setCaptchaValidated] = useState(false);
+
+    const { t } = useTranslation();
 
     const phoneNumber = "+543413041103";
 
@@ -15,9 +24,18 @@ const OnlineTechnicalService = () => {
         }
     }
 
+    const handleValidationChange = (isValid) => {
+      setCaptchaValidated(isValid);
+    };
+
+    const submitHandler = (event) => {
+      event.preventDefault();
+      setFormPaymentSended(true);
+    }
+
     return(
         <>
-            <h2 className="flex justify-center text-center text-3xl font-bold pt-32 pb-10">SOLICITUD PARA SERVICIO TÉCNICO ONLINE</h2>
+            <h2 className="flex justify-center text-center text-3xl font-bold pt-32 pb-10">{t("technicalService.OnlineTS.title")}</h2>
             <div className="flex justify-center">
             <label htmlFor="Toggle3" className="rounded-md cursor-pointer text-center">
                 <input id="Toggle3" type="checkbox" className="hidden peer" />
@@ -32,7 +50,7 @@ const OnlineTechnicalService = () => {
                     onClick={toggleOption}
                     className="bg-transparent border-hidden"
                     >
-                    <p className="text-sm sm:text-lg md:text-2xl">SERVICIO GRATUITO</p>
+                    <p className="text-sm sm:text-lg md:text-2xl">{t("technicalService.OnlineTS.optionMenu.freeTS")}</p>
                     </button>
                 </span>
                 <span
@@ -46,7 +64,7 @@ const OnlineTechnicalService = () => {
                     onClick={toggleOption}
                     className="bg-transparent border-hidden"
                     >
-                    <p className="text-sm sm:text-lg md:text-2xl">SERVICIO DE PAGO</p>
+                    <p className="text-sm sm:text-lg md:text-2xl">{t("technicalService.OnlineTS.optionMenu.paymentTS")}</p>
                     </button>
                 </span>
             </label>
@@ -58,10 +76,10 @@ const OnlineTechnicalService = () => {
 
                 <div className="flex text-center flex-col mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
-                  El servicio técnico online gratuito consta de una llamada de 15 minutos como límite con un técnico para resolver cuestiones básicas.
+                {t("technicalService.OnlineTS.freeTechSup.paragraph1")}
                 </p>
                 <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold py-3 text-red-800">
-                  Si tiene consultas variadas o si cree que su consulta es de una mayor complejidad, opte por el servicio de pago aquí arriba.
+                {t("technicalService.OnlineTS.freeTechSup.paragraph2")}
                 </p>
                 <a
                   href={`tel:${phoneNumber}`}
@@ -75,15 +93,120 @@ const OnlineTechnicalService = () => {
                   >
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
-                  Llamar ahora
+                  <p className="text-lg">{t("technicalService.OnlineTS.freeTechSup.button")}</p>
                 </a>
               </div>
                
 
                 : 
                 
-
-                "pendiente..."
+                <div>
+                  <Card className="flex justify-center flex-col bg-sky-600 text-white">
+                    <Card.Header className="flex justify-center text-center flex-col">
+                      <h3 className="m-10 text-3xl font-bold">{t("technicalService.OnlineTS.paymentTechSup.title")}</h3>
+                      <p className="font-bold">
+                      {t("technicalService.OnlineTS.paymentTechSup.paragraph1")}
+                      </p>
+                      <p className="font-bold">
+                      {t("technicalService.OnlineTS.paymentTechSup.paragraph2")}
+                      </p>
+                      <p className="font-bold pb-4">
+                      {t("technicalService.OnlineTS.paymentTechSup.paragraph3")}
+                      </p>
+                    </Card.Header>
+                    <Card.Body>
+                      <Form className="flex flex-col rounded-lg bg-sky-600 text-white" onSubmit={submitHandler}>
+                      <Form.Group className="p-2 py-3">
+                        <Form.Label className="font-bold">
+                        {t("technicalService.OnlineTS.paymentTechSup.form.formLabel.0")}
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          required
+                          placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.0")}
+                          name="name"
+                        />
+                      </Form.Group>
+                      <Form.Group className="p-2 py-3">
+                        <Form.Label className="font-bold">
+                        {t("technicalService.OnlineTS.paymentTechSup.form.formLabel.1")}
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          required
+                          placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.1")}
+                          name="name"
+                        />
+                      </Form.Group>
+                      <Form.Group className="p-2 py-3">
+                        <Form.Label className="font-bold">
+                        {t("technicalService.OnlineTS.paymentTechSup.form.formLabel.2")}
+                        </Form.Label>
+                        <Form.Control
+                          type="tel"
+                          required
+                          placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.2")}
+                          name="name"
+                        />
+                      </Form.Group>
+                      <Form.Group className="p-2 py-3">
+                        <Form.Label className="font-bold">
+                        {t("technicalService.OnlineTS.paymentTechSup.form.formLabel.3")}
+                        </Form.Label>
+                        <Form.Control
+                          type="email"
+                          required
+                          placeholder={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.3")}
+                          name="name"
+                        />
+                      </Form.Group>
+                      <Form.Group controlId="termsCheckbox" className="flex flex-row">
+                        <Form.Check 
+                          type="checkbox"  
+                          required 
+                          label={t("technicalService.OnlineTS.paymentTechSup.form.formPlaceHolder.4")}
+                          className="mt-3 ms-2"
+                        />
+                      </Form.Group>
+                      <Form.Group className="p-2 py-3">
+                        <ReCAPTCHAvalitadion
+                          onValidationChange={handleValidationChange}
+                        />
+                          {!captchaValidated && (
+                            <p className=" pt-3 text-xl text-red-700 font-bold">
+                                {t("contact.form.6")}
+                            </p>
+                          )}
+                      </Form.Group>
+                      <Button
+                        className="text-lg rounded-full mx-2 mt-3 text-black font-bold bg-white"
+                        type="submit"
+                        disabled={!captchaValidated}
+                      >
+                        {t("technicalService.OnlineTS.paymentTechSup.form.button")}
+                      </Button>
+                      </Form>
+                    </Card.Body>
+                    <Card.Footer className="flex justify-center text-center">
+                      {formPaymentSended &&
+                        <a
+                        href={`tel:${phoneNumber}`}
+                        className="inline-flex items-center justify-center py-3 px-6 sm:px-10 my-10 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 mr-2"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                          </svg>
+                          <p className="text-lg">{t("technicalService.OnlineTS.paymentTechSup.form.buttonWpp")}</p>
+                      </a>
+                      }
+                    </Card.Footer>
+                  </Card>
+                </div>
                 }
 
             </div>

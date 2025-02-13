@@ -2,8 +2,10 @@ import UpScreen from "../upscreen/UpScreen";
 import NewItem from "../newItem/NewItem";
 import { useState, useEffect } from "react";
 import { Card, Form, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const News = () => {
+  const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -153,8 +155,8 @@ const News = () => {
     <>
       <UpScreen
         pathImage={"../../../public/imagenes-de-fondo/imagen-novedades.jpg"}
-        title={"Novedades"}
-        paragraph={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+        title={t("news.title")}
+        paragraph={t("news.paragraph")}
       />
       {showForm ? (
         <div className="flex justify-center py-5">

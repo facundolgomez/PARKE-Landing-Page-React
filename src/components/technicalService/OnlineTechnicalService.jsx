@@ -9,6 +9,8 @@ const OnlineTechnicalService = () => {
 
     const [formPaymentSended, setFormPaymentSended] = useState(false);
 
+    const [checkboxFreeCall, setCheckboxFreeCall] = useState(false);
+
     const [captchaValidated, setCaptchaValidated] = useState(false);
 
     const { t } = useTranslation();
@@ -27,6 +29,10 @@ const OnlineTechnicalService = () => {
     const handleValidationChange = (isValid) => {
       setCaptchaValidated(isValid);
     };
+
+    const handleValidateFreeCall = () => {
+      setCheckboxFreeCall(!checkboxFreeCall);
+    }
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -106,31 +112,59 @@ const OnlineTechnicalService = () => {
             </div>
             <div className="flex justify-center py-20">
             
-            {selectedOption === "freeService" ? 
+              {selectedOption === "freeService" ? 
 
 
                 <div className="flex text-center flex-col mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
-                {t("technicalService.OnlineTS.freeTechSup.paragraph1")}
-                </p>
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold py-3 text-red-800">
-                {t("technicalService.OnlineTS.freeTechSup.paragraph2")}
-                </p>
-                <a
-                  href={`tel:${phoneNumber}`}
-                  className="inline-flex items-center justify-center py-3 px-6 sm:px-10 my-10 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 mr-2"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
+                  {t("technicalService.OnlineTS.freeTechSup.paragraph1")}
+                  </p>
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold py-3 text-red-800">
+                  {t("technicalService.OnlineTS.freeTechSup.paragraph2")}
+                  </p>
+                  
+                  {/* Checkbox */}
+                  <div className="flex items-center justify-center mt-5">
+                    <input
+                      id="default-checkbox"
+                      type="checkbox"
+                      checked={checkboxFreeCall}
+                      onChange={handleValidateFreeCall}
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    />
+                    <label
+                      htmlFor="default-checkbox"
+                      className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      {t("technicalService.OnlineTS.freeTechSup.checkbox")}
+                    </label>
+                  </div>
+
+                  {/* Botón de llamada */}
+                  <a
+                    href={checkboxFreeCall ? `tel:${phoneNumber}` : "#"} // Deshabilita el enlace si el checkbox no está marcado
+                    className={`inline-flex items-center justify-center py-3 px-6 sm:px-10 my-10 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300 ${
+                      checkboxFreeCall
+                        ? "bg-green-500 hover:bg-green-600 cursor-pointer" // Estilos cuando está habilitado
+                        : "bg-gray-400 cursor-not-allowed" // Estilos cuando está deshabilitado
+                    }`}
+                    onClick={(e) => {
+                      if (!checkboxFreeCall) {
+                        e.preventDefault(); // Evita la acción predeterminada si el checkbox no está marcado
+                      }
+                    }}
                   >
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                  <p className="text-lg">{t("technicalService.OnlineTS.freeTechSup.button")}</p>
-                </a>
-              </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 mr-2"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <p className="text-lg">{t("technicalService.OnlineTS.freeTechSup.button")}</p>
+                  </a>
+                </div>
                
 
                 : 
@@ -242,7 +276,7 @@ const OnlineTechnicalService = () => {
                     </Card.Footer>
                   </Card>
                 </div>
-                }
+              }
 
             </div>
         </>

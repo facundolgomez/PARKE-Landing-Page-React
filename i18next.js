@@ -165,7 +165,8 @@ i18n
                 },  
                 freeTechSup: {  
                     paragraph1: "The free online technical service consists of a maximum 15-minute call with a technician to resolve basic issues.",  
-                    paragraph2: "If you have various inquiries or believe your query is of greater complexity, please opt for the paid service above.",  
+                    paragraph2: "If you have various inquiries or believe your query is of greater complexity, please opt for the paid service above.",
+                    checkbox: "I declare that I agree to the charging of a fee by PARKE S.R.L. in the event that the call duration exceeds the established limit (15 minutes).",  
                     button: "CALL NOW"  
                 },  
                 paymentTechSup: {  
@@ -355,6 +356,7 @@ i18n
               freeTechSup: {
                 paragraph1: "El servicio técnico online gratuito consta de una llamada de 15 minutos como límite con un técnico para resolver cuestiones básicas.",
                 paragraph2: "Si tiene consultas variadas o si cree que su consulta es de una mayor complejidad, opte por el servicio de pago aquí arriba.",
+                checkbox: "Declaro estar de acuerdo con el cobro de una tarifa por parte de PARKE S.R.L. en caso de que el tiempo de la llamada exceda el límite establecido (15 minutos).",
                 button: "LLAMAR AHORA"
               },
               paymentTechSup: {
@@ -544,6 +546,7 @@ i18n
                 freeTechSup: {  
                     paragraph1: "O serviço técnico online gratuito consiste em uma chamada de 15 minutos no máximo com um técnico para resolver questões básicas.",  
                     paragraph2: "Se você tiver várias dúvidas ou achar que sua consulta é de maior complexidade, opte pelo serviço pago acima.",  
+                    checkbox: "Declaro estar de acordo com a cobrança de uma taxa por parte da PARKE S.R.L. caso o tempo da chamada exceda o limite estabelecido (15 minutos).",
                     button: "LIGAR AGORA"  
                 },  
                 paymentTechSup: {  

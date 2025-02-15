@@ -1,6 +1,7 @@
 import UpScreen from "../upscreen/UpScreen";
 import { useState, useRef } from "react";
 import OnlineTechnicalService from "./OnlineTechnicalService.jsx";
+import OnSiteTechnicalService from "./OnSiteTechnicalService.jsx";
 import { useTranslation } from "react-i18next";
 
 const TechnicalService = () => {
@@ -11,6 +12,7 @@ const TechnicalService = () => {
 
     // Crear referencias para cada componente
     const component1Ref = useRef(null);
+    const component2Ref = useRef(null);
 
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -70,6 +72,7 @@ const TechnicalService = () => {
                 <div className="w-full md:w-auto">
                      <button
                         className="bg-transparent border-hidden py-3 text-white relative group hover:text-sky-600 hidden md:flex"
+                        onClick={() => scrollToComponent(component2Ref)}
                     >
                         {t("technicalService.navBar.stp")}
                         <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-400 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
@@ -86,7 +89,7 @@ const TechnicalService = () => {
                     
                 </div>
             </nav>
-            <div className="flex flex-col items-center justify-center py-20 bg-gray-50 p-6">
+            <div className="flex flex-col items-center justify-center py-20 bg-gray-200 p-6">
                 <h1 className="text-3xl text-center font-bold text-gray-800 mb-8">{t("technicalService.faqs.title")}</h1>
                 <div className="w-full max-w-2xl space-y-4">
                     {faqItems.map((item, index) => (
@@ -142,6 +145,9 @@ const TechnicalService = () => {
             </div>
             <div ref={component1Ref}>
                 <OnlineTechnicalService/>
+            </div>
+            <div ref={component2Ref}>
+                <OnSiteTechnicalService/>
             </div>
         </>
     );

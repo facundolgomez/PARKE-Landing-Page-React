@@ -2,6 +2,7 @@ import UpScreen from "../upscreen/UpScreen";
 import { useState, useRef } from "react";
 import OnlineTechnicalService from "./OnlineTechnicalService.jsx";
 import OnSiteTechnicalService from "./OnSiteTechnicalService.jsx";
+import RegionalTechnicalService from "./RegionalTechnicalService.jsx";
 import { useTranslation } from "react-i18next";
 
 const TechnicalService = () => {
@@ -13,6 +14,7 @@ const TechnicalService = () => {
     // Crear referencias para cada componente
     const component1Ref = useRef(null);
     const component2Ref = useRef(null);
+    const component3Ref = useRef(null);
 
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -82,6 +84,7 @@ const TechnicalService = () => {
                 <div className="w-full md:w-auto">
                      <button
                         className="bg-transparent border-hidden py-3 text-white relative group hover:text-sky-600 hidden md:flex"
+                        onClick={() => scrollToComponent(component3Ref)}
                     >
                         {t("technicalService.navBar.stpz")}
                         <span className="absolute inset-x-0 bottom-0 h-1 bg-sky-400 scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
@@ -148,6 +151,9 @@ const TechnicalService = () => {
             </div>
             <div ref={component2Ref}>
                 <OnSiteTechnicalService/>
+            </div>
+            <div ref={component3Ref}>
+                <RegionalTechnicalService/>
             </div>
         </>
     );

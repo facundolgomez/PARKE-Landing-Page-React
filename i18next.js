@@ -138,7 +138,8 @@ i18n
           },
           news: {
             title: "News",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           },
           technicalService: {  
             title: "Technical Service",  
@@ -242,6 +243,8 @@ i18n
                     "Agricultura",
                     "Alimentos balanceados",
                     "Minería y Química",
+                    "Alimentacion humana",
+                    "Reciclaje y organicos",
                   ],
                 },
                 solutionsByMachineType: {
@@ -340,11 +343,13 @@ i18n
           },
           news: {
             title: "Novedades",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           },
           technicalService: {
             title: "Servicio Técnico",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             navBar: {
               sto: "SERVICIO TÉCNICO ONLINE",
               stp: "SERVICIO TÉCNICO PRESENCIAL",
@@ -357,43 +362,49 @@ i18n
               },
               answers: {
                 answer1: "Respuesta 1",
-              }
+              },
             },
             OnlineTS: {
               title: "SOLICITUD PARA SERVICIO TÉCNICO ONLINE",
               optionMenu: {
                 freeTS: "SERVICIO GRATUITO",
-                paymentTS: "SERVICIO DE PAGO"
+                paymentTS: "SERVICIO DE PAGO",
               },
               freeTechSup: {
-                paragraph1: "El servicio técnico online gratuito consta de una llamada de 15 minutos como límite con un técnico para resolver cuestiones básicas.",
-                paragraph2: "Si tiene consultas variadas o si cree que su consulta es de una mayor complejidad, opte por el servicio de pago aquí arriba.",
-                checkbox: "Declaro estar de acuerdo con el cobro de una tarifa por parte de PARKE S.R.L. en caso de que el tiempo de la llamada exceda el límite establecido (15 minutos).",
-                button: "LLAMAR AHORA"
+                paragraph1:
+                  "El servicio técnico online gratuito consta de una llamada de 15 minutos como límite con un técnico para resolver cuestiones básicas.",
+                paragraph2:
+                  "Si tiene consultas variadas o si cree que su consulta es de una mayor complejidad, opte por el servicio de pago aquí arriba.",
+                checkbox:
+                  "Declaro estar de acuerdo con el cobro de una tarifa por parte de PARKE S.R.L. en caso de que el tiempo de la llamada exceda el límite establecido (15 minutos).",
+                button: "LLAMAR AHORA",
               },
               paymentTechSup: {
                 title: "FORMULARIO DE CONSENTIMIENTO DE PAGO",
-                paragraph1: "Al completar este formulario y enviarlo, usted está aceptando pagar una tarifa por un servicio técnico especializado vía telefónica.",
-                paragraph2: "Al presionar el botón de Enviar se le habilitará el acceso al número telefónico del servicio técnico justo debajo del formulario y",
-                paragraph3: "se le enviará vía email la tarifa correspondiente por el servicio prestado.",
+                paragraph1:
+                  "Al completar este formulario y enviarlo, usted está aceptando pagar una tarifa por un servicio técnico especializado vía telefónica.",
+                paragraph2:
+                  "Al presionar el botón de Enviar se le habilitará el acceso al número telefónico del servicio técnico justo debajo del formulario y",
+                paragraph3:
+                  "se le enviará vía email la tarifa correspondiente por el servicio prestado.",
                 form: {
                   formLabel: [
                     "Ingrese su nombre completo:",
                     "Ingrese el nombre de la empresa:",
                     "Ingrese un número telefónico:",
-                    "Ingrese su correo electrónico"
+                    "Ingrese su correo electrónico",
                   ],
                   formPlaceHolder: [
                     "Nombre...",
                     "Empresa...",
                     "Ejemplo: +54 9 341 123 4567",
                     "ejemplo@correo.com",
-                    "Declaro estar de acuerdo con el cobro de una tarifa por parte de PARKE S.R.L. en concepto de servicio técnico especializado brindado vía telefónica."
+                    "Declaro estar de acuerdo con el cobro de una tarifa por parte de PARKE S.R.L. en concepto de servicio técnico especializado brindado vía telefónica.",
                   ],
                   button: "Enviar Consentimiento",
-                  buttonWpp: "LLAMAR AHORA"
-                }
-              }
+                  buttonWpp: "LLAMAR AHORA",
+                },
+              },
             },
             OnsiteTS: {
               title: "SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL",
@@ -406,7 +417,7 @@ i18n
             },
             RegionalTS: {
               title: "SERVICIO TÉCNICO POR ZONA"
-            }
+            },
           },
         },
       },
@@ -542,60 +553,68 @@ i18n
           },
           news: {
             title: "Novidades",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           },
-          technicalService: {  
-            title: "Serviço Técnico",  
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",  
-            navBar: {  
-                sto: "SERVIÇO TÉCNICO ONLINE",  
-                stp: "SERVIÇO TÉCNICO PRESENCIAL",  
-                stpz: "SERVIÇO TÉCNICO REGIONAL"  
-            },  
-            faqs: {  
-                title: "PERGUNTAS FREQUENTES",  
-                questions: {  
-                    question1: "Pergunta 1"  
-                },  
-                answers: {  
-                    answer1: "Resposta 1"  
-                }  
-            },  
-            OnlineTS: {  
-                title: "SOLICITAÇÃO PARA SERVIÇO TÉCNICO ONLINE",  
-                optionMenu: {  
-                    freeTS: "SERVIÇO GRÁTIS",  
-                    paymentTS: "SERVIÇO PAGO"  
-                },  
-                freeTechSup: {  
-                    paragraph1: "O serviço técnico online gratuito consiste em uma chamada de 15 minutos no máximo com um técnico para resolver questões básicas.",  
-                    paragraph2: "Se você tiver várias dúvidas ou achar que sua consulta é de maior complexidade, opte pelo serviço pago acima.",  
-                    checkbox: "Declaro estar de acordo com a cobrança de uma taxa por parte da PARKE S.R.L. caso o tempo da chamada exceda o limite estabelecido (15 minutos).",
-                    button: "LIGAR AGORA"  
-                },  
-                paymentTechSup: {  
-                    title: "FORMULÁRIO DE CONSENTIMENTO DE PAGAMENTO",  
-                    paragraph1: "Ao preencher e enviar este formulário, você concorda em pagar uma taxa por um serviço técnico especializado via telefone.",  
-                    paragraph2: "Ao pressionar o botão Enviar, você terá acesso ao número de telefone do serviço técnico logo abaixo do formulário e",  
-                    paragraph3: "você receberá por email a taxa correspondente pelo serviço prestado.",  
-                    form: {  
-                        formLabel: [  
-                            "Insira seu nome completo:",  
-                            "Insira o nome da empresa:",  
-                            "Insira um número de telefone:",  
-                            "Insira seu endereço de email"  
-                        ],  
-                        formPlaceHolder: [  
-                            "Nome...",  
-                            "Empresa...",  
-                            "Exemplo: +54 9 341 123 4567",  
-                            "exemplo@correo.com",  
-                            "Declaro estar de acordo com a cobrança de uma taxa pela PARKE S.R.L. pelo serviço técnico especializado prestado via telefone."  
-                        ],  
-                        button: "Enviar Consentimento",
-                        buttonWpp: "LIGAR AGORA"  
-                    }  
-                }  
+          technicalService: {
+            title: "Serviço Técnico",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            navBar: {
+              sto: "SERVIÇO TÉCNICO ONLINE",
+              stp: "SERVIÇO TÉCNICO PRESENCIAL",
+              stpz: "SERVIÇO TÉCNICO REGIONAL",
+            },
+            faqs: {
+              title: "PERGUNTAS FREQUENTES",
+              questions: {
+                question1: "Pergunta 1",
+              },
+              answers: {
+                answer1: "Resposta 1",
+              },
+            },
+            OnlineTS: {
+              title: "SOLICITAÇÃO PARA SERVIÇO TÉCNICO ONLINE",
+              optionMenu: {
+                freeTS: "SERVIÇO GRÁTIS",
+                paymentTS: "SERVIÇO PAGO",
+              },
+              freeTechSup: {
+                paragraph1:
+                  "O serviço técnico online gratuito consiste em uma chamada de 15 minutos no máximo com um técnico para resolver questões básicas.",
+                paragraph2:
+                  "Se você tiver várias dúvidas ou achar que sua consulta é de maior complexidade, opte pelo serviço pago acima.",
+                checkbox:
+                  "Declaro estar de acordo com a cobrança de uma taxa por parte da PARKE S.R.L. caso o tempo da chamada exceda o limite estabelecido (15 minutos).",
+                button: "LIGAR AGORA",
+              },
+              paymentTechSup: {
+                title: "FORMULÁRIO DE CONSENTIMENTO DE PAGAMENTO",
+                paragraph1:
+                  "Ao preencher e enviar este formulário, você concorda em pagar uma taxa por um serviço técnico especializado via telefone.",
+                paragraph2:
+                  "Ao pressionar o botão Enviar, você terá acesso ao número de telefone do serviço técnico logo abaixo do formulário e",
+                paragraph3:
+                  "você receberá por email a taxa correspondente pelo serviço prestado.",
+                form: {
+                  formLabel: [
+                    "Insira seu nome completo:",
+                    "Insira o nome da empresa:",
+                    "Insira um número de telefone:",
+                    "Insira seu endereço de email",
+                  ],
+                  formPlaceHolder: [
+                    "Nome...",
+                    "Empresa...",
+                    "Exemplo: +54 9 341 123 4567",
+                    "exemplo@correo.com",
+                    "Declaro estar de acordo com a cobrança de uma taxa pela PARKE S.R.L. pelo serviço técnico especializado prestado via telefone.",
+                  ],
+                  button: "Enviar Consentimento",
+                  buttonWpp: "LIGAR AGORA",
+                },
+              },
             },
             OnsiteTS: {
               title: "SOLICITAÇÃO DE SERVIÇO TÉCNICO PRESENCIAL",
@@ -608,7 +627,7 @@ i18n
             },
             RegionalTS: {
               title: "SERVIÇO TÉCNICO REGIONAL"
-            }  
+            },
           },
         },
       },

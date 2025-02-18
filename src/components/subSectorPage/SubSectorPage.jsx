@@ -3,97 +3,222 @@ import SubSector from "../subSector/SubSector";
 import ClientCarousel from "../clientCarousel/ClientCarousel";
 import { useTranslation } from "react-i18next";
 
-
-
 const subsectorData = {
-  agricultura: {
-    fertilizantes: {
-      image: "/subsector-imgs/fertilizantes.jpg",
-      typeOfSubSector: "Fertilizantes",
-      description: "Lorem ipsum dolor sit amet ",
-      title: "Los mejores fertilizantes", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
+  sectors: {
+    reciclajeYOrganicos: {
+      subsectors: {
+        embolsado: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        embolsadoycompactado: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        compactado: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+      },
     },
-    semillasygranos: {
-      image: "/subsector-imgs/semillasygranos.jpg",
-      typeOfSubSector: "Semillas y Granos",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Las mejores semillas y granos", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
-    },
-    verduras: {
-      image: "/subsector-imgs/verduras.jpg",
-      typeOfSubSector: "Verduras",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Las mejores verduras", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
-    }
-  },
-  alimentosbalanceados: {
-    granulados: {
-    image: "/subsector-imgs/granulados.jpg",
-      typeOfSubSector: "Granulados",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Las mejores granulados", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
-    },
-    polvos:{
-      image: "/subsector-imgs/polvos.jpg",
-      typeOfSubSector: "Polvos",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Las mejores polvos", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
-    },
-    pellets:{
-      image: "/subsector-imgs/pellets.jpg",
-      typeOfSubSector: "Pellets",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Los mejores pellets", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
-    }
-  },
-  mineriayquimica: {
-    polvos:{
-      image: "/subsector-imgs/polvos.jpg",
-      typeOfSubSector: "Polvos",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Las mejores polvos", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
 
+    agricultura: {
+      subsectors: {
+        fertilizantesgranulares: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        fertilizantespolvos: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        semillasgranosyoleaginosas: {
+          image: "/subsector-imgs/semillasygranos.jpg",
+          typeOfSubSector: "Semillas y Granos",
+          description: "Lorem ipsum dolor sit amet",
+          title: "Las mejores semillas y granos",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+      },
     },
-    granulados:{
-      image: "/subsector-imgs/granulados.jpg",
-      typeOfSubSector: "Granulados",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Las mejores granulados", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
+    alimentacionHumana: {
+      subsectors: {
+        polvos: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        irregulares: {
+          image: "/subsector-imgs/fertilizantes.jpg",
+          typeOfSubSector: "Fertilizantes",
+          description: "Lorem ipsum dolor sit amet ",
+          title: "Los mejores fertilizantes",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a consectetur con la plate plate form possibly pulvinar vel metus vel metus in lore mauris vel metus in lorem vit augue vel metus in lorem vitae et lorem vit =================================  asd  jsjsjs aks kssks jgjejrj djfh fjdj jddjdjn jdjdndnifofs  dfs df df df df fs dsf df f sd dsf dfs fds df df dfs df dfsdf",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+      },
     },
-    carbon:{
-      image: "/subsector-imgs/granulados.jpg",
-      typeOfSubSector: "Carbon",
-      description: "Lorem ipsum dolor sit amet",
-      title: "El carbon más renovable", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
+    alimentosBalanceados: {
+      subsectors: {
+        granulados: {
+          image: "/subsector-imgs/granulados.jpg",
+          typeOfSubSector: "Granulados",
+          description: "Lorem ipsum dolor sit amet",
+          title: "Las mejores granulados",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        polvos: {
+          image: "/subsector-imgs/polvos.jpg",
+          typeOfSubSector: "Polvos",
+          description: "Lorem ipsum dolor sit amet",
+          title: "Las mejores polvos",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+      },
     },
-    pellets:{
-      image: "/subsector-imgs/pellets.jpg",
-      typeOfSubSector: "Pellets",
-      description: "Lorem ipsum dolor sit amet",
-      title: "Los mejores pellets", 
-      descriptionText: "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
-      images: ["/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg", "/subsector-imgs/granulados.jpg", "/subsector-imgs/polvos.jpg", "/subsector-imgs/pellets.jpg"]
-
-    }
-    
+    mineriayquimica: {
+      subsectors: {
+        polvos: {
+          image: "/subsector-imgs/polvos.jpg",
+          typeOfSubSector: "Polvos",
+          description: "Lorem ipsum dolor sit amet",
+          title: "Las mejores polvos",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+        granulados: {
+          image: "/subsector-imgs/granulados.jpg",
+          typeOfSubSector: "Granulados",
+          description: "Lorem ipsum dolor sit amet",
+          title: "Las mejores granulados",
+          descriptionText:
+            "Lorem Ipsum is simply dummy text. Lorem Ipsum is simply a",
+          images: [
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/pellets.jpg",
+            "/subsector-imgs/granulados.jpg",
+            "/subsector-imgs/polvos.jpg",
+            "/subsector-imgs/pellets.jpg",
+          ],
+        },
+      },
+    },
   },
 };
 
@@ -101,10 +226,12 @@ const SubSectorPage = () => {
   const { subsectorName } = useParams();
   const { t } = useTranslation();
 
-  // Eliminar los espacios para coincidir con las claves del objeto
   const formattedSubsectorName = subsectorName
-    .replace(/\s+/g, "")
-    .toLowerCase();
+    .replace(/\s+/g, "") // Elimina espacios
+    .replace(/-/g, ""); // Elimina guiones
+
+  console.log("Nombre del subsector desde la URL:", subsectorName);
+  console.log("Nombre del subsector formateado:", formattedSubsectorName);
 
   let foundImage = "/images/default.jpg";
   let description = "";
@@ -112,13 +239,15 @@ const SubSectorPage = () => {
   let descriptionText = "";
   let images = [];
 
-  for (const category in subsectorData) {
-    if (subsectorData[category][formattedSubsectorName]) {
-      description = subsectorData[category][formattedSubsectorName].description;
-      foundImage = subsectorData[category][formattedSubsectorName].image;
-      title = subsectorData[category][formattedSubsectorName].title;
-      descriptionText = subsectorData[category][formattedSubsectorName].descriptionText;
-      images = subsectorData[category][formattedSubsectorName].images;
+  for (const category in subsectorData.sectors) {
+    if (subsectorData.sectors[category].subsectors[formattedSubsectorName]) {
+      const subsector =
+        subsectorData.sectors[category].subsectors[formattedSubsectorName];
+      description = subsector.description;
+      foundImage = subsector.image;
+      title = subsector.title;
+      descriptionText = subsector.descriptionText;
+      images = subsector.images;
       console.log("Imagen encontrada:", foundImage); // Mostrar la imagen encontrada
       break;
     }
@@ -126,16 +255,16 @@ const SubSectorPage = () => {
 
   return (
     <>
-    <SubSector
-      image={foundImage}
-      typeOfSubSector={subsectorName.toUpperCase()}
-      description={description}
-      title={title}
-      descriptionText={descriptionText}
-      images={images}
-    />
-    <ClientCarousel/>
-    <div className="w-full bg-gray-100 p-4 flex justify-center items-center h-30">
+      <SubSector
+        image={foundImage}
+        typeOfSubSector={subsectorName.toUpperCase()}
+        description={description}
+        title={title}
+        descriptionText={descriptionText}
+        images={images}
+      />
+      <ClientCarousel />
+      <div className="w-full bg-gray-100 p-4 flex justify-center items-center h-30">
         <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
           {/* Contenido de texto */}
           <div className="flex-1 text-center md:text-left">

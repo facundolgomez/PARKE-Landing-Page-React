@@ -192,7 +192,19 @@ i18n
                         buttonWpp: "CALL NOW"  
                     }  
                 }  
-            }  
+            },
+            OnsiteTS: {
+              title: "REQUEST FOR ONSITE TECHNICAL SERVICE",
+              paragraph1: "Please fill out the following form with your contact details to request an onsite technical service",
+              paragraph2: "and we will contact you shortly to schedule a visit.",
+              form: {
+                title: "ONSITE TECHNICAL SERVICE REQUEST FORM",
+                button: "Submit request"
+              }
+            },
+            RegionalTS: {
+              title: "REGIONAL TECHNICAL SERVICE"
+            },
           }, 
         },
       },
@@ -382,6 +394,18 @@ i18n
                   buttonWpp: "LLAMAR AHORA"
                 }
               }
+            },
+            OnsiteTS: {
+              title: "SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL",
+              paragraph1: "Por favor, complete el siguiente formulario con sus datos de contacto para solicitar un servicio técnico presencial",
+              paragraph2: "y nos contactaremos a la brevedad para coordinar una visita.",
+              form: {
+                title: "FORMULARIO DE SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL",
+                button: "Enviar solicitud"
+              }
+            },
+            RegionalTS: {
+              title: "SERVICIO TÉCNICO POR ZONA"
             }
           },
         },
@@ -572,6 +596,18 @@ i18n
                         buttonWpp: "LIGAR AGORA"  
                     }  
                 }  
+            },
+            OnsiteTS: {
+              title: "SOLICITAÇÃO DE SERVIÇO TÉCNICO PRESENCIAL",
+              paragraph1: "Por favor, preencha o formulário abaixo com seus dados de contato para solicitar um serviço técnico presencial",
+              paragraph2: "e entraremos em contato em breve para agendar uma visita.",
+              form: {
+                title: "FORMULÁRIO DE SOLICITAÇÃO DE SERVIÇO TÉCNICO PRESENCIAL",
+                button: "Enviar solicitação"
+              }
+            },
+            RegionalTS: {
+              title: "SERVIÇO TÉCNICO REGIONAL"
             }  
           },
         },

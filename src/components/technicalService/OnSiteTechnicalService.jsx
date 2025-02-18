@@ -17,21 +17,21 @@ const OnSiteTechnicalService = () => {
             <div className="py-20 bg-sky-600 text-white">
                 <div className="flex flex-column justify-center text-center">
                     <h3 className="text-3xl font-bold">
-                        SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL
+                    {t("technicalService.OnsiteTS.title")}
                     </h3>
 
                     <p className="font-bold pt-5">
-                        Por favor, complete el siguiente formulario con sus datos de contacto para solicitar un servicio técnico presencial
+                    {t("technicalService.OnsiteTS.paragraph1")}
                     </p>
                     <p className="font-bold pb-5">
-                        y nos contactaremos a la brevedad para coordinar una visita.
+                    {t("technicalService.OnsiteTS.paragraph2")}
                     </p>
                 </div>
                 <div className="w-full sm:max-w-2xl lg:max-w-4xl mx-auto">
                     <Card className="flex justify-center flex-col">
                         <Card.Header className="flex justify-center text-center flex-col">
                         <h3 className="text-xl font-bold">
-                            FORMULARIO DE SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL
+                        {t("technicalService.OnsiteTS.form.title")}
                         </h3>
                         </Card.Header>
                         <Card.Body>
@@ -88,7 +88,7 @@ const OnSiteTechnicalService = () => {
                                     type="submit"
                                     disabled={!captchaValidated}
                                 >
-                                    Enviar solicitud
+                                    {t("technicalService.OnsiteTS.form.button")}
                                 </Button>
                             </div>
                         </Form>

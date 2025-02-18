@@ -1,5 +1,11 @@
 export const solutionsBySectors = {
-  agricultura: ["FERTILIZANTES", "SEMILLAS Y GRANOS", "VERDURAS"],
-  alimentosbalanceados: ["GRANULADOS", "POLVOS", "PELLETS"],
-  mineríayquímica: ["POLVOS", "GRANULADOS", "CARBON", "PELLETS"],
+  reciclajeyorganicos: ["EMBOLSADO", "COMPACTADO", "EMBOLSADO Y COMPACTADO"],
+  agricultura: [
+    "FERTILIZANTES GRANULARES",
+    "FERTILIZANTES POLVOS",
+    "SEMILLAS GRANOS Y OLEAGINOSAS",
+  ],
+  alimentacionhumana: ["POLVOS", "IRREGULARES"],
+  alimentosbalanceados: ["GRANULADOS", "POLVOS"],
+  mineríayquímica: ["POLVOS", "GRANULADOS"], // Sin tilde
 };

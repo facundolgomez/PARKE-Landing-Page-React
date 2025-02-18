@@ -25,6 +25,8 @@ const Dashboard = () => {
     { image: "/img/sector1.jpg" },
     { image: "/img/sector2.jpg" },
     { image: "/img/sector3.jpg" },
+    { image: "/img/sector5.jpg" },
+    { image: "/img/sector4.jpg" },
   ];
 
   useEffect(() => {
@@ -220,7 +222,7 @@ const Dashboard = () => {
         {/* Condicionalmente renderiza los grids según el estado */}
 
         {activeTab === "sectores" ? (
-          <div className="grid grid-cols-1 gap-2 h-auto p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2 h-auto p-10 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
             {sectors.map((sector, index) => (
               <SectorCard
                 key={index}

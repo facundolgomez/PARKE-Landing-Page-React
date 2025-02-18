@@ -21,7 +21,7 @@ const RegionalTechnicalService = () => {
     return(
         <>
             <div className="flex justify-center flex-col py-10 px-4 w-full">  
-  <h3 className="text-3xl font-bold text-center pb-5">SERVICIO TÉCNICO POR ZONA</h3>  
+  <h3 className="text-3xl font-bold text-center pb-5">{t("technicalService.RegionalTS.title")}</h3>  
   <div className="w-full max-w-4xl mx-auto"> {/* Contenedor con ancho máximo y centrado */}
     {regions.map((region, index) => (  
       <Card key={index} className="flex justify-center text-center border-x-transparent rounded-none w-full">  

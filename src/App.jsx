@@ -13,6 +13,7 @@ import Protected from "./components/protected/Protected";
 import { useState, useEffect } from "react";
 import SubSectorPage from "./components/subSectorPage/SubSectorPage";
 import TechnicalService from "./components/technicalService/TechnicalService";
+import SolutionsByMachineTypePage from "./components/solutionsByMachineTypePage/SolutionsByMachineTypePage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
@@ -40,10 +41,14 @@ function App() {
         { path: "/news", element: <News /> },
         { path: "/contact", element: <Contact /> },
         { path: "/company", element: <CompanyInfo /> },
-        { path: "/technicalService", element: <TechnicalService/> },
+        { path: "/technicalService", element: <TechnicalService /> },
         {
           path: "/subsector/:subsectorName",
           element: <SubSectorPage />,
+        },
+        {
+          path: "/machines/:machine/:type",
+          element: <SolutionsByMachineTypePage />,
         },
         {
           path: "/portalCliente",

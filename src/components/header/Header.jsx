@@ -10,7 +10,8 @@ const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [timer, setTimer] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para pantallas de teléfono
+  const [servicesMobileMenuOpen, setServicesMobileMenuOpen] = useState(false); // Estado para el menú de SERVICIOS
   const { user } = useContext(AuthenticationContext);
   const [menuServicesOpen, setMenuServicesOpen] = useState(false);
   const { t } = useTranslation();
@@ -102,6 +103,10 @@ const Header = () => {
   };
   const MobileMenuHandler = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const toggleServicesMobileMenu = () => {
+    setServicesMobileMenuOpen(!servicesMobileMenuOpen); // Alternar la visibilidad del menú
   };
 
   return (
@@ -288,36 +293,59 @@ const Header = () => {
             {mobileMenuOpen && (
               <div className="absolute top-16 left-0 w-full bg-white shadow-lg z-40 flex flex-col p-4">
                 <div className="flex flex-col p-4">
+
                   <button
                     onClick={solutionsHandler}
                     className="py-2 text-sky-600 bg-white hover:bg-sky-100"
                   >
                     SOLUCIONES
                   </button>
+
                   <button
                     onClick={newsHandler}
                     className="py-2 text-sky-600 bg-white hover:bg-sky-100"
                   >
                     NOVEDADES
                   </button>
+
                   <button
                     onClick={companyHandler}
                     className="py-2 text-sky-600 bg-white hover:bg-sky-100"
                   >
                     LA EMPRESA
                   </button>
+
                   <button
                     onClick={contactHandler}
                     className="py-2 text-sky-600 bg-white hover:bg-sky-100"
                   >
                     CONTACTO
                   </button>
+
                   <button
-                    onClick={clientHandler}
+                    onClick={toggleServicesMobileMenu}
                     className="py-2 text-sky-600 bg-white hover:bg-sky-100"
                   >
                     SERVICIOS
                   </button>
+                  {/* Menú desplegable de SERVICIOS */}
+                  {servicesMobileMenuOpen && (
+                    <div className="pl-4">
+                      <button
+                        onClick={clientHandler}
+                        className="py-2 text-sky-600 bg-white hover:bg-sky-100 w-full text-left"
+                      >
+                        Portal Clientes
+                      </button>
+                      <button
+                        onClick={() => navigate("/technicalService")}
+                        className="py-2 text-sky-600 bg-white hover:bg-sky-100 w-full text-left"
+                      >
+                        Servicio Técnico
+                      </button>
+                    </div>
+                  )}
+
 
                   <button className="bg-sky-600 text-white rounded-full py-2 px-4 mt-2">
                     COTIZÁ GRATIS

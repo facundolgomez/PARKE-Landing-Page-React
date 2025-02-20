@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import SubSector from "../subSector/SubSector";
-import ClientCarousel from "../clientCarousel/ClientCarousel";
 import { useTranslation } from "react-i18next";
+import ClientCarouselBySector from "../clientCarousel/ClientCarouselBySector";
 
 const subsectorData = {
   sectors: {
@@ -22,6 +22,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/aca.jpg",
+            "../../../public/img/logos-clientes/adeco-agro.jpg",
+            "../../../public/img/logos-clientes/afa.jpg",
+            "../../../public/img/logos-clientes/afb.jpg",
+            "../../../public/img/logos-clientes/agd.png",
+            "../../../public/img/logos-clientes/aimar.jpg",
+            "../../../public/img/logos-clientes/algodonera-avellaneda.jpg"
+          ],
         },
         embolsadoycompactado: {
           image: "/subsector-imgs/fertilizantes.jpg",
@@ -38,6 +47,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/alimental.jpg",
+            "../../../public/img/logos-clientes/aniceto-gomez.jpg",
+            "../../../public/img/logos-clientes/armada.jpg",
+            "../../../public/img/logos-clientes/azul-jacaranda.jpg",
+            "../../../public/img/logos-clientes/berandebi.png",
+            "../../../public/img/logos-clientes/bruning.png",
+            "../../../public/img/logos-clientes/bunge.png"
+          ],
         },
         compactado: {
           image: "/subsector-imgs/fertilizantes.jpg",
@@ -53,6 +71,15 @@ const subsectorData = {
             "/subsector-imgs/granulados.jpg",
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
+          ],
+          clients: [
+            "../../../public/img/logos-clientes/combusnort.png",
+            "../../../public/img/logos-clientes/conecar.jpg",
+            "../../../public/img/logos-clientes/coop-mp.jpg",
+            "../../../public/img/logos-clientes/coop-posse.jpg",
+            "../../../public/img/logos-clientes/coopar.jpg",
+            "../../../public/img/logos-clientes/cotagro.png",
+            "../../../public/img/logos-clientes/danes.jpg"
           ],
         },
       },
@@ -75,6 +102,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/dawi.jpg",
+            "../../../public/img/logos-clientes/dekalb.jpg",
+            "../../../public/img/logos-clientes/engormax.jpg",
+            "../../../public/img/logos-clientes/gea.png",
+            "../../../public/img/logos-clientes/generamas.jpg",
+            "../../../public/img/logos-clientes/grupo-cavigliasso.jpg",
+            "../../../public/img/logos-clientes/hoffmann.png"
+          ],
         },
         fertilizantespolvos: {
           image: "/subsector-imgs/fertilizantes.jpg",
@@ -91,6 +127,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/huruma.jpg",
+            "../../../public/img/logos-clientes/jabonera-cda-rosquin.jpg",
+            "../../../public/img/logos-clientes/jarama.png",
+            "../../../public/img/logos-clientes/jose-cartellone.jpg",
+            "../../../public/img/logos-clientes/la-aurora.jpg",
+            "../../../public/img/logos-clientes/la-riojana.jpg",
+            "../../../public/img/logos-clientes/laganadera-ramirez.png"
+          ],
         },
         semillasgranosyoleaginosas: {
           image: "/subsector-imgs/semillasygranos.jpg",
@@ -106,6 +151,15 @@ const subsectorData = {
             "/subsector-imgs/granulados.jpg",
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
+          ],
+          clients: [
+            "../../../public/img/logos-clientes/lar.png",
+            "../../../public/img/logos-clientes/latour.jpg",
+            "../../../public/img/logos-clientes/lawter.png",
+            "../../../public/img/logos-clientes/lc.png",
+            "../../../public/img/logos-clientes/lisal.jpg",
+            "../../../public/img/logos-clientes/lobar.jpg",
+            "../../../public/img/logos-clientes/lorenzatti.jpg"
           ],
         },
       },
@@ -127,6 +181,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/mafisa.jpg",
+            "../../../public/img/logos-clientes/mani-king.png",
+            "../../../public/img/logos-clientes/maniagro.jpg",
+            "../../../public/img/logos-clientes/manisel.png",
+            "../../../public/img/logos-clientes/mbs.jpg",
+            "../../../public/img/logos-clientes/molcasa.png",
+            "../../../public/img/logos-clientes/molino-cañuelas.jpg"
+          ],
         },
         irregulares: {
           image: "/subsector-imgs/fertilizantes.jpg",
@@ -143,6 +206,14 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/molinos-ala.jpg",
+            "../../../public/img/logos-clientes/monsanto.jpg",
+            "../../../public/img/logos-clientes/navas.jpg",
+            "../../../public/img/logos-clientes/nuseed.png",
+            "../../../public/img/logos-clientes/nutrifrost.jpg",
+            "../../../public/img/logos-clientes/nutriser.jpg",
+            "../../../public/img/logos-clientes/olam.png"],
         },
       },
     },
@@ -163,6 +234,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/olega.jpg",
+            "../../../public/img/logos-clientes/pdm.jpg",
+            "../../../public/img/logos-clientes/pelayo.jpg",
+            "../../../public/img/logos-clientes/pioneer.png",
+            "../../../public/img/logos-clientes/premin.png",
+            "../../../public/img/logos-clientes/prochem.jpg",
+            "../../../public/img/logos-clientes/prodeman.jpg"
+          ],
         },
         polvos: {
           image: "/subsector-imgs/polvos.jpg",
@@ -178,6 +258,15 @@ const subsectorData = {
             "/subsector-imgs/granulados.jpg",
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
+          ],
+          clients: [
+            "../../../public/img/logos-clientes/produsem.png",
+            "../../../public/img/logos-clientes/rexam.png",
+            "../../../public/img/logos-clientes/ricedal.jpg",
+            "../../../public/img/logos-clientes/rotoplas.png",
+            "../../../public/img/logos-clientes/rovial.png",
+            "../../../public/img/logos-clientes/satus ager.png",
+            "../../../public/img/logos-clientes/seedar.png"
           ],
         },
       },
@@ -199,6 +288,15 @@ const subsectorData = {
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
           ],
+          clients: [
+            "../../../public/img/logos-clientes/sepor.jpg",
+            "../../../public/img/logos-clientes/servagrop.png",
+            "../../../public/img/logos-clientes/shea-white.png",
+            "../../../public/img/logos-clientes/sl-cereales.jpg",
+            "../../../public/img/logos-clientes/snaider.jpg",
+            "../../../public/img/logos-clientes/spraytec.png",
+            "../../../public/img/logos-clientes/sps.png"
+          ],
         },
         granulados: {
           image: "/subsector-imgs/granulados.jpg",
@@ -215,6 +313,14 @@ const subsectorData = {
             "/subsector-imgs/granulados.jpg",
             "/subsector-imgs/polvos.jpg",
             "/subsector-imgs/pellets.jpg",
+          ],
+          clients: [
+            "../../../public/img/logos-clientes/syngenta.png",
+            "../../../public/img/logos-clientes/systel.jpg",
+            "../../../public/img/logos-clientes/tecnoseeds.png",
+            "../../../public/img/logos-clientes/teknal.jpg",
+            "../../../public/img/logos-clientes/vicentin.jpg",
+            "../../../public/img/logos-clientes/yara.png"
           ],
         },
       },
@@ -238,6 +344,7 @@ const SubSectorPage = () => {
   let title = "";
   let descriptionText = "";
   let images = [];
+  let clients = [];
 
   for (const category in subsectorData.sectors) {
     if (subsectorData.sectors[category].subsectors[formattedSubsectorName]) {
@@ -248,6 +355,8 @@ const SubSectorPage = () => {
       title = subsector.title;
       descriptionText = subsector.descriptionText;
       images = subsector.images;
+      clients = subsector.clients;
+      
       console.log("Imagen encontrada:", foundImage); // Mostrar la imagen encontrada
       break;
     }
@@ -263,7 +372,7 @@ const SubSectorPage = () => {
         descriptionText={descriptionText}
         images={images}
       />
-      <ClientCarousel />
+      <ClientCarouselBySector clients={clients}/>
       <div className="w-full bg-gray-100 p-4 flex justify-center items-center h-30">
         <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
           {/* Contenido de texto */}

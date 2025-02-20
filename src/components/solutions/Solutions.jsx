@@ -7,9 +7,9 @@ const Solutions = () => {
   const [activeTab, setActiveTab] = useState("sectores");
 
   const imgSectors = [
-    { image: "/img/sector1.jpg" },
-    { image: "/img/sector2.jpg" },
-    { image: "/img/sector3.jpg" },
+    { image: "../../../public/img/sector1.jpg" },
+    { image: "../../../public/img/sector2.jpg" },
+    { image: "../../../public/img/sector3.jpg" },
   ];
   const sectors = t(
     "home.customSolutions.typeOfSolution.solutionsBySectors.items",

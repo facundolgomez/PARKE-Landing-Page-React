@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 
-const ClientCarousel = (clients) => {
+const ClientCarouselBySector = ({ clients }) => {
   const { t } = useTranslation();
 
   const swiperRef = useRef(null);
@@ -77,4 +77,4 @@ const ClientCarousel = (clients) => {
   );
 };
 
-export default ClientCarousel;
+export default ClientCarouselBySector;

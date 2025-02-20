@@ -151,11 +151,12 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
+      <div className="flex-grow flex items-center justify-center p-4">
       <form
         onSubmit={submitLogin}
-        className="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 bg-white shadow-lg rounded-lg w-full max-w-sm"
+        className="p-8 mt-20 bg-white shadow-lg rounded-lg w-full max-w-sm"
       >
         <h2 className="text-2xl font-semibold text-center mb-6">
           Iniciar sesión
@@ -163,8 +164,9 @@ const Login = ({ onLogin }) => {
 
         <label
           htmlFor="Toggle3"
-          className="rounded-md cursor-pointer text-center"
+          className="rounded-md cursor-pointer text-center scale-75 sm:scale-100"
         >
+          <div className="flex flex-row justify-center">
           <input id="Toggle3" type="checkbox" className="hidden peer" />
           <span
             className={`px-4 rounded-s-full transition-colors duration-300 ease-in-out ${
@@ -194,7 +196,8 @@ const Login = ({ onLogin }) => {
               Admin
             </button>
           </span>
-          <p className="text-x1 text-sky-600 font-bold mb-3">
+          </div>
+          <p className="text-x1 text-sky-600 font-bold mb-3 mt-2">
             A continuación, ingrese sus credenciales de usuario{" "}
             {selectedOption === "Admin" ? "Administrador" : "Cliente"}
           </p>
@@ -248,6 +251,7 @@ const Login = ({ onLogin }) => {
           Iniciar sesión
         </button>
       </form>
+      </div>
     </div>
   );
 };

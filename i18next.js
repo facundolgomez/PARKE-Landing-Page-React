@@ -140,6 +140,9 @@ i18n
             title: "News",
             paragraph:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            loading: "LOADING NEWS",
+            emptyNews: "NO NEWS AT THE MOMENT"
+            
           },
           technicalService: {  
             title: "Technical Service",  
@@ -343,8 +346,9 @@ i18n
           },
           news: {
             title: "Novedades",
-            paragraph:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            loading: "CARGANDO NOVEDADES",
+            emptyNews: "NO HAY NOVEDADES EN ESTE MOMENTO"
           },
           technicalService: {
             title: "Servicio Técnico",
@@ -555,6 +559,9 @@ i18n
             title: "Novidades",
             paragraph:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            loading: "CARREGANDO NOVIDADES",
+            emptyNews: "NÃO HÁ NOVIDADES NO MOMENTO"
+            
           },
           technicalService: {
             title: "Serviço Técnico",

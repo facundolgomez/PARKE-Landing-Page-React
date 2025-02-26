@@ -1,15 +1,20 @@
 import { useParams } from "react-router-dom";
-import UpScreen from "../upscreen/UpScreen";
+import MachineModel from "../machineModel/MachineModel";
+import Upscreen from "../upscreen/Upscreen";
 import { solutionsByMachineType } from "../data/solutionsByMachineType/SolutionsByMachineType"; // Asegúrate de importar correctamente
 
 const SolutionsByMachineTypePage = () => {
-  const { machine, type } = useParams(); // Obtiene los parámetros desde la URL 
+  const { machine, type } = useParams(); // Obtiene los parámetros desde la URL
 
   // Validamos si existen los datos en el JSON
   const machineData = solutionsByMachineType[machine]?.[type];
 
   if (!machineData) {
-    return <h1 className="text-center text-red-600 text-xl">No se encontró información</h1>;
+    return (
+      <h1 className="text-center text-red-600 text-xl">
+        No se encontró información
+      </h1>
+    );
   }
 
   return (
@@ -23,29 +28,30 @@ const SolutionsByMachineTypePage = () => {
       </div>
 
       {/* Muestra todos los modelos disponibles para este tipo de máquina */}
+      <Upscreen
+        pathImage={"/img/imagen1.jpg"}
+        title="Choose your Machine Model"
+        paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      />
       <div className="p-5 font-sans flex flex-col space-y-8">
-        {Object.keys(machineData).map((modelKey, index) => {
-          const modelData = machineData[modelKey];
-          return (
-            <div key={index}>
-              {/* Componente UpScreen para mostrar cada modelo */}
-              <UpScreen
-                pathImage={modelData.image}
-                title={modelData.title}
-                paragraph={modelData.description}
-              />
-              
-              {/* Mostrar título y descripción del modelo */}
-              <div className="p-5 font-sans flex flex-col">
-                <h2 className="text-xl font-bold">{modelKey}</h2>
-                <p>{modelData.description}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+        {Object.keys(machineData)
+          .filter((key) => key !== "titles")
+          .map((modelKey, index) => {
+            const modelData = machineData[modelKey];
+            return (
+              <div key={index}>
+                {/* Componente MachineModel para mostrar cada modelo */}
+                <MachineModel
+                  image={modelData.image}
+                  title={modelData.title}
+                  description={modelData.description}
+                />
 
-      
+                {/* Mostrar título y descripción del modelo */}
+              </div>
+            );
+          })}
+      </div>
     </>
   );
 };

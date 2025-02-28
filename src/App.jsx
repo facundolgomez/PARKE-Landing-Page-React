@@ -8,7 +8,7 @@ import CompanyInfo from "./components/companyInfo/CompanyInfo";
 import Login from "./components/login/Login";
 import PageNotFound from "./components/errors/pageNotFound/PageNotFound";
 import News from "./components/news/News";
-import PortalClient from "./components/portalClient/PortalClient";
+import PortalClientMain from "./components/portalClient/PortalClientMain";
 import Protected from "./components/protected/Protected";
 import { useState, useEffect } from "react";
 import SubSectorPage from "./components/subSectorPage/SubSectorPage";
@@ -57,7 +57,7 @@ function App() {
             {
               path: "/portalCliente",
               element: (
-                <PortalClient
+                <PortalClientMain
                   isLoggedIn={isLoggedIn}
                   setIsLoggedIn={setIsLoggedIn}
                 />

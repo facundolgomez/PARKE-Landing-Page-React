@@ -1,26 +1,18 @@
-import { AuthenticationContext } from "../services/AuthenticationContext";
-import { useContext } from "react";
 
-const PortalClient = ({ isLoggedIn, setIsLoggedIn }) => {
 
-    const { handleLogout } = useContext(AuthenticationContext);
+const PortalClient = () => {
+    return (
 
-    const logOutHandler = () => {
+        <div>
+            <h1>Portal Clientes para clientes</h1>
+            <h1>Portal Clientes para clientes</h1>
+            <h1>Portal Clientes para clientes</h1>
+            <h1>Portal Clientes para clientes</h1>
+            <h1>Portal Clientes para clientes</h1>
 
-        handleLogout(); // Borra los datos del localStorage
-        setIsLoggedIn(!isLoggedIn); // Cambia el estado de isLoggedIn, lo cual redirecciona al login
-    }
-
-    return(
-        <>
-            <h1>Portal de Clientes</h1>
-            <h1>Portal de Clientes</h1>
-            <h1>Portal de Clientes</h1>
-            <h1>Portal de Clientes</h1>
-            <h1>Portal de Clientes</h1>
-           <button onClick={logOutHandler} className="bg-sky-600 text-white border-hidden hover:bg-sky-500">Cerrar sesión</button>
-        </>
+        </div>
     )
-}
+    
 
+}
 export default PortalClient

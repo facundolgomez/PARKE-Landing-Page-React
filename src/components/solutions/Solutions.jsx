@@ -10,6 +10,8 @@ const Solutions = () => {
     { image: "../../../public/img/sector1.jpg" },
     { image: "../../../public/img/sector2.jpg" },
     { image: "../../../public/img/sector3.jpg" },
+    { image: "../../../public/img/sector4.jpg" },
+    { image: "../../../public/img/sector5.jpg" },
   ];
   const sectors = t(
     "home.customSolutions.typeOfSolution.solutionsBySectors.items",

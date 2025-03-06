@@ -2,6 +2,11 @@ export const solutionsByMachineType = {
   embolsadoras: {
     bocaAbierta: {
       titles: ["EP5BA", "EP5BTC", "EP5BSF", "EPB", "EPN", "EEI"],
+      title: "Máquinas de Boca Abierta",
+      characteristics: [
+        "Diseñadas para empaquetar productos de manera rápida y precisa.",
+        "Ideal para procesos industriales de alta demanda, garantizando velocidad y calidad.",
+      ],
       EP5BA: {
         title: "EP5BA",
         image: "/img/maquina1.jpg",
@@ -41,6 +46,11 @@ export const solutionsByMachineType = {
     },
     valvuladas: {
       titles: ["LBVSF", "LBVI"],
+      title: "Máquinas de Bolsas con Válvula",
+      characteristics: [
+        "Especializadas en el sellado de bolsas con válvula para evacuación de aire.",
+        "Garantizan un sellado hermético y de alta calidad en procesos industriales.",
+      ],
       LBVSF: {
         title: "LBV SF",
         image: "/img/maquina1.jpg",
@@ -56,6 +66,11 @@ export const solutionsByMachineType = {
     },
     bigBag: {
       titles: ["EPBBB", "EPNBB", "EP5BBB"],
+      title: "Máquinas para Big Bags",
+      characteristics: [
+        "Diseñadas para el sellado de grandes bolsas tipo big bag.",
+        "Ideales para industrias que manejan grandes volúmenes de productos.",
+      ],
       EPBBB: {
         title: "EPB-BB",
         image: "/img/maquina1.jpg",
@@ -77,6 +92,11 @@ export const solutionsByMachineType = {
     },
     pequeñasBolsas: {
       titles: ["M1", "M2"],
+      title: "Máquinas para Pequeñas Bolsas",
+      characteristics: [
+        "Compactas y eficientes, diseñadas para el sellado de bolsas pequeñas.",
+        "Perfectas para procesos industriales de bajo a medio volumen.",
+      ],
       M1: {
         title: "M1",
         image: "/img/maquina1.jpg",
@@ -94,6 +114,11 @@ export const solutionsByMachineType = {
   costuraYSellado: {
     cosedoras: {
       titles: ["hasta8xminuto", "hasta16xminuto"],
+      title: "Máquinas Cosedoras",
+      characteristics: [
+        "Diseñadas para la costura de bolsas en procesos industriales.",
+        "Ofrecen velocidad y precisión en el sellado de materiales.",
+      ],
       hasta8xminuto: {
         title: "Hasta 8 bolsas x minuto",
         image: "/img/maquina1.jpg",
@@ -109,6 +134,11 @@ export const solutionsByMachineType = {
     },
     selladoras: {
       titles: ["termicaImpulso", "termicaContinua"],
+      title: "Máquinas Selladoras",
+      characteristics: [
+        "Especializadas en el sellado térmico de materiales.",
+        "Garantizan un sellado fuerte y duradero en procesos industriales.",
+      ],
       termicaImpulso: {
         title: "TERMICA DE IMPULSO",
         image: "/img/maquina1.jpg",
@@ -124,8 +154,13 @@ export const solutionsByMachineType = {
     },
   },
   transportadores: {
-    titles: ["bolsasYCajas", "pelletsYBigBag", "granel", "accesorios"],
     bolsasYCajas: {
+      titles: ["TCPF", "TCPE"],
+      title: "Bolsas y Cajas de Alta Resistencia",
+      characteristics: [
+        "Diseñadas para ofrecer una solución segura y confiable en el almacenamiento y transporte de productos.",
+        "Resistentes y fáciles de manejar, ideales para el embalaje de artículos frágiles y pesados.",
+      ],
       TCPF: {
         title: "TCPF",
         image: "/img/maquina1.jpg",
@@ -140,6 +175,12 @@ export const solutionsByMachineType = {
       },
     },
     pelletsYBigBag: {
+      titles: ["TCP", "TPR", "TBB"],
+      title: "Pellets y Big Bag para Almacenaje y Transporte",
+      characteristics: [
+        "Perfectos para el almacenamiento y transporte de grandes volúmenes de material.",
+        "Diseñados para ser robustos y fáciles de manejar en procesos industriales.",
+      ],
       TCP: {
         title: "TCP",
         image: "/img/maquina1.jpg",
@@ -160,6 +201,12 @@ export const solutionsByMachineType = {
       },
     },
     granel: {
+      titles: ["TCG"],
+      title: "Transporte y Almacenaje de Materiales a Granel",
+      characteristics: [
+        "Ideales para el manejo de materiales a granel en diversos procesos industriales.",
+        "Fáciles de transportar y optimizan el almacenamiento de grandes volúmenes de material.",
+      ],
       TCG: {
         title: "TCG",
         image: "/img/maquina1.jpg",
@@ -168,6 +215,12 @@ export const solutionsByMachineType = {
       },
     },
     accesorios: {
+      titles: ["aplanadordebolsas", "derivadordeBolsasOCajas"],
+      title: "Accesorios para el Manejo de Bolsas",
+      characteristics: [
+        "Facilitan el manejo y sellado de bolsas durante el proceso de empaquetado.",
+        "Optimiza la eficiencia en la producción y reduce el riesgo de errores en el sellado.",
+      ],
       aplanadorDeBolsas: {
         title: "Aplanador de Bolsas",
         image: "/img/maquina1.jpg",
@@ -182,10 +235,14 @@ export const solutionsByMachineType = {
       },
     },
   },
-
   reciclaje: {
-    titles: ["Prensas compactadoras"],
     prensasCompactadoras: {
+      titles: ["PH3", "PH5"],
+      title: "Equipos de Reciclaje",
+      characteristics: [
+        "Diseñados para optimizar el proceso de compactación de residuos.",
+        "Garantizan un alto rendimiento y eficiencia en el manejo de desechos.",
+      ],
       PH_3: {
         title: "PH 3",
         image: "/img/maquina1.jpg",
@@ -202,7 +259,13 @@ export const solutionsByMachineType = {
   },
   acondicionamiento: {
     titles: ["Zarandas", "Desterronadores"],
+
     zarandas: {
+      title: "Equipos de Acondicionamiento",
+      characteristics: [
+        "Diseñados para la clasificación y acondicionamiento de materiales.",
+        "Mejoran la calidad del producto final y optimizan la producción.",
+      ],
       Z3_200: {
         title: "Z3 200",
         image: "/img/maquina1.jpg",
@@ -217,6 +280,11 @@ export const solutionsByMachineType = {
       },
     },
     desterronadores: {
+      title: "Equipos de Acondicionamiento",
+      characteristics: [
+        "Diseñados para la clasificación y acondicionamiento de materiales.",
+        "Mejoran la calidad del producto final y optimizan la producción.",
+      ],
       DST: {
         title: "DST",
         image: "/img/maquina1.jpg",

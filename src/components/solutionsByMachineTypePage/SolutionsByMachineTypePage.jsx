@@ -40,6 +40,21 @@ const SolutionsByMachineTypePage = () => {
         title="Choose your Machine Model"
         paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Título */}
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          {machineData.title}
+        </h2>
+
+        {/* Lista de características */}
+        <ul className="list-disc list-inside text-gray-600">
+          {machineData.characteristics?.map((char, index) => (
+            <li key={index} className="mb-2">
+              {char}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Carrusel centrado y flechas manuales */}
       <div className="flex justify-center p-6">
@@ -88,7 +103,13 @@ const SolutionsByMachineTypePage = () => {
             className="relative"
           >
             {Object.entries(machineData)
-              .filter(([key]) => key !== "titles") // 🔹 Ignora la entrada "titles"
+              .filter(
+                ([key, item]) =>
+                  key !== "title" &&
+                  key !== "characteristics" &&
+                  typeof item === "object" &&
+                  item.image // Verifica que sea un objeto válido con imagen
+              )
               .map(([key, machine], index) => (
                 <SwiperSlide
                   key={index}

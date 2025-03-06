@@ -35,13 +35,18 @@ const MachineCard = ({ machine, data }) => {
       {/* Subtipos de máquinas al hacer hover */}
       {hovered && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-blue-500 bg-opacity-90 p-4 transition-all duration-500 z-20">
-          {Object.keys(data).filter((key) => key !== "titles").map((subMachine, index) => (
-            <SubMachineButton
-              key={index}
-              subMachine={subMachine}
-              onClick={() => handleSubMachineClick(subMachine)}
-            />
-          ))}
+          {Object.keys(data)
+            .filter(
+              (key) =>
+                key !== "titles" && key !== "title" && key !== "characteristics"
+            )
+            .map((subMachine, index) => (
+              <SubMachineButton
+                key={index}
+                subMachine={subMachine}
+                onClick={() => handleSubMachineClick(subMachine)}
+              />
+            ))}
         </div>
       )}
     </div>

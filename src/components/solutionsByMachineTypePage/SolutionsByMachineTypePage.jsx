@@ -11,6 +11,7 @@ const SolutionsByMachineTypePage = () => {
   const [swiperInstance, setSwiperInstance] = useState(null);
 
   // Verificamos si los datos existen
+
   const machineData = solutionsByMachineType[machine]?.[type];
 
   if (!machineData) {
@@ -20,6 +21,8 @@ const SolutionsByMachineTypePage = () => {
       </h1>
     );
   }
+  console.log("MachineData:", machineData);
+  console.log("Entries de MachineData:", Object.entries(machineData));
 
   return (
     <>
@@ -84,27 +87,29 @@ const SolutionsByMachineTypePage = () => {
             }}
             className="relative"
           >
-            {Object.entries(machineData).map(([key, machine], index) => (
-              <SwiperSlide
-                key={index}
-                className="flex flex-col items-center text-center p-6 bg-white shadow-lg rounded-lg"
-              >
-                {/* Contenedor de imagen con centrado */}
-                <div className="relative flex justify-center">
-                  <img
-                    src={machine.image}
-                    alt={machine.title}
-                    className="w-full h-80 object-cover rounded-lg shadow-md"
-                  />
-                </div>
-                <h2 className="mt-4 text-xl font-bold text-gray-800">
-                  {machine.title}
-                </h2>
-                <p className="mt-2 text-md text-gray-600">
-                  {machine.description}
-                </p>
-              </SwiperSlide>
-            ))}
+            {Object.entries(machineData)
+              .filter(([key]) => key !== "titles") // 🔹 Ignora la entrada "titles"
+              .map(([key, machine], index) => (
+                <SwiperSlide
+                  key={index}
+                  className="flex flex-col items-center text-center p-6 bg-white shadow-lg rounded-lg"
+                >
+                  {/* Contenedor de imagen con centrado */}
+                  <div className="relative flex justify-center">
+                    <img
+                      src={machine.image}
+                      alt={machine.title}
+                      className="w-full h-80 object-cover rounded-lg shadow-md"
+                    />
+                  </div>
+                  <h2 className="mt-4 text-xl font-bold text-gray-800">
+                    {machine.title}
+                  </h2>
+                  <p className="mt-2 text-md text-gray-600">
+                    {machine.description}
+                  </p>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>

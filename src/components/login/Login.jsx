@@ -36,6 +36,10 @@ const Login = ({ onLogin }) => {
     setShowErrorLogin(false);
   };
 
+  const registerWindowHandler = () => {
+    navigate("/registrationForm");
+  }
+
   const toggleOption = () => {
     if (selectedOption === "Admin") {
       setSelectedOption("Client");
@@ -250,6 +254,9 @@ const Login = ({ onLogin }) => {
         >
           Iniciar sesión
         </button>
+        <div>
+          ¿Aún no tiene cuenta? Solicítela haciendo <a href="" onClick={registerWindowHandler}>Click aquí</a>.
+        </div>
       </form>
       </div>
     </div>

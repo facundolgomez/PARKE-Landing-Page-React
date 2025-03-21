@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import SubSectorPage from "./components/subSectorPage/SubSectorPage";
 import TechnicalService from "./components/technicalService/TechnicalService";
 import SolutionsByMachineTypePage from "./components/solutionsByMachineTypePage/SolutionsByMachineTypePage";
+import RegistrationForm from "./components/login/RegistrationForm";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
@@ -42,6 +43,7 @@ function App() {
         { path: "/contact", element: <Contact /> },
         { path: "/company", element: <CompanyInfo /> },
         { path: "/technicalService", element: <TechnicalService /> },
+        { path: "/registrationForm", element: <RegistrationForm /> },
         {
           path: "/subsector/:subsectorName",
           element: <SubSectorPage />,

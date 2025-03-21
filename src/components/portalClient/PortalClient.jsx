@@ -1,19 +1,35 @@
-import { useState, useEffect, useContext } from "react";
-import { AuthenticationContext } from "../services/AuthenticationContext";
+import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const PortalClient = () => {
   const [machines, setMachines] = useState([]);
   const [selectedMachine, setSelectedMachine] = useState(null);
-  const { id, token } = useContext(AuthenticationContext);
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
+
+    setToken(localStorage.getItem("user-token"));
+
+    if (token) {
+      try {
+          const decodedToken = jwtDecode(token);
+          setUserId(decodedToken.sub); // Aquí obtienes el ID del usuario
+      } catch (error) {
+          console.error('Error decoding token:', error);
+      }
+    } else {
+      console.error('No token found in localStorage');
+    }
+
     const fetchMachines = async () => {
-      if (!id || !token) {
+
+      if (!userId || !token) {
         console.error("No se ha encontrado el id del usuario o el token");
         return;
       }
       try {
-        const response = await fetch(`https://localhost:7185/api/Client/GetMachinesByClient/${id}`, {
+        const response = await fetch(`https://localhost:7185/api/Client/GetMachinesByClient/${userId}`, {
           method: "GET",
           headers: {
             accept: "*/*",
@@ -34,10 +50,10 @@ const PortalClient = () => {
     };
 
     // Llamada a la función para obtener las máquinas
-    if (id && token) {
+    if (userId && token) {
       fetchMachines();
     }
-  }, [id, token]);
+  }, [userId, token]);
 
   const handleMachineSelect = (machine) => {
     setSelectedMachine(machine);

@@ -23,7 +23,6 @@ const PortalClientMain = ({ isLoggedIn, setIsLoggedIn }) => {
             if (userStored) {
               const userObject = JSON.parse(userStored);
               const userType = userObject.newUser.userType;
-              console.log(userType);
       
               // Establece el rol en el estado
               setRole(userType); // Guarda el rol del usuario

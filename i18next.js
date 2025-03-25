@@ -41,6 +41,8 @@ i18n
                     "Agriculture",
                     "Balanced Feed",
                     "Mining and Chemicals",
+                    "Human nutrition",
+                    "Recycling and organics",
                   ],
                 },
                 solutionsByMachineType: {
@@ -141,75 +143,83 @@ i18n
             paragraph:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             loading: "LOADING NEWS",
-            emptyNews: "NO NEWS AT THE MOMENT"
-            
+            emptyNews: "NO NEWS AT THE MOMENT",
           },
-          technicalService: {  
-            title: "Technical Service",  
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",  
-            navBar: {  
-                sto: "ONLINE TECHNICAL SERVICE",  
-                stp: "ON-SITE TECHNICAL SERVICE",  
-                stpz: "REGIONAL TECHNICAL SERVICE"  
-            },  
-            faqs: {  
-                title: "FREQUENTLY ASKED QUESTIONS",  
-                questions: {  
-                    question1: "Question 1"  
-                },  
-                answers: {  
-                    answer1: "Answer 1"  
-                }  
-            },  
-            OnlineTS: {  
-                title: "REQUEST FOR ONLINE TECHNICAL SERVICE",  
-                optionMenu: {  
-                  freeTS: "FREE SERVICE",  
-                  paymentTS: "PAID SERVICE"  
-                },  
-                freeTechSup: {  
-                    paragraph1: "The free online technical service consists of a maximum 15-minute call with a technician to resolve basic issues.",  
-                    paragraph2: "If you have various inquiries or believe your query is of greater complexity, please opt for the paid service above.",
-                    checkbox: "I declare that I agree to the charging of a fee by PARKE S.R.L. in the event that the call duration exceeds the established limit (15 minutes).",  
-                    button: "CALL NOW"  
-                },  
-                paymentTechSup: {  
-                    title: "PAYMENT CONSENT FORM",  
-                    paragraph1: "By completing and submitting this form, you agree to pay a fee for specialized technical service via telephone.",  
-                    paragraph2: "By pressing the Submit button, you will gain access to the technical service phone number just below the form and",  
-                    paragraph3: "you will be emailed the corresponding fee for the service provided.",  
-                    form: {  
-                        formLabel: [  
-                            "Enter your full name:",  
-                            "Enter the company name:",  
-                            "Enter a phone number:",  
-                            "Enter your email address"  
-                        ],  
-                        formPlaceHolder: [  
-                            "Name...",  
-                            "Company...",  
-                            "Example: +54 9 341 123 4567",  
-                            "example@email.com",  
-                            "I declare I agree to the charge of a fee by PARKE S.R.L. for specialized technical service rendered via telephone."  
-                        ],  
-                        button: "Submit Consent",
-                        buttonWpp: "CALL NOW"  
-                    }  
-                }  
+          technicalService: {
+            title: "Technical Service",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            navBar: {
+              sto: "ONLINE TECHNICAL SERVICE",
+              stp: "ON-SITE TECHNICAL SERVICE",
+              stpz: "REGIONAL TECHNICAL SERVICE",
+            },
+            faqs: {
+              title: "FREQUENTLY ASKED QUESTIONS",
+              questions: {
+                question1: "Question 1",
+              },
+              answers: {
+                answer1: "Answer 1",
+              },
+            },
+            OnlineTS: {
+              title: "REQUEST FOR ONLINE TECHNICAL SERVICE",
+              optionMenu: {
+                freeTS: "FREE SERVICE",
+                paymentTS: "PAID SERVICE",
+              },
+              freeTechSup: {
+                paragraph1:
+                  "The free online technical service consists of a maximum 15-minute call with a technician to resolve basic issues.",
+                paragraph2:
+                  "If you have various inquiries or believe your query is of greater complexity, please opt for the paid service above.",
+                checkbox:
+                  "I declare that I agree to the charging of a fee by PARKE S.R.L. in the event that the call duration exceeds the established limit (15 minutes).",
+                button: "CALL NOW",
+              },
+              paymentTechSup: {
+                title: "PAYMENT CONSENT FORM",
+                paragraph1:
+                  "By completing and submitting this form, you agree to pay a fee for specialized technical service via telephone.",
+                paragraph2:
+                  "By pressing the Submit button, you will gain access to the technical service phone number just below the form and",
+                paragraph3:
+                  "you will be emailed the corresponding fee for the service provided.",
+                form: {
+                  formLabel: [
+                    "Enter your full name:",
+                    "Enter the company name:",
+                    "Enter a phone number:",
+                    "Enter your email address",
+                  ],
+                  formPlaceHolder: [
+                    "Name...",
+                    "Company...",
+                    "Example: +54 9 341 123 4567",
+                    "example@email.com",
+                    "I declare I agree to the charge of a fee by PARKE S.R.L. for specialized technical service rendered via telephone.",
+                  ],
+                  button: "Submit Consent",
+                  buttonWpp: "CALL NOW",
+                },
+              },
             },
             OnsiteTS: {
               title: "REQUEST FOR ONSITE TECHNICAL SERVICE",
-              paragraph1: "Please fill out the following form with your contact details to request an onsite technical service",
-              paragraph2: "and we will contact you shortly to schedule a visit.",
+              paragraph1:
+                "Please fill out the following form with your contact details to request an onsite technical service",
+              paragraph2:
+                "and we will contact you shortly to schedule a visit.",
               form: {
                 title: "ONSITE TECHNICAL SERVICE REQUEST FORM",
-                button: "Submit request"
-              }
+                button: "Submit request",
+              },
             },
             RegionalTS: {
-              title: "REGIONAL TECHNICAL SERVICE"
+              title: "REGIONAL TECHNICAL SERVICE",
             },
-          }, 
+          },
         },
       },
       es: {
@@ -346,9 +356,10 @@ i18n
           },
           news: {
             title: "Novedades",
-            paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            paragraph:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             loading: "CARGANDO NOVEDADES",
-            emptyNews: "NO HAY NOVEDADES EN ESTE MOMENTO"
+            emptyNews: "NO HAY NOVEDADES EN ESTE MOMENTO",
           },
           technicalService: {
             title: "Servicio Técnico",
@@ -412,15 +423,18 @@ i18n
             },
             OnsiteTS: {
               title: "SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL",
-              paragraph1: "Por favor, complete el siguiente formulario con sus datos de contacto para solicitar un servicio técnico presencial",
-              paragraph2: "y nos contactaremos a la brevedad para coordinar una visita.",
+              paragraph1:
+                "Por favor, complete el siguiente formulario con sus datos de contacto para solicitar un servicio técnico presencial",
+              paragraph2:
+                "y nos contactaremos a la brevedad para coordinar una visita.",
               form: {
-                title: "FORMULARIO DE SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL",
-                button: "Enviar solicitud"
-              }
+                title:
+                  "FORMULARIO DE SOLICITUD PARA SERVICIO TÉCNICO PRESENCIAL",
+                button: "Enviar solicitud",
+              },
             },
             RegionalTS: {
-              title: "SERVICIO TÉCNICO POR ZONA"
+              title: "SERVICIO TÉCNICO POR ZONA",
             },
           },
         },
@@ -459,6 +473,8 @@ i18n
                     "Agricultura",
                     "Alimentos balanceados",
                     "Mineração e Química",
+                    "Alimentação humana",
+                    "Reciclagem e orgânicos",
                   ],
                 },
                 solutionsByMachineType: {
@@ -560,8 +576,7 @@ i18n
             paragraph:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             loading: "CARREGANDO NOVIDADES",
-            emptyNews: "NÃO HÁ NOVIDADES NO MOMENTO"
-            
+            emptyNews: "NÃO HÁ NOVIDADES NO MOMENTO",
           },
           technicalService: {
             title: "Serviço Técnico",
@@ -625,15 +640,18 @@ i18n
             },
             OnsiteTS: {
               title: "SOLICITAÇÃO DE SERVIÇO TÉCNICO PRESENCIAL",
-              paragraph1: "Por favor, preencha o formulário abaixo com seus dados de contato para solicitar um serviço técnico presencial",
-              paragraph2: "e entraremos em contato em breve para agendar uma visita.",
+              paragraph1:
+                "Por favor, preencha o formulário abaixo com seus dados de contato para solicitar um serviço técnico presencial",
+              paragraph2:
+                "e entraremos em contato em breve para agendar uma visita.",
               form: {
-                title: "FORMULÁRIO DE SOLICITAÇÃO DE SERVIÇO TÉCNICO PRESENCIAL",
-                button: "Enviar solicitação"
-              }
+                title:
+                  "FORMULÁRIO DE SOLICITAÇÃO DE SERVIÇO TÉCNICO PRESENCIAL",
+                button: "Enviar solicitação",
+              },
             },
             RegionalTS: {
-              title: "SERVIÇO TÉCNICO REGIONAL"
+              title: "SERVIÇO TÉCNICO REGIONAL",
             },
           },
         },

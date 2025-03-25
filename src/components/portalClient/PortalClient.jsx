@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
-const PortalClient = () => {
+const PortalClient = ({ logOut }) => {
   const [machines, setMachines] = useState([]);
   const [selectedMachine, setSelectedMachine] = useState(null);
   const [token, setToken] = useState(null);
@@ -66,20 +66,25 @@ const PortalClient = () => {
   return (
     <div className="flex min-h-screen bg-gray-100 p-32">
       {/* Panel de las máquinas */}
-      <div className="w-1/3 p-6 bg-white rounded-lg shadow-lg m-4 space-y-4">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Mis Máquinas</h2>
-        <ul className="space-y-4">
-          {machines.map((machine) => (
-            <li
-              key={machine.id}
-              className="cursor-pointer p-4 rounded-lg hover:bg-blue-100 transition duration-200 ease-in-out transform hover:scale-105"
-              onClick={() => handleMachineSelect(machine)}
-            >
-              <h3 className="font-semibold text-lg text-blue-600">{machine.name}</h3>
-              <p className="text-sm text-gray-500">{machine.description}</p>
-            </li>
-          ))}
-        </ul>
+      <div className="w-1/3 p-6 bg-white rounded-lg shadow-lg m-4 space-y-4 flex flex-col justify-between">
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Mis Máquinas</h2>
+          <ul className="space-y-4">
+            {machines.map((machine) => (
+              <li
+                key={machine.id}
+                className="cursor-pointer p-4 rounded-lg hover:bg-blue-100 transition duration-200 ease-in-out transform hover:scale-105"
+                onClick={() => handleMachineSelect(machine)}
+              >
+                <h3 className="font-semibold text-lg text-blue-600">{machine.name}</h3>
+                <p className="text-sm text-gray-500">{machine.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+        <button onClick={logOut} className="bg-sky-600 text-white border-hidden hover:bg-sky-500">Cerrar sesión</button>
+        </div>
       </div>
 
       {/* Panel de detalles de la máquina seleccionada */}

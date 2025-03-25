@@ -8,22 +8,23 @@ const PortalClient = ({ logOut }) => {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
+    const storedToken = localStorage.getItem("user-token");
+    setToken(storedToken);
 
-    setToken(localStorage.getItem("user-token"));
-
-    if (token) {
+    if (storedToken) {
       try {
-          const decodedToken = jwtDecode(token);
-          setUserId(decodedToken.sub); // Aquí obtienes el ID del usuario
+        const decodedToken = jwtDecode(storedToken);
+        setUserId(decodedToken.sub);
       } catch (error) {
-          console.error('Error decoding token:', error);
+        console.error("Error decoding token:", error);
       }
     } else {
-      console.error('No token found in localStorage');
+      console.error("No token found in localStorage");
     }
+  }, []);
 
+  useEffect(() => {
     const fetchMachines = async () => {
-
       if (!userId || !token) {
         console.error("No se ha encontrado el id del usuario o el token");
         return;
@@ -40,7 +41,7 @@ const PortalClient = ({ logOut }) => {
 
         if (response.ok) {
           const data = await response.json();
-          setMachines(data); // Asignamos los datos de las máquinas al estado
+          setMachines(data);
         } else {
           throw new Error("Error al obtener las máquinas");
         }
@@ -49,7 +50,6 @@ const PortalClient = ({ logOut }) => {
       }
     };
 
-    // Llamada a la función para obtener las máquinas
     if (userId && token) {
       fetchMachines();
     }

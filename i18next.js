@@ -44,6 +44,21 @@ i18n
                     "Human nutrition",
                     "Recycling and organics",
                   ],
+                  subSectorButton: {
+                    reciclajeyorganicos: [
+                      "BAGGED",
+                      "COMPACTED",
+                      "BAGGED AND COMPACTED",
+                    ],
+                    agricultura: [
+                      "GRANULAR FERTILIZERS",
+                      "POWDER FERTILIZERS",
+                      "SEEDS GRAINS AND OILSEEDS",
+                    ],
+                    alimentacionhumana: ["POWDERS", "IRREGULARS"],
+                    alimentosbalanceados: ["GRANULATED", "POWDERS"],
+                    mineriayquimica: ["POWDERS", "GRANULATED"],
+                  },
                 },
                 solutionsByMachineType: {
                   title: "Solutions by machine type",
@@ -259,6 +274,21 @@ i18n
                     "Alimentacion humana",
                     "Reciclaje y organicos",
                   ],
+                  subSectorButton: {
+                    reciclajeyorganicos: [
+                      "EMBOLSADO",
+                      "COMPACTADO",
+                      "EMBOLSADO Y COMPACTADO",
+                    ],
+                    agricultura: [
+                      "FERTILIZANTES GRANULARES",
+                      "FERTILIZANTES POLVOS",
+                      "SEMILLAS GRANOS Y OLEAGINOSAS",
+                    ],
+                    alimentacionhumana: ["POLVOS", "IRREGULARES"],
+                    alimentosbalanceados: ["GRANULADOS", "POLVOS"],
+                    mineriayquimica: ["POLVOS", "GRANULADOS"],
+                  },
                 },
                 solutionsByMachineType: {
                   title: "Soluciones por tipo de máquina",
@@ -476,6 +506,21 @@ i18n
                     "Alimentação humana",
                     "Reciclagem e orgânicos",
                   ],
+                  subSectorButton: {
+                    reciclajeyorganicos: [
+                      "EMBALADO",
+                      "COMPACTADO",
+                      "EMBALADO E COMPACTADO",
+                    ],
+                    agricultura: [
+                      "FERTILIZANTES GRANULARES",
+                      "FERTILIZANTES EM PÓ",
+                      "SEMENTES GRÃOS E OLEAGINOSAS",
+                    ],
+                    alimentacionhumana: ["PÓS", "IRREGULARES"],
+                    alimentosbalanceados: ["GRANULADOS", "PÓS"],
+                    mineriayquimica: ["PÓS", "GRANULADOS"],
+                  },
                 },
                 solutionsByMachineType: {
                   title: "Soluções por tipo de máquina",

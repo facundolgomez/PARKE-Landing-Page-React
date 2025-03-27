@@ -1,48 +1,98 @@
-
 import PropTypes from "prop-types";
-import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const ImageGallery = ({ images }) => {
   const [index, setIndex] = useState(0);
+  const [visibleImages, setVisibleImages] = useState(5);
+  const [isHovering, setIsHovering] = useState(false);
+
+  // Ajustar número de imágenes visibles según el tamaño de pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleImages(3);
+      } else if (window.innerWidth < 768) {
+        setVisibleImages(4);
+      } else {
+        setVisibleImages(5);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleNext = () => {
-    setIndex((prev) => (prev + 5 < images.length ? prev + 5 : 0));
+    setIndex((prev) => (prev + visibleImages < images.length ? prev + visibleImages : 0));
+  };
+
+  const handlePrev = () => {
+    setIndex((prev) => (prev - visibleImages >= 0 ? prev - visibleImages : images.length - visibleImages));
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-5xl mx-auto p-4">
-    <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800">
-      Nuestros productos
-    </h2>
+    <div className="relative w-full max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500 inline-block">
+          Nuestros Productos
+        </h2>
+        <div className="mt-2 h-1 w-20 mx-auto bg-gradient-to-r from-blue-400 to-sky-300 rounded-full"></div>
+      </div>
 
-    <div className="flex flex-col items-center gap-6 mt-6 w-full">
-      {/* Contenedor de imágenes con scroll fluido en móviles */}
-      <div className="flex gap-4 overflow-x-auto sm:overflow-hidden w-full justify-center px-4 snap-x snap-mandatory">
-        {images.slice(index, index + 5).map((img, idx) => (
-          <img
-            key={idx}
-            src={img}
-            alt={`Producto ${idx + 1}`}
-            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-2xl object-cover shadow-xl transition-transform duration-300 hover:scale-110 snap-center"
+      <div 
+        className="relative group"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        {/* Botón anterior */}
+        <button
+          onClick={handlePrev}
+          className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'} hover:bg-white`}
+        >
+          <ChevronLeft className="text-blue-600" size={28} />
+        </button>
+
+        {/* Contenedor de imágenes sin scrollbar */}
+        <div className="flex overflow-hidden gap-6 px-2 py-4 justify-center">
+          {images.slice(index, index + visibleImages).map((img, idx) => (
+            <div key={idx} className="relative flex-shrink-0 group">
+              <img
+                src={img}
+                alt={`Producto ${idx + 1}`}
+                className="w-32 h-32 sm:w-52 sm:h-52 object-cover rounded-xl shadow-lg transition-all duration-500 group-hover:rounded-2xl group-hover:shadow-xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <span className="text-white font-medium text-lg">Producto {idx + 1}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Botón siguiente */}
+        <button
+          onClick={handleNext}
+          className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'} hover:bg-white`}
+        >
+          <ChevronRight className="text-blue-600" size={28} />
+        </button>
+      </div>
+
+      {/* Indicadores de paginación */}
+      <div className="flex justify-center mt-6 gap-2">
+        {Array.from({ length: Math.ceil(images.length / visibleImages) }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i * visibleImages)}
+            className={`w-3 h-3 rounded-full transition-all ${index >= i * visibleImages && index < (i + 1) * visibleImages ? 'bg-blue-600 w-6' : 'bg-gray-300'}`}
+            aria-label={`Ir a página ${i + 1}`}
           />
         ))}
       </div>
-
-      {/* Botón con mejor estética */}
-      <button
-        className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-sky-500 to-blue-700 text-white text-lg font-semibold rounded-full shadow-lg hover:scale-105 transition-all"
-        onClick={handleNext}
-      >
-        <span className="hidden sm:inline"></span>
-        <ChevronRight size={24} />
-      </button>
     </div>
-  </div>
-);
+  );
 };
-
-
 
 ImageGallery.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,

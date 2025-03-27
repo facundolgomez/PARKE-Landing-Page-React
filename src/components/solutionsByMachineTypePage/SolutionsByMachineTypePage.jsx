@@ -3,132 +3,91 @@ import UpScreen from "../upscreen/UpScreen";
 import { solutionsByMachineType } from "../data/solutionsByMachineType/SolutionsByMachineType";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const SolutionsByMachineTypePage = () => {
   const { machine, type } = useParams();
-
   const [swiperInstance, setSwiperInstance] = useState(null);
-
-  // Verificamos si los datos existen
 
   const machineData = solutionsByMachineType[machine]?.[type];
 
   if (!machineData) {
     return (
-      <h1 className="text-center text-red-600 text-xl">
+      <h1 className="text-center text-red-600 text-xl mt-10">
         No se encontró información
       </h1>
     );
   }
-  console.log("MachineData:", machineData);
-  console.log("Entries de MachineData:", Object.entries(machineData));
 
   return (
     <>
       {/* Título */}
-      <div>
-        <h1 className="p-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-wide text-center relative pb-2">
+      <div className="px-4 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-wide relative pb-2">
           {type} Machines
-          <span className="absolute left-0 bottom-0 w-full h-1 bg-sky-600 rounded"></span>
+          <span className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-32 h-1 bg-sky-600 rounded"></span>
         </h1>
       </div>
 
       {/* Sección superior */}
       <UpScreen
-        pathImage={"/img/imagen1.jpg"}
+        pathImage="/img/imagen1.jpg"
         title="Choose your Machine Model"
         paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       />
+
+      {/* Características */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Título */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
           {machineData.title}
         </h2>
-
-        {/* Lista de características */}
-        <ul className="list-disc list-inside text-gray-600">
+        <ul className="list-disc list-inside text-gray-600 text-center sm:text-left">
           {machineData.characteristics?.map((char, index) => (
-            <li key={index} className="mb-2">
-              {char}
-            </li>
+            <li key={index} className="mb-2">{char}</li>
           ))}
         </ul>
       </div>
 
-      {/* Carrusel centrado y flechas manuales */}
+      {/* Carrusel mejorado */}
       <div className="flex justify-center p-6">
         <div className="relative max-w-7xl w-full">
-          {/* Flechas de navegación manuales - arriba del carrusel */}
-          <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 py-3 z-10 transform -translate-y-1/2">
-            <button
-              className="swiper-button-prev bg-sky-600 text-white p-4 rounded-full shadow-lg transform hover:bg-sky-700 transition duration-300"
-              style={{ left: "-60px" }} // Alejamos más la flecha de la izquierda
-            >
-              &lt;
-            </button>
-            <button
-              className="swiper-button-next bg-sky-600 text-white p-4 rounded-full shadow-lg transform hover:bg-sky-700 transition duration-300"
-              style={{ right: "-60px" }} // Alejamos más la flecha de la derecha
-            >
-              &gt;
-            </button>
-          </div>
-
-          {/* Swiper con 4 columnas */}
           <Swiper
             onSwiper={setSwiperInstance}
-            modules={[Navigation]}
-            spaceBetween={50}
-            slidesPerView={4}
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={15}
+            slidesPerView={1}
             loop={true}
-            navigation={{
-              prevEl: ".swiper-button-prev",
-              nextEl: ".swiper-button-next",
-            }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
             breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-              1280: {
-                slidesPerView: 4,
-              },
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
             }}
             className="relative"
           >
             {Object.entries(machineData)
-              .filter(
-                ([key, item]) =>
-                  key !== "title" &&
-                  key !== "characteristics" &&
-                  typeof item === "object" &&
-                  item.image // Verifica que sea un objeto válido con imagen
-              )
+              .filter(([key, item]) => key !== "title" && key !== "characteristics" && typeof item === "object" && item.image)
               .map(([key, machine], index) => (
-                <SwiperSlide
-                  key={index}
-                  className="flex flex-col items-center text-center p-6 bg-white shadow-lg rounded-lg"
-                >
-                  {/* Contenedor de imagen con centrado */}
-                  <div className="relative flex justify-center">
+                <SwiperSlide key={index} className="flex flex-col items-center text-center p-6 bg-white shadow-lg rounded-lg">
+                  <div className="relative w-full max-w-xs">
                     <img
                       src={machine.image}
                       alt={machine.title}
-                      className="w-full h-80 object-cover rounded-lg shadow-md"
+                      className="w-full h-56 sm:h-64 object-cover rounded-lg shadow-md"
                     />
                   </div>
-                  <h2 className="mt-4 text-xl font-bold text-gray-800">
-                    {machine.title}
-                  </h2>
-                  <p className="mt-2 text-md text-gray-600">
-                    {machine.description}
-                  </p>
+                  <h2 className="mt-4 text-lg sm:text-xl font-bold text-gray-800">{machine.title}</h2>
+                  <p className="mt-2 text-sm sm:text-md text-gray-600 flex-grow">{machine.description}</p>
+                  <div className="mt-auto pt-2">
+                    <button className="px-4 py-2 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-sky-700 transition duration-300">
+                      Ver más
+                    </button>
+                  </div>
                 </SwiperSlide>
               ))}
           </Swiper>

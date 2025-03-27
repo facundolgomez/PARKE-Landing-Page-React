@@ -29,26 +29,48 @@ const SubSector = ({
 
   return (
     <>
-      <div>
-        <UpScreen
-          pathImage={image}
-          title={typeOfSubSector}
-          paragraph={description}
-        />
-      </div>
-      <div>
-        <h1 className="p-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-wide text-center inline-block relative pb-2">
-          {title}
-          <span className="absolute left-0 bottom-0 w-full h-1 bg-sky-600 rounded"></span>
-        </h1>
-      </div>
-      <div className="p-5 font-sans flex flex-col">
-        <p>{descriptionText}</p>
-      </div>
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+  {/* Hero Section */}
+  <div className="relative overflow-hidden">
+    <UpScreen
+      pathImage={image}
+      title={typeOfSubSector}
+      paragraph={description}
+    />
+  </div>
+
+  {/* Main Content */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    {/* Title Section */}
+    <div className="text-center mb-10 md:mb-16">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight inline-block relative pb-3 px-6">
+        {title}
+        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1.5 bg-sky-600 rounded-full"></span>
+      </h1>
+    </div>
+
+    {/* Description Section */}
+    <div className="max-w-3xl mx-auto mb-12 md:mb-20">
+      <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-justify">
+        {descriptionText}
+      </p>
+    </div>
+
+    {/* Image Gallery */}
+    <div className="mb-12 md:mb-20">
       <ImageGallery images={images} />
-      <div className="w-full max-h-screen">
-        <img src="/subsector-imgs/imagen-subsectores-esquema_.jpg" alt="" />
-      </div>
+    </div>
+
+    {/* Full Width Image */}
+    <div className="rounded-xl shadow-xl overflow-hidden mb-12 md:mb-20">
+      <img 
+        src="/subsector-imgs/imagen-subsectores-esquema_.jpg" 
+        alt="Esquema de subsectores" 
+        className="w-full h-auto object-cover transition-all duration-300 hover:scale-105"
+      />
+    </div>
+  </div>
+</div>
       <div
         className="relative w-full h-full overflow-hidden"
         onMouseMove={handleMouseMove}

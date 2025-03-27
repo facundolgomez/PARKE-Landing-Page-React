@@ -9,7 +9,7 @@ const NewItem = ({ id, title, description, image, loadNews }) => {
   // Función para acortar la descripción
   const shortenDescription = (text, maxLength) => {
     if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + "[...]";
+    return text.slice(0, maxLength) + " [...]";
   };
 
   // mostrar el boton de eliminar novedad solo si el admin está logueado.

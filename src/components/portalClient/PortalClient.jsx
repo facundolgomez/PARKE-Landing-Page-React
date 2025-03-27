@@ -63,6 +63,12 @@ const PortalClient = ({ logOut }) => {
     alert(`Descargando ${fileName}`);
   };
 
+  // Función para acortar la descripción
+  const shortenDescription = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + " [...]";
+  };
+
   return (
     <div className="flex min-h-screen bg-gray-100 p-32">
       {/* Panel de las máquinas */}
@@ -77,7 +83,7 @@ const PortalClient = ({ logOut }) => {
                 onClick={() => handleMachineSelect(machine)}
               >
                 <h3 className="font-semibold text-lg text-blue-600">{machine.name}</h3>
-                <p className="text-sm text-gray-500">{machine.description}</p>
+                <p className="text-sm text-gray-500">{shortenDescription( machine.description, 150)}{" "}</p>
               </li>
             ))}
           </ul>
@@ -92,6 +98,7 @@ const PortalClient = ({ logOut }) => {
         {selectedMachine ? (
           <>
             <h2 className="text-3xl font-semibold text-gray-800 mb-4">{selectedMachine.name}</h2>
+            <img src={selectedMachine.fileName}/>
             <p className="text-lg text-gray-600 mb-4">{selectedMachine.description}</p>
             
             <div className="mb-6">

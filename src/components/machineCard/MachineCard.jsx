@@ -12,7 +12,7 @@ const MachineCard = ({ machine, data }) => {
 
   return (
     <div
-      className="bg-blue-300 text-center w-full relative h-72 flex items-center justify-center overflow-hidden"
+      className="relative h-72 w-full overflow-hidden transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -25,20 +25,22 @@ const MachineCard = ({ machine, data }) => {
         }`}
       />
 
-      {/* Nombre de la máquina */}
+      {/* Nombre de la máquina solo cuando no se hace hover */}
       {!hovered && (
-        <div className="absolute text-white text-2xl font-bold z-10">
+        <div className="absolute text-white text-2xl font-bold z-30 p-4">
           {machine}
         </div>
       )}
 
       {/* Subtipos de máquinas al hacer hover */}
       {hovered && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-blue-500 bg-opacity-90 p-4 transition-all duration-500 z-20">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 transition-all duration-500">
           {Object.keys(data)
             .filter(
               (key) =>
-                key !== "titles" && key !== "title" && key !== "characteristics"
+                key !== "titles" &&
+                key !== "title" &&
+                key !== "characteristics"
             )
             .map((subMachine, index) => (
               <SubMachineButton

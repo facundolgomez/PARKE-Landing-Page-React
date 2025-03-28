@@ -6,23 +6,29 @@ const SectorCard = ({ sector, image }) => {
 
   return (
     <div
-      className="bg-blue-300 text-center w-full relative h-72 flex items-center justify-center"
+      className="relative h-72 w-full overflow-hidden transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Contenedor de la imagen */}
+      {/* Imagen de fondo */}
       <img
         src={image}
         alt={sector}
-        className={`object-cover w-full h-72 brightness-50 transition-all duration-500 ${
-          hovered ? "opacity-0" : "opacity-100"
+        className={`absolute object-cover w-full h-72 brightness-50 transition-all duration-500 ${
+          hovered ? "blur-md" : "blur-0"
         }`}
       />
 
-      <div className="absolute text-white text-2xl font-bold">{sector}</div>
+      {/* Nombre del sector (visible solo si no hay hover) */}
+      {!hovered && (
+        <div className="absolute text-white text-2xl font-bold z-30 p-4">
+          {sector}
+        </div>
+      )}
 
+      {/* Botón de subsectores al hacer hover */}
       {hovered && (
-        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center bg-blue-500 bg-opacity-80 p-4 transition-all duration-500 delay-500">
+        <div className="absolute inset-0 flex items-center justify-center p-4 transition-all duration-500">
           <SubSectorButton sector={sector} />
         </div>
       )}

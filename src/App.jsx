@@ -15,6 +15,7 @@ import SubSectorPage from "./components/subSectorPage/SubSectorPage";
 import TechnicalService from "./components/technicalService/TechnicalService";
 import SolutionsByMachineTypePage from "./components/solutionsByMachineTypePage/SolutionsByMachineTypePage";
 import RegistrationForm from "./components/login/RegistrationForm";
+import MachinePage from "./components/machinePage/MachinePage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
@@ -44,6 +45,7 @@ function App() {
         { path: "/company", element: <CompanyInfo /> },
         { path: "/technicalService", element: <TechnicalService /> },
         { path: "/registrationForm", element: <RegistrationForm /> },
+        { path: "/detalles/:machineTitle", element: <MachinePage /> },
         {
           path: "/subsector/:subsectorName",
           element: <SubSectorPage />,

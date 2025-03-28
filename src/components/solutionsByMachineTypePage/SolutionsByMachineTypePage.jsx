@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import UpScreen from "../upscreen/UpScreen";
 import { solutionsByMachineType } from "../data/solutionsByMachineType/SolutionsByMachineType";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 const SolutionsByMachineTypePage = () => {
   const { machine, type } = useParams();
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const navigate = useNavigate();
 
   const machineData = solutionsByMachineType[machine]?.[type];
 
@@ -21,6 +22,17 @@ const SolutionsByMachineTypePage = () => {
       </h1>
     );
   }
+
+  const truncateText = (text, limit = 100) => {
+    if (text.length > limit) {
+      return text.slice(0, limit) + "[...]";
+    }
+    return text;
+  };
+  const handlerVerMasClick = (machineTitle) => {
+    
+    navigate(`/detalles/${machineTitle}`);
+  };
 
   return (
     <>
@@ -51,7 +63,7 @@ const SolutionsByMachineTypePage = () => {
         </ul>
       </div>
 
-      {/* Carrusel mejorado */}
+      {/* Carrusel */}
       <div className="flex justify-center p-6">
         <div className="relative max-w-7xl w-full">
           <Swiper
@@ -73,18 +85,21 @@ const SolutionsByMachineTypePage = () => {
             {Object.entries(machineData)
               .filter(([key, item]) => key !== "title" && key !== "characteristics" && typeof item === "object" && item.image)
               .map(([key, machine], index) => (
-                <SwiperSlide key={index} className="flex flex-col items-center text-center p-6 bg-white shadow-lg rounded-lg">
-                  <div className="relative w-full max-w-xs">
+                <SwiperSlide key={index} className="flex flex-col items-center text-center p-6 bg-white shadow-lg rounded-lg h-[500px] mb-4"> {/* Definimos altura fija */}
+                  <div className="relative w-full max-w-xs h-64"> {/* Se asegura que las imágenes sean del mismo tamaño */}
                     <img
                       src={machine.image}
                       alt={machine.title}
-                      className="w-full h-56 sm:h-64 object-cover rounded-lg shadow-md"
+                      className="w-full h-full object-cover rounded-lg shadow-md"
                     />
                   </div>
                   <h2 className="mt-4 text-lg sm:text-xl font-bold text-gray-800">{machine.title}</h2>
-                  <p className="mt-2 text-sm sm:text-md text-gray-600 flex-grow">{machine.description}</p>
+                  <p className="mt-2 text-sm sm:text-md text-gray-600 flex-grow">
+                    {truncateText(machine.description, 100)} {/* Recorta el texto */}
+                  </p>
                   <div className="mt-auto pt-2">
-                    <button className="px-4 py-2 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-sky-700 transition duration-300">
+                    <button className="px-4 py-2 bg-sky-600 text-white font-semibold rounded-lg shadow-md hover:bg-sky-700 transition duration-300"
+                    onClick={() => handlerVerMasClick(machine.title)} >
                       Ver más
                     </button>
                   </div>

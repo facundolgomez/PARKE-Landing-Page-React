@@ -68,7 +68,7 @@ const PortalAdmin = () => {
               className="cursor-pointer p-5 rounded-xl bg-gradient-to-r from-blue-200 to-blue-300 hover:shadow-xl transition transform hover:scale-105"
             >
               <h3 className="font-semibold text-xl text-blue-900">
-                {client.NameCompany || 'Sin nombre de empresa'}
+                {client.nameCompany || 'Sin nombre de empresa'}
               </h3>
               <p className="text-sm text-gray-700">{client.email || 'Sin email'}</p>
             </li>

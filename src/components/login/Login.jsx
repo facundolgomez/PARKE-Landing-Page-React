@@ -133,14 +133,14 @@ const Login = ({ onLogin }) => {
         throw new Error(errorData.message || "Login failed");
       }
 
-      const data = await res.text();
+      const token = await res.text();
+      localStorage.setItem("user-token", token);
 
-      localStorage.setItem("user-token", data);
-      decodeTokenAndSetRole(data, selectedOption); // pasamos el token y el tipo de usuario
+      decodeTokenAndSetRole(token, selectedOption); // pasamos el token y el tipo de usuario
       return true;
     } catch (error) {
       setErrors({ username: false, password: true });
-      console.log(error);
+      console.error("Error en login: ", error);
       return false;
     }
   };
@@ -148,6 +148,9 @@ const Login = ({ onLogin }) => {
   const decodeTokenAndSetRole = (token, userType) => {
     try {
       const decoded = jwtDecode(token);
+      if (!decoded.exp || decoded.exp * 1000 <= Date.now()) {
+        throw new Error("Token expirado");
+      }
       handleLogin(decoded.given_name, userType); // Usar userType en lugar de role
     } catch (error) {
       console.error("Error decoding token:", error);

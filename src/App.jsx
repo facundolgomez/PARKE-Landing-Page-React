@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LayOut from "./components/layOut/LayOut";
+import { jwtDecode } from 'jwt-decode';
 
 import Dashboard from "./components/dashboard/Dashboard";
 import Solutions from "./components/solutions/Solutions";
@@ -19,20 +20,37 @@ import MachinePage from "./components/machinePage/MachinePage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   // Verificar si hay un token al cargar la aplicación
   useEffect(() => {
-    const token = localStorage.getItem("user-token");
-    if (token) {
-      setIsLoggedIn(true); // Si hay un token, el usuario está logueado
-    }
+    const verifyAuth = () => {
+      const token = localStorage.getItem("user-token");
+      if (token) {
+        try {
+          const decoded = jwtDecode(token);
+          // Verifica que el token no esté expirado
+          const isTokenValid = decoded.exp * 1000 > Date.now();
+          
+          if (isTokenValid) {
+            setIsLoggedIn(true);
+          } else {
+            localStorage.removeItem("user-token");
+          }
+        } catch (error) {
+          console.log(error)
+          localStorage.removeItem("user-token");
+        }
+      }
+      setIsCheckingAuth(false);
+    };
+
+    verifyAuth();
   }, []);
 
   const handleLogin = () => {
-    // funcion que cambia el estado de logeueo
-    setIsLoggedIn(!isLoggedIn);
+    setIsLoggedIn(true);
   };
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -56,7 +74,13 @@ function App() {
         },
         {
           path: "/portalCliente",
-          element: <Protected isSignedIn={isLoggedIn} />,
+          element: isCheckingAuth ? (
+            <div className="flex justify-center items-center h-screen">
+              <p>Cargando...</p>
+            </div>
+          ) : (
+            <Protected isSignedIn={isLoggedIn} />
+          ),
           children: [
             {
               path: "/portalCliente",

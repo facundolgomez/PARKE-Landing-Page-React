@@ -4,6 +4,8 @@ const PortalAdmin = () => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [clients, setClients] = useState([]);
+  const [clientMachines, setClientMachines] = useState([]); // Nuevo estado para las máquinas
+  const [isLoadingMachines, setIsLoadingMachines] = useState(false); // Estado de carga
 
   const fetchClients = async () => {
     try {
@@ -20,11 +22,42 @@ const PortalAdmin = () => {
       }
       
       const data = await response.json();
-      console.log(data);
       setClients(data);
     } catch (error) {
       console.error("Error al obtener los clientes:", error);
     }
+  }
+
+  // Nueva función para obtener máquinas del cliente
+  const fetchClientMachines = async (clientId) => {
+    setIsLoadingMachines(true);
+    try {
+      const response = await fetch(`https://localhost:7185/api/Client/GetMachinesByClient/${clientId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("user-token")}`,
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      setClientMachines(data);
+    } catch (error) {
+      console.error("Error al obtener las máquinas del cliente:", error);
+      setClientMachines([]);
+    } finally {
+      setIsLoadingMachines(false);
+    }
+  }
+
+  // Actualizado para cargar máquinas cuando se selecciona un cliente
+  const handleSelectClient = (client) => {
+    setSelectedClient(client);
+    fetchClientMachines(client.id);
   }
 
   useEffect(() => {
@@ -64,7 +97,7 @@ const PortalAdmin = () => {
           {filteredClients.map(client => (
             <li
               key={client.id}
-              onClick={() => setSelectedClient(client)}
+              onClick={() => handleSelectClient(client)}
               className="cursor-pointer p-5 rounded-xl bg-gradient-to-r from-blue-200 to-blue-300 hover:shadow-xl transition transform hover:scale-105"
             >
               <h3 className="font-semibold text-xl text-blue-900">
@@ -94,18 +127,28 @@ const PortalAdmin = () => {
             </p>
             
             <div className="w-full text-center mt-6">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-3">Detalles</h3>
-              {selectedClient.ClientDetails ? (
-                <ul className="space-y-3">
-                  {selectedClient.ClientDetails.map((detail, index) => (
-                    <li key={index} className="bg-gray-200 p-4 rounded-lg shadow-md">
-                      <p className="text-gray-800"><strong>Máquina ID:</strong> {detail.MachineId}</p>
-                      {/* Agrega más campos según la estructura real de ClientDetails */}
-                    </li>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-3">Máquinas asignadas</h3>
+              
+              {isLoadingMachines ? (
+                <p className="text-gray-500">Cargando máquinas...</p>
+              ) : clientMachines.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {clientMachines.map((machine) => (
+                    <div key={machine.id} className="bg-gray-100 p-4 rounded-lg shadow-md border border-gray-200">
+                      <h4 className="font-bold text-lg text-blue-800">{machine.name || 'Máquina sin nombre'}</h4>
+                      <p className="text-gray-700"><strong>Modelo:</strong> {machine.model || 'No especificado'}</p>
+                      <p className="text-gray-700"><strong>Serial:</strong> {machine.serialNumber || 'No especificado'}</p>
+                      <p className="text-gray-700"><strong>Tipo:</strong> {machine.type || 'No especificado'}</p>
+                      <div className="mt-2 flex justify-end space-x-2">
+                        <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                          Quitar
+                        </button>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               ) : (
-                <p className="text-gray-500">No hay detalles disponibles</p>
+                <p className="text-gray-500">No hay máquinas asignadas a este cliente</p>
               )}
             </div>
           </>

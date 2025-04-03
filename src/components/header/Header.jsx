@@ -15,7 +15,8 @@ const Header = () => {
   const { user } = useContext(AuthenticationContext);
   const [menuServicesOpen, setMenuServicesOpen] = useState(false);
   const { t } = useTranslation();
-
+  const [selectedSector, setSelectedSector] = useState(null); //recien agregado
+  const [selectedMachine, setSelectedMachine] = useState(null); //recien agregado
   const navigate = useNavigate();
 
   const handleScroll = () => {
@@ -109,6 +110,56 @@ const Header = () => {
     setServicesMobileMenuOpen(!servicesMobileMenuOpen); // Alternar la visibilidad del menú
   };
 
+  // Obtenemos la lista de sectores y subsectores
+  const solutionsBySectors = t(
+    "home.customSolutions.typeOfSolution.solutionsBySectors",
+    { returnObjects: true }
+  );
+
+  const { items, subSectorButton } = solutionsBySectors;
+
+  // Función para manejar el click en un sector
+  const handleSectorClick = (sector) => {
+    setSelectedSector(selectedSector === sector ? null : sector);
+  };
+
+  // Función para manejar el click en un subsector y navegar
+  const handleSubsectorClick = (subsector) => {
+    navigate(`/subsector/${subsector.toLowerCase().replace(/\s+/g, "-")}`);
+  };
+
+  //escribir aca para las maquinas
+
+  const solutionsByMachineType = t(
+    "home.customSolutions.typeOfSolution.solutionsByMachineType",
+    { returnObjects: true }
+  );
+
+  const handleMachineClick = (machine) => {
+    setSelectedMachine(selectedMachine === machine ? null : machine);
+  };
+
+  const handleSubMachineClick = (currentMachine, subMachine) => {
+    const formattedMachine = formatUrlName(currentMachine);
+    const formattedSubMachine = formatUrlName(subMachine);
+
+    // Navegar a la ruta correctamente formateada
+    navigate(`/machines/${formattedMachine}/${formattedSubMachine}`);
+  };
+
+  const formatUrlName = (name) => {
+    return (
+      name
+        // Convertir camelCase a guiones (-)
+        .replace(/([a-z])([A-Z])/g, "$1-$2")
+        .toLowerCase() // Convertir todo a minúsculas
+        .normalize("NFD") // Eliminar acentos
+        .replace(/[\u0300-\u036f]/g, "") // Eliminar caracteres diacríticos
+        .replace(/\s+/g, "-") // Reemplazar espacios por guiones
+        .replace(/[^a-z0-9-]/g, "") // Eliminar caracteres especiales
+    );
+  };
+
   return (
     <>
       <nav className="flex flex-col shadow-md bg-white fixed w-full top-0 left-0 z-50 transition-all duration-300">
@@ -161,35 +212,45 @@ const Header = () => {
                       </h3>
                     </div>
                     <ul>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        FERTILIZANTES
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SEMILLAS Y GRANOS
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        VERDURAS
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        ALIMENTOS BALANCEADOS GRANULADOS
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        ALIMENTOS BALANCEADOS POLVOS
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        ALIMENTOS BALANCEADOS PELLETS
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SECTOR 4
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SECTOR 4
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        SECTOR 4
-                      </li>
+                      {items.map((sector, index) => {
+                        // Convertir el nombre del sector a la clave usada en `subSectorButton`
+                        const sectorKey = sector
+                          .toLowerCase()
+                          .normalize("NFD") // Descompone caracteres con tildes
+                          .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos (acentos, tildes)
+                          .replace(/\s+/g, ""); // Elimina espacios
+
+                        return (
+                          <li
+                            key={index}
+                            className="px-4 py-2 hover:bg-sky-100 cursor-pointer"
+                            onClick={() => handleSectorClick(sectorKey)}
+                          >
+                            {sector.toUpperCase()}
+                            {selectedSector === sectorKey &&
+                              subSectorButton[sectorKey] && (
+                                <ul className="ml-4 mt-2 border-l pl-4">
+                                  {subSectorButton[sectorKey].map(
+                                    (subsector, subIndex) => (
+                                      <li
+                                        key={subIndex}
+                                        className="px-3 py-1 hover:bg-gray-200 cursor-pointer"
+                                        onClick={() =>
+                                          handleSubsectorClick(subsector)
+                                        }
+                                      >
+                                        {subsector}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
+
                   <div>
                     <div className="flex justify-center">
                       <h3 className="font-bold flex justify-center p-1">
@@ -200,18 +261,46 @@ const Header = () => {
                       </h3>
                     </div>
                     <ul>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        MAQ 1
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        MAQ 2
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        MAQ 3
-                      </li>
-                      <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer">
-                        MAQ 4
-                      </li>
+                      {solutionsByMachineType.items.map((machine, index) => {
+                        const machineKey = machine
+                          .toLowerCase()
+                          .normalize("NFD")
+                          .replace(/[\u0300-\u036f]/g, "")
+                          .replace(/\s+/g, "");
+
+                        return (
+                          <li
+                            key={index}
+                            className="px-4 py-2 hover:bg-sky-100 cursor-pointer"
+                            onClick={() => handleMachineClick(machineKey)}
+                          >
+                            {machine.toUpperCase()}
+                            {selectedMachine === machineKey &&
+                              solutionsByMachineType.subMachineButton[
+                                machineKey
+                              ] && (
+                                <ul className="ml-4 mt-2 border-l pl-4">
+                                  {solutionsByMachineType.subMachineButton[
+                                    machineKey
+                                  ].map((subMachine, subIndex) => (
+                                    <li
+                                      key={subIndex}
+                                      className="px-3 py-1 hover:bg-gray-200 cursor-pointer"
+                                      onClick={() =>
+                                        handleSubMachineClick(
+                                          machineKey,
+                                          subMachine
+                                        )
+                                      }
+                                    >
+                                      {subMachine}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
@@ -257,10 +346,16 @@ const Header = () => {
             {menuServicesOpen && (
               <div className="absolute left-0 mt-2 bg-white text-sky-600 shadow-lg rounded-md z-50 opacity-100 scale-y-100 transform transition-all duration-300 origin-top w-[300px]">
                 <ul>
-                  <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer" onClick={() => navigate("/portalCliente")}>
+                  <li
+                    className="px-4 py-2 hover:bg-sky-100 cursor-pointer"
+                    onClick={() => navigate("/portalCliente")}
+                  >
                     PORTAL CLIENTES
                   </li>
-                  <li className="px-4 py-2 hover:bg-sky-100 cursor-pointer" onClick={() => navigate("/technicalService")}>
+                  <li
+                    className="px-4 py-2 hover:bg-sky-100 cursor-pointer"
+                    onClick={() => navigate("/technicalService")}
+                  >
                     SERVICIO TÉCNICO
                   </li>
                 </ul>
@@ -293,7 +388,6 @@ const Header = () => {
             {mobileMenuOpen && (
               <div className="absolute top-16 left-0 w-full bg-white shadow-lg z-40 flex flex-col p-4">
                 <div className="flex flex-col p-4">
-
                   <button
                     onClick={solutionsHandler}
                     className="py-2 text-sky-600 bg-white hover:bg-sky-100"
@@ -345,7 +439,6 @@ const Header = () => {
                       </button>
                     </div>
                   )}
-
 
                   <button className="bg-sky-600 text-white rounded-full py-2 px-4 mt-2">
                     COTIZÁ GRATIS

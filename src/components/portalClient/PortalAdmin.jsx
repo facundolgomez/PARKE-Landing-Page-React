@@ -73,6 +73,9 @@ const PortalAdmin = () => {
            username.toLowerCase().includes(query);
   });
 
+
+  
+
   return (
     <div className="flex flex-col lg:flex-row pt-28 p-6 space-y-6 min-h-screen bg-gray-100">
       {/* Lista de clientes */}

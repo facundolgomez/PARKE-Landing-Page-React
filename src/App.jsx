@@ -17,6 +17,7 @@ import TechnicalService from "./components/technicalService/TechnicalService";
 import SolutionsByMachineTypePage from "./components/solutionsByMachineTypePage/SolutionsByMachineTypePage";
 import RegistrationForm from "./components/login/RegistrationForm";
 import MachinePage from "./components/machinePage/MachinePage";
+import NewClient from "./components/portalClient/NewClient";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
@@ -56,24 +57,18 @@ function App() {
       path: "/",
       element: <LayOut />,
       children: [
-        { path: "/", element: <Dashboard /> },
-        { path: "/solutions", element: <Solutions /> },
-        { path: "/news", element: <News /> },
-        { path: "/contact", element: <Contact /> },
-        { path: "/company", element: <CompanyInfo /> },
-        { path: "/technicalService", element: <TechnicalService /> },
-        { path: "/registrationForm", element: <RegistrationForm /> },
-        { path: "/detalles/:machineTitle", element: <MachinePage /> },
+        { index: true, element: <Dashboard /> },
+        { path: "solutions", element: <Solutions /> },
+        { path: "news", element: <News /> },
+        { path: "contact", element: <Contact /> },
+        { path: "company", element: <CompanyInfo /> },
+        { path: "technicalService", element: <TechnicalService /> },
+        { path: "registrationForm", element: <RegistrationForm /> },
+        { path: "detalles/:machineTitle", element: <MachinePage /> },
+        { path: "subsector/:subsectorName", element: <SubSectorPage /> },
+        { path: "machines/:machine/:type", element: <SolutionsByMachineTypePage /> },
         {
-          path: "/subsector/:subsectorName",
-          element: <SubSectorPage />,
-        },
-        {
-          path: "/machines/:machine/:type",
-          element: <SolutionsByMachineTypePage />,
-        },
-        {
-          path: "/portalCliente",
+          path: "portalCliente",
           element: isCheckingAuth ? (
             <div className="flex justify-center items-center h-screen">
               <p>Cargando...</p>
@@ -82,20 +77,12 @@ function App() {
             <Protected isSignedIn={isLoggedIn} />
           ),
           children: [
-            {
-              path: "/portalCliente",
-              element: (
-                <PortalClientMain
-                  isLoggedIn={isLoggedIn}
-                  setIsLoggedIn={setIsLoggedIn}
-                />
-              ),
-            },
-          ],
+            { index: true, element: <PortalClientMain isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> },
+            { path: "newClient", element: <NewClient /> } // Nueva ruta como hijo de portalCliente
+          ]
         },
       ],
     },
-
     {
       path: "/login",
       element: <Login onLogin={handleLogin} />,

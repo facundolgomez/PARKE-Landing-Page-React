@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const PortalAdmin = () => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [clients, setClients] = useState([]);
-  const [clientMachines, setClientMachines] = useState([]); // Nuevo estado para las máquinas
-  const [isLoadingMachines, setIsLoadingMachines] = useState(false); // Estado de carga
+  const [clientMachines, setClientMachines] = useState([]);
+  const [isLoadingMachines, setIsLoadingMachines] = useState(false);
+  const [allMachines, setAllMachines] = useState([]); // Todas las máquinas disponibles
+  const [selectedMachineToAdd, setSelectedMachineToAdd] = useState(""); // Máquina seleccionada para agregar
+  const [isLoadingAllMachines, setIsLoadingAllMachines] = useState(false);
 
+  const navigate = useNavigate();
+
+
+  // Obtener todos los clientes
   const fetchClients = async () => {
     try {
       const response = await fetch("https://localhost:7185/api/Client/GetAll", {
@@ -17,9 +25,7 @@ const PortalAdmin = () => {
         },
       });
       
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
-      }
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
       
       const data = await response.json();
       setClients(data);
@@ -28,8 +34,33 @@ const PortalAdmin = () => {
     }
   }
 
-  // Nueva función para obtener máquinas del cliente
+  // Obtener todas las máquinas disponibles
+  const fetchAllMachines = async () => {
+    setIsLoadingAllMachines(true);
+    try {
+      const response = await fetch("https://localhost:7185/api/Machine/GetAllMachines", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("user-token")}`,
+        },
+      });
+      
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      
+      const data = await response.json();
+      setAllMachines(data);
+    } catch (error) {
+      console.error("Error al obtener las máquinas:", error);
+    } finally {
+      setIsLoadingAllMachines(false);
+    }
+  }
+
+  // Obtener máquinas de un cliente específico
   const fetchClientMachines = async (clientId) => {
+    if (!clientId) return;
+    
     setIsLoadingMachines(true);
     try {
       const response = await fetch(`https://localhost:7185/api/Client/GetMachinesByClient/${clientId}`, {
@@ -40,9 +71,7 @@ const PortalAdmin = () => {
         },
       });
       
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
-      }
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
       
       const data = await response.json();
       setClientMachines(data);
@@ -54,16 +83,64 @@ const PortalAdmin = () => {
     }
   }
 
-  // Actualizado para cargar máquinas cuando se selecciona un cliente
+  // Asignar una máquina a un cliente
+  const assignMachineToClient = async () => {
+    if (!selectedClient || !selectedMachineToAdd) return;
+    
+    try {
+      const response = await fetch(`https://localhost:7185/api/Admin/${selectedClient.id}/asignarMaquina/${selectedMachineToAdd}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("user-token")}`,
+        },
+      });
+      
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      
+      // Actualizar la lista de máquinas del cliente
+      await fetchClientMachines(selectedClient.id);
+      setSelectedMachineToAdd(""); // Resetear selección
+    } catch (error) {
+      console.error("Error al asignar máquina:", error);
+    }
+  }
+
+  // Quitar una máquina de un cliente
+  const removeMachineFromClient = async (machineId) => {
+    if (!selectedClient || !machineId) return;
+    
+    try {
+      const response = await fetch(`https://localhost:7185/api/Client/${selectedClient.id}/DeleteMachine/${machineId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("user-token")}`,
+        },
+      });
+      
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      
+      // Actualizar la lista de máquinas del cliente
+      await fetchClientMachines(selectedClient.id);
+    } catch (error) {
+      console.error("Error al quitar máquina:", error);
+    }
+  }
+
+  // Manejar selección de cliente
   const handleSelectClient = (client) => {
     setSelectedClient(client);
     fetchClientMachines(client.id);
   }
 
+  // Cargar datos iniciales
   useEffect(() => {
     fetchClients();
+    fetchAllMachines();
   }, []);
 
+  // Filtrar clientes según búsqueda
   const filteredClients = clients.filter(client => {
     if (!client) return false;
     const company = client.nameCompany || "";
@@ -73,12 +150,16 @@ const PortalAdmin = () => {
            username.toLowerCase().includes(query);
   });
 
-
-  
+  // Máquinas disponibles para asignar (no asignadas aún al cliente)
+  const availableMachines = allMachines.filter(machine => 
+    !clientMachines.some(cm => cm.id === machine.id)
+  );
 
   return (
     <div className="flex flex-col lg:flex-row pt-28 p-6 space-y-6 min-h-screen bg-gray-100">
+
       {/* Lista de clientes */}
+
       <div className="w-full lg:w-1/3 p-6 bg-white rounded-2xl shadow-lg max-h-[80vh] overflow-y-auto">
         <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Clientes</h2>
 
@@ -92,7 +173,10 @@ const PortalAdmin = () => {
           />
         </div>
 
-        <button className="mb-4 px-4 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300">
+        <button 
+          onClick={() => navigate('newClient')}
+          className="mb-4 px-4 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+        >
           <span className="text-xl font-bold">Nuevo Cliente</span>
         </button>
 
@@ -126,12 +210,49 @@ const PortalAdmin = () => {
               <strong>Email:</strong> {selectedClient.email || 'No especificado'}
             </p>
             <p className="text-lg text-gray-700 mb-2">
+              <strong>Dirección:</strong> {selectedClient.adress || 'No especificado'}
+            </p>
+            <p className="text-lg text-gray-700 mb-2">
               <strong>Teléfono:</strong> {selectedClient.phoneNumber || 'No especificado'}
             </p>
             
             <div className="w-full text-center mt-6">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-3">Máquinas asignadas</h3>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-3">MÁQUINAS</h3>
               
+              {/* Formulario para agregar máquinas */}
+              <div className="mb-6 p-4 bg-blue-50 rounded-lg">
+                <h4 className="font-bold text-lg text-blue-800 mb-2">Asignar nueva máquina</h4>
+                <div className="flex flex-col md:flex-row gap-2">
+                  <select
+                    value={selectedMachineToAdd}
+                    onChange={(e) => setSelectedMachineToAdd(e.target.value)}
+                    className="flex-grow p-2 border border-gray-300 rounded"
+                    disabled={isLoadingAllMachines || availableMachines.length === 0}
+                  >
+                    <option value="">Seleccione una máquina</option>
+                    {availableMachines.map(machine => (
+                      <option key={machine.id} value={machine.id}>
+                        {machine.name} - {machine.model} ({machine.serialNumber})
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={assignMachineToClient}
+                    disabled={!selectedMachineToAdd}
+                    className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:bg-gray-400 transition"
+                  >
+                    Asignar
+                  </button>
+                </div>
+                {availableMachines.length === 0 && !isLoadingAllMachines && (
+                  <p className="text-sm text-gray-500 mt-2">No hay máquinas disponibles para asignar</p>
+                )}
+              </div>
+
+
+              {/* Lista de máquinas asignadas */}
+
+              <h3 className="text-2xl font-semibold text-gray-800 mb-3">Máquinas asignadas al cliente:</h3>
               {isLoadingMachines ? (
                 <p className="text-gray-500">Cargando máquinas...</p>
               ) : clientMachines.length > 0 ? (
@@ -142,8 +263,11 @@ const PortalAdmin = () => {
                       <p className="text-gray-700"><strong>Modelo:</strong> {machine.model || 'No especificado'}</p>
                       <p className="text-gray-700"><strong>Serial:</strong> {machine.serialNumber || 'No especificado'}</p>
                       <p className="text-gray-700"><strong>Tipo:</strong> {machine.type || 'No especificado'}</p>
-                      <div className="mt-2 flex justify-end space-x-2">
-                        <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                      <div className="mt-2 flex justify-end">
+                        <button 
+                          onClick={() => removeMachineFromClient(machine.id)}
+                          className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                        >
                           Quitar
                         </button>
                       </div>

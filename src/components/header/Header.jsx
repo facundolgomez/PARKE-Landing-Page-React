@@ -223,7 +223,7 @@ const Header = () => {
                         return (
                           <li
                             key={index}
-                            className="px-4 py-2 hover:bg-sky-100 cursor-pointer"
+                            className="px-4 py-2 hover:bg-sky-100 cursor-pointer rounded-md"
                             onClick={() => handleSectorClick(sectorKey)}
                           >
                             {sector.toUpperCase()}
@@ -234,7 +234,7 @@ const Header = () => {
                                     (subsector, subIndex) => (
                                       <li
                                         key={subIndex}
-                                        className="px-3 py-1 hover:bg-gray-200 cursor-pointer"
+                                        className="px-3 py-1 hover:bg-white cursor-pointer rounded-md"
                                         onClick={() =>
                                           handleSubsectorClick(subsector)
                                         }

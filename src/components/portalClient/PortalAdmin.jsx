@@ -56,7 +56,7 @@ const PortalAdmin = ({ logOut }) => {
     }
   
     try {
-      const response = await fetch(`https://localhost:7185/api/Client/${clientId}`, {
+      const response = await fetch(`https://localhost:7185/api/Client/Delete/${clientId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('user-token')}`

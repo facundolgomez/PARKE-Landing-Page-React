@@ -34,10 +34,8 @@ const PortalClientMain = ({ isLoggedIn, setIsLoggedIn }) => {
 
     return(
         <>
-        {role === 'Admin' && <PortalAdmin/>}
-        {role === 'Client' && <PortalClient logOut={logOutHandler}/>}
-            
-           <button onClick={logOutHandler} className="bg-sky-600 text-white border-hidden hover:bg-sky-500">Cerrar sesión</button>
+          {role === 'Admin' && <PortalAdmin logOut={logOutHandler}/>}
+          {role === 'Client' && <PortalClient logOut={logOutHandler}/>}
         </>
     )
 }

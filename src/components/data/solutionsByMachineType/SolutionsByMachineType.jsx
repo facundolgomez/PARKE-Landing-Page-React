@@ -90,7 +90,7 @@ export const solutionsByMachineType = {
           "La EP5B-BB es una máquina de sellado de última generación para big bags, diseñada para un rendimiento superior en ambientes de alta demanda. Con su tecnología de control térmico, garantiza un sellado hermético de calidad constante, incluso en condiciones de producción intensiva.",
       },
     },
-    pequeñasBolsas: {
+    pequenasBolsas: {
       titles: ["M1", "M2"],
       title: "Máquinas para Pequeñas Bolsas",
       characteristics: [
@@ -111,7 +111,7 @@ export const solutionsByMachineType = {
       },
     },
   },
-  costuraYSellado: {
+  costuraysellado: {
     cosedoras: {
       titles: ["hasta8xminuto", "hasta16xminuto"],
       title: "Máquinas Cosedoras",

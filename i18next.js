@@ -17,6 +17,16 @@ i18n
               contact: "CONTACT",
               services: "SERVICES",
               quote: "GET A FREE QUOTE",
+              titlesOfSolutions: {
+                mainSectors: {
+                  first: "MAIN",
+                  second: "SECTORS",
+                },
+                typesOfMachines: {
+                  first: "TYPES",
+                  second: "OF MACHINES",
+                },
+              },
             },
             homeCarousel: {
               text1:
@@ -247,6 +257,16 @@ i18n
               contact: "CONTACTO",
               services: "SERVICIOS",
               quote: "COTIZÁ GRATIS",
+              titlesOfSolutions: {
+                mainSectors: {
+                  first: "SECTORES",
+                  second: "PRINCIPALES",
+                },
+                typesOfMachines: {
+                  first: "TIPOS",
+                  second: "DE MÁQUINA",
+                },
+              },
             },
             homeCarousel: {
               text1:
@@ -497,6 +517,16 @@ i18n
               contact: "CONTATO",
               services: "SERVIÇOS",
               quote: "ORÇAMENTO GRATUITO",
+              titlesOfSolutions: {
+                mainSectors: {
+                  first: "SETORES",
+                  second: "PRINCIPAIS",
+                },
+                typesOfMachines: {
+                  first: "TIPOS",
+                  second: "DE MÁQUINAS",
+                },
+              },
             },
             homeCarousel: {
               text1:

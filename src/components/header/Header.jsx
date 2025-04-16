@@ -140,24 +140,24 @@ const Header = () => {
   };
 
   const handleSubMachineClick = (currentMachine, subMachine) => {
-    const formattedMachine = formatUrlName(currentMachine);
-    const formattedSubMachine = formatUrlName(subMachine);
+    const formattedMachine = toCamelCase(currentMachine);
+    const formattedSubMachine = toCamelCase(subMachine);
 
     // Navegar a la ruta correctamente formateada
     navigate(`/machines/${formattedMachine}/${formattedSubMachine}`);
   };
 
-  const formatUrlName = (name) => {
-    return (
-      name
-        // Convertir camelCase a guiones (-)
-        .replace(/([a-z])([A-Z])/g, "$1-$2")
-        .toLowerCase() // Convertir todo a minúsculas
-        .normalize("NFD") // Eliminar acentos
-        .replace(/[\u0300-\u036f]/g, "") // Eliminar caracteres diacríticos
-        .replace(/\s+/g, "-") // Reemplazar espacios por guiones
-        .replace(/[^a-z0-9-]/g, "") // Eliminar caracteres especiales
-    );
+  const toCamelCase = (str) => {
+    return str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9\s_-]/g, "")
+      .split(/[\s_-]+/)
+      .map((word, index) =>
+        index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+      )
+      .join("");
   };
 
   return (
@@ -206,9 +206,13 @@ const Header = () => {
                     <div className="flex justify-center">
                       <h3 className="font-bold flex justify-center p-1">
                         <p className="bg-sky-600 text-white px-2 me-1 rounded-md">
-                          SECTORES
+                          {t(
+                            "home.homeHeader.titlesOfSolutions.mainSectors.first"
+                          )}
                         </p>
-                        PRINCIPALES
+                        {t(
+                          "home.homeHeader.titlesOfSolutions.mainSectors.second"
+                        )}
                       </h3>
                     </div>
                     <ul>
@@ -255,9 +259,13 @@ const Header = () => {
                     <div className="flex justify-center">
                       <h3 className="font-bold flex justify-center p-1">
                         <p className="bg-sky-600 text-white px-2 me-1 rounded-md">
-                          TIPOS
+                          {t(
+                            "home.homeHeader.titlesOfSolutions.typesOfMachines.first"
+                          )}
                         </p>{" "}
-                        DE MAQUINAS
+                        {t(
+                          "home.homeHeader.titlesOfSolutions.typesOfMachines.second"
+                        )}
                       </h3>
                     </div>
                     <ul>

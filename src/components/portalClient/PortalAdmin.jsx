@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const PortalAdmin = () => {
+const PortalAdmin = ({ logOut }) => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [clients, setClients] = useState([]);
@@ -33,6 +33,53 @@ const PortalAdmin = () => {
       console.error("Error al obtener los clientes:", error);
     }
   }
+
+  // Eliminar un cliente
+  const deleteClient = async (clientId, clientUsername) => {
+    // Primera confirmación
+    const confirmation1 = window.confirm(
+      `⚠️ ADVERTENCIA: Está por eliminar permanentemente al cliente ${clientUsername} y toda su información.\n\n` +
+      '¿Desea continuar con esta acción irreversible?'
+    );
+    
+    if (!confirmation1) return;
+  
+    // Segunda confirmación con nombre de usuario
+    const userInput = prompt(
+      'CONFIRMACIÓN FINAL:\n\n' +
+      `Para eliminar permanentemente al cliente ${clientUsername}, escriba su nombre de usuario a continuación:`
+    );
+  
+    if (userInput?.trim() !== clientUsername) {
+      alert('El nombre de usuario no coincide. Eliminación cancelada.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`https://localhost:7185/api/Client/Delete/${clientId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('user-token')}`
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+  
+      // Actualizar el estado
+      setClients(clients.filter(c => c.id !== clientId));
+      if (selectedClient?.id === clientId) {
+        setSelectedClient(null);
+        setClientMachines([]);
+      }
+  
+      alert(`✅ Cliente ${clientUsername} eliminado permanentemente`);
+    } catch (error) {
+      console.error('Error al eliminar:', error);
+      alert(`❌ Error al eliminar: ${error.message}`);
+    }
+  };
 
   // Obtener todas las máquinas disponibles
   const fetchAllMachines = async () => {
@@ -156,7 +203,11 @@ const PortalAdmin = () => {
   );
 
   return (
-    <div className="flex flex-col lg:flex-row pt-28 p-6 space-y-6 min-h-screen bg-gray-100">
+    <>
+    <div className="flex justify-end pe-14 items-center bg-gray-100">
+      <button onClick={logOut} className="bg-sky-600 text-white mt-32 border-hidden hover:bg-sky-500">Cerrar sesión</button>
+    </div>
+    <div className="flex flex-col lg:flex-row p-6 space-y-6 min-h-screen bg-gray-100">
 
       {/* Lista de clientes */}
 
@@ -215,6 +266,15 @@ const PortalAdmin = () => {
             <p className="text-lg text-gray-700 mb-2">
               <strong>Teléfono:</strong> {selectedClient.phoneNumber || 'No especificado'}
             </p>
+            <button
+              onClick={() => deleteClient(selectedClient.id, selectedClient.username)}
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              Eliminar Cliente Permanentemente
+            </button>
             
             <div className="w-full text-center mt-6">
               <h3 className="text-2xl font-semibold text-gray-800 mb-3">MÁQUINAS</h3>
@@ -286,6 +346,7 @@ const PortalAdmin = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

@@ -65,7 +65,7 @@ const SubSectorButton = ({ sector }) => {
       {subSectors.map((sub, index) => (
         <button
           key={index}
-          className="px-4 py-2 bg-white text-blue-700 font-bold rounded shadow-md hover:bg-gray-200 transition"
+          className="px-4 py-2 bg-transparent text-white border-sky-600 font-bold rounded shadow-md hover:bg-gray-200 transition hover:scale-110"
           onClick={() =>
             navigate(
               `/subsector/${encodeURIComponent(

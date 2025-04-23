@@ -38,7 +38,7 @@ const Login = ({ onLogin }) => {
 
   const registerWindowHandler = () => {
     navigate("/registrationForm");
-  }
+  };
 
   const toggleOption = () => {
     if (selectedOption === "Admin") {
@@ -161,106 +161,120 @@ const Login = ({ onLogin }) => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex-grow flex items-center justify-center p-4">
-      <form
-        onSubmit={submitLogin}
-        className="p-8 mt-20 bg-white shadow-lg rounded-lg w-full max-w-sm"
-      >
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          Iniciar sesión
-        </h2>
-
-        <label
-          htmlFor="Toggle3"
-          className="rounded-md cursor-pointer text-center scale-75 sm:scale-100"
+        <form
+          onSubmit={submitLogin}
+          className="p-8 mt-20 bg-white shadow-lg rounded-lg w-full max-w-sm"
         >
-          <div className="flex flex-row justify-center">
-          <input id="Toggle3" type="checkbox" className="hidden peer" />
-          <span
-            className={`px-4 rounded-s-full transition-colors duration-300 ease-in-out ${
-              selectedOption === "Client"
-                ? "bg-sky-600 text-white"
-                : "bg-gray-100 text-dark"
-            }`}
+          <h2 className="text-2xl font-semibold text-center mb-6">
+            Iniciar sesión
+          </h2>
+
+          <label
+            htmlFor="Toggle3"
+            className="rounded-md cursor-pointer text-center scale-75 sm:scale-100"
           >
-            <button
-              onClick={toggleOption}
-              className="bg-transparent border-hidden"
-            >
-              Cliente
-            </button>
-          </span>
-          <span
-            className={`px-4 rounded-e-full transition-colors duration-300 ease-in-out ${
-              selectedOption === "Admin"
-                ? "bg-sky-600 text-white"
-                : "bg-gray-100 text-dark"
-            }`}
-          >
-            <button
-              onClick={toggleOption}
-              className="bg-transparent border-hidden"
-            >
-              Admin
-            </button>
-          </span>
+            <div className="flex flex-row justify-center">
+              <input id="Toggle3" type="checkbox" className="hidden peer" />
+              <span
+                className={`px-4 rounded-s-full transition-colors duration-300 ease-in-out ${
+                  selectedOption === "Client"
+                    ? "bg-sky-600 text-white"
+                    : "bg-gray-100 text-dark"
+                }`}
+              >
+                <button
+                  onClick={toggleOption}
+                  className="bg-transparent border-hidden"
+                >
+                  Cliente
+                </button>
+              </span>
+              <span
+                className={`px-4 rounded-e-full transition-colors duration-300 ease-in-out ${
+                  selectedOption === "Admin"
+                    ? "bg-sky-600 text-white"
+                    : "bg-gray-100 text-dark"
+                }`}
+              >
+                <button
+                  onClick={toggleOption}
+                  className="bg-transparent border-hidden"
+                >
+                  Admin
+                </button>
+              </span>
+            </div>
+            <p className="text-x1 text-sky-600 font-bold mb-3 mt-2">
+              A continuación, ingrese sus credenciales de usuario{" "}
+              {selectedOption === "Admin" ? "Administrador" : "Cliente"}
+            </p>
+          </label>
+
+          <div className="mb-4">
+            <input
+              type="text"
+              ref={usernameRef}
+              placeholder="Nombre de usuario"
+              onChange={usernameHandler}
+              value={enteredUsername}
+              className={
+                errors.username == true
+                  ? "w-full p-3 border bg-white border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  : "w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              }
+            />
           </div>
-          <p className="text-x1 text-sky-600 font-bold mb-3 mt-2">
-            A continuación, ingrese sus credenciales de usuario{" "}
-            {selectedOption === "Admin" ? "Administrador" : "Cliente"}
+
+          <div className="mb-6">
+            <input
+              type="password"
+              ref={passwordRef}
+              placeholder="Contraseña"
+              onChange={passwordHandler}
+              value={enteredPassword}
+              className={
+                errors.password == true
+                  ? "w-full p-3 border bg-white border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  : "w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              }
+            />
+          </div>
+          {selectedOption === "Client" && (
+            <div className="mb-4 text-center">
+              <p
+                className="text-sm text-sky-600 hover:underline cursor-pointer"
+                onClick={() => navigate("/recoverPassword")}
+              >
+                ¿Olvidaste tu contraseña?
+              </p>
+            </div>
+          )}
+
+          <p className="text-warning py-2">
+            {errors.username || errors.password
+              ? "Debe completar todos los campos para iniciar sesión."
+              : ""}
           </p>
-        </label>
+          {showErrorLogin && (
+            <p className="text-danger">
+              Usuario o contraseña inválido/s. Por favor, intente nuevamente.
+            </p>
+          )}
 
-        <div className="mb-4">
-          <input
-            type="text"
-            ref={usernameRef}
-            placeholder="Nombre de usuario"
-            onChange={usernameHandler}
-            value={enteredUsername}
-            className={
-              errors.username == true
-                ? "w-full p-3 border bg-white border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                : "w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            }
-          />
-        </div>
-
-        <div className="mb-6">
-          <input
-            type="password"
-            ref={passwordRef}
-            placeholder="Contraseña"
-            onChange={passwordHandler}
-            value={enteredPassword}
-            className={
-              errors.password == true
-                ? "w-full p-3 border bg-white border-red-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                : "w-full p-3 border bg-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            }
-          />
-        </div>
-
-        <p className="text-warning py-2">
-          {errors.username || errors.password
-            ? "Debe completar todos los campos para iniciar sesión."
-            : ""}
-        </p>
-        {showErrorLogin && (
-          <p className="text-danger">
-            Usuario o contraseña inválido/s. Por favor, intente nuevamente.
-          </p>
-        )}
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-3 my-2 rounded-lg hover:bg-blue-600 transition duration-300"
-        >
-          Iniciar sesión
-        </button>
-        <div>
-          ¿Aún no tiene cuenta? Solicítela haciendo <a href="" onClick={registerWindowHandler}>Click aquí</a>.
-        </div>
-      </form>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white p-3 my-2 rounded-lg hover:bg-blue-600 transition duration-300"
+          >
+            Iniciar sesión
+          </button>
+          <div>
+            ¿Aún no tiene cuenta? Solicítela haciendo{" "}
+            <a href="" onClick={registerWindowHandler}>
+              Click aquí
+            </a>
+            .
+          </div>
+        </form>
       </div>
     </div>
   );

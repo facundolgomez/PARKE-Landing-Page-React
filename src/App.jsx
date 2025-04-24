@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LayOut from "./components/layOut/LayOut";
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 import Dashboard from "./components/dashboard/Dashboard";
 import Solutions from "./components/solutions/Solutions";
@@ -18,6 +18,7 @@ import SolutionsByMachineTypePage from "./components/solutionsByMachineTypePage/
 import RegistrationForm from "./components/login/RegistrationForm";
 import MachinePage from "./components/machinePage/MachinePage";
 import NewClient from "./components/portalClient/NewClient";
+import RecoverPasswordPage from "./components/recoverPasswordPage/RecoverPasswordPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
@@ -32,14 +33,14 @@ function App() {
           const decoded = jwtDecode(token);
           // Verifica que el token no esté expirado
           const isTokenValid = decoded.exp * 1000 > Date.now();
-          
+
           if (isTokenValid) {
             setIsLoggedIn(true);
           } else {
             localStorage.removeItem("user-token");
           }
         } catch (error) {
-          console.log(error)
+          console.log(error);
           localStorage.removeItem("user-token");
         }
       }
@@ -66,7 +67,10 @@ function App() {
         { path: "registrationForm", element: <RegistrationForm /> },
         { path: "detalles/:machineTitle", element: <MachinePage /> },
         { path: "subsector/:subsectorName", element: <SubSectorPage /> },
-        { path: "machines/:machine/:type", element: <SolutionsByMachineTypePage /> },
+        {
+          path: "machines/:machine/:type",
+          element: <SolutionsByMachineTypePage />,
+        },
         {
           path: "portalCliente",
           element: isCheckingAuth ? (
@@ -77,15 +81,27 @@ function App() {
             <Protected isSignedIn={isLoggedIn} />
           ),
           children: [
-            { index: true, element: <PortalClientMain isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> },
-            { path: "newClient", element: <NewClient /> } // Nueva ruta como hijo de portalCliente
-          ]
+            {
+              index: true,
+              element: (
+                <PortalClientMain
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              ),
+            },
+            { path: "newClient", element: <NewClient /> }, // Nueva ruta como hijo de portalCliente
+          ],
         },
       ],
     },
     {
       path: "/login",
       element: <Login onLogin={handleLogin} />,
+    },
+    {
+      path: "/recoverPassword",
+      element: <RecoverPasswordPage />, // <-- NUEVA RUTA
     },
     {
       path: "*",

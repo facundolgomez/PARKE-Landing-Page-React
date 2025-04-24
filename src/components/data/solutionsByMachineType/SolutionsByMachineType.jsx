@@ -7,6 +7,11 @@ export const solutionsByMachineType = {
         "Diseñadas para empaquetar productos de manera rápida y precisa.",
         "Ideal para procesos industriales de alta demanda, garantizando velocidad y calidad.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       EP5BA: {
         title: "EP5BA",
         image: "/img/maquina1.jpg",
@@ -51,6 +56,11 @@ export const solutionsByMachineType = {
         "Especializadas en el sellado de bolsas con válvula para evacuación de aire.",
         "Garantizan un sellado hermético y de alta calidad en procesos industriales.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       LBVSF: {
         title: "LBV SF",
         image: "/img/maquina1.jpg",
@@ -70,6 +80,11 @@ export const solutionsByMachineType = {
       characteristics: [
         "Diseñadas para el sellado de grandes bolsas tipo big bag.",
         "Ideales para industrias que manejan grandes volúmenes de productos.",
+      ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
       ],
       EPBBB: {
         title: "EPB-BB",
@@ -97,6 +112,11 @@ export const solutionsByMachineType = {
         "Compactas y eficientes, diseñadas para el sellado de bolsas pequeñas.",
         "Perfectas para procesos industriales de bajo a medio volumen.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       M1: {
         title: "M1",
         image: "/img/maquina1.jpg",
@@ -119,6 +139,11 @@ export const solutionsByMachineType = {
         "Diseñadas para la costura de bolsas en procesos industriales.",
         "Ofrecen velocidad y precisión en el sellado de materiales.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       hasta8xminuto: {
         title: "Hasta 8 bolsas x minuto",
         image: "/img/maquina1.jpg",
@@ -138,6 +163,11 @@ export const solutionsByMachineType = {
       characteristics: [
         "Especializadas en el sellado térmico de materiales.",
         "Garantizan un sellado fuerte y duradero en procesos industriales.",
+      ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
       ],
       termicaImpulso: {
         title: "TERMICA DE IMPULSO",
@@ -161,6 +191,11 @@ export const solutionsByMachineType = {
         "Diseñadas para ofrecer una solución segura y confiable en el almacenamiento y transporte de productos.",
         "Resistentes y fáciles de manejar, ideales para el embalaje de artículos frágiles y pesados.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       TCPF: {
         title: "TCPF",
         image: "/img/maquina1.jpg",
@@ -180,6 +215,11 @@ export const solutionsByMachineType = {
       characteristics: [
         "Perfectos para el almacenamiento y transporte de grandes volúmenes de material.",
         "Diseñados para ser robustos y fáciles de manejar en procesos industriales.",
+      ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
       ],
       TCP: {
         title: "TCP",
@@ -207,6 +247,11 @@ export const solutionsByMachineType = {
         "Ideales para el manejo de materiales a granel en diversos procesos industriales.",
         "Fáciles de transportar y optimizan el almacenamiento de grandes volúmenes de material.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       TCG: {
         title: "TCG",
         image: "/img/maquina1.jpg",
@@ -220,6 +265,11 @@ export const solutionsByMachineType = {
       characteristics: [
         "Facilitan el manejo y sellado de bolsas durante el proceso de empaquetado.",
         "Optimiza la eficiencia en la producción y reduce el riesgo de errores en el sellado.",
+      ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
       ],
       aplanadorDeBolsas: {
         title: "Aplanador de Bolsas",
@@ -242,6 +292,11 @@ export const solutionsByMachineType = {
       characteristics: [
         "Diseñados para optimizar el proceso de compactación de residuos.",
         "Garantizan un alto rendimiento y eficiencia en el manejo de desechos.",
+      ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
       ],
       PH_3: {
         title: "PH 3",
@@ -266,6 +321,11 @@ export const solutionsByMachineType = {
         "Diseñados para la clasificación y acondicionamiento de materiales.",
         "Mejoran la calidad del producto final y optimizan la producción.",
       ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
+      ],
       Z3_200: {
         title: "Z3 200",
         image: "/img/maquina1.jpg",
@@ -284,6 +344,11 @@ export const solutionsByMachineType = {
       characteristics: [
         "Diseñados para la clasificación y acondicionamiento de materiales.",
         "Mejoran la calidad del producto final y optimizan la producción.",
+      ],
+      benefits: [
+        "Benificios 1",
+        "beneficios 2",
+        "beneficios 3"
       ],
       DST: {
         title: "DST",

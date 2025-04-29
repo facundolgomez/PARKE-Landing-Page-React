@@ -12,7 +12,7 @@ const MachineCard = ({ machine, data }) => {
 
   return (
     <div
-      className="relative h-72 w-full overflow-hidden transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
+      className="relative h-72 w-full rounded-md overflow-hidden transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -20,7 +20,7 @@ const MachineCard = ({ machine, data }) => {
       <img
         src="/img/imagen1.jpg"
         alt={machine}
-        className={`absolute object-cover w-full h-72 brightness-50 transition-all duration-500 ${
+        className={`absolute object-cover w-full rounded-md h-72 brightness-50 transition-all duration-500 ${
           hovered ? "blur-md" : "blur-0"
         }`}
       />

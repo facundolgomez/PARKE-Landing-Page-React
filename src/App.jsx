@@ -19,6 +19,7 @@ import RegistrationForm from "./components/login/RegistrationForm";
 import MachinePage from "./components/machinePage/MachinePage";
 import NewClient from "./components/portalClient/NewClient";
 import RecoverPasswordPage from "./components/recoverPasswordPage/RecoverPasswordPage";
+import ResetPasswordPage from "./components/resetPasswordPage/ResetPasswordPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado que me define si el usuario esta logueado o no
@@ -102,6 +103,10 @@ function App() {
     {
       path: "/recoverPassword",
       element: <RecoverPasswordPage />, // <-- NUEVA RUTA
+    },
+    {
+      path: "/resetPassword",
+      element: <ResetPasswordPage />,
     },
     {
       path: "*",

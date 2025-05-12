@@ -1,9 +1,10 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const RecoverPasswordPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleRecoverPassword = async () => {
     setMessage("");
@@ -27,10 +28,14 @@ const RecoverPasswordPage = () => {
       );
 
       if (response.ok) {
-        setMessage("Se ha enviado la solicitud al correo de la empresa.");
+        setMessage(
+          "Hemos enviado un enlace de recuperación a tu correo electrónico. Por favor, revisá tu bandeja de entrada."
+        );
         setEmail("");
       } else {
         setError("Hubo un error al enviar la solicitud. Intenta nuevamente.");
+        const data = await response.text();
+        console.log("Respuesta completa:", data);
       }
     } catch (err) {
       setError("Error de conexión con el servidor.");
@@ -40,6 +45,13 @@ const RecoverPasswordPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md text-center">
+        <span
+          onClick={() => navigate(-1)}
+          className="absolute top-4 left-4 text-sky-600 hover:text-sky-700 cursor-pointer select-none"
+          style={{ fontSize: "48px", fontWeight: "900" }}
+        >
+          ←
+        </span>
         <h1 className="text-2xl font-bold text-sky-600 mb-6">
           Recuperar Contraseña
         </h1>

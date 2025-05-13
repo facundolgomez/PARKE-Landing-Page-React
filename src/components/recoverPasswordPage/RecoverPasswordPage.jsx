@@ -33,9 +33,11 @@ const RecoverPasswordPage = () => {
         );
         setEmail("");
       } else {
-        setError("Hubo un error al enviar la solicitud. Intenta nuevamente.");
-        const data = await response.text();
-        console.log("Respuesta completa:", data);
+        const errorMessage = await response.text();
+        setError(
+          errorMessage ||
+            "Hubo un error al enviar la solicitud. Intenta nuevamente."
+        );
       }
     } catch (err) {
       setError("Error de conexión con el servidor.");

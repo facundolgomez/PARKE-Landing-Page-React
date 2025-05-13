@@ -87,7 +87,7 @@ const Dashboard = () => {
       <div className="dashboard-container relative w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-screen">
         {/* Imagen de fondo para pantallas de teléfono */}
         <div
-          className="absolute inset-0 block sm:hidden bg-cover bg-center brightness-50"
+          className="absolute inset-0 block bg-center bg-cover sm:hidden brightness-50"
           style={{
             backgroundImage: `url('../../../public/imagenes-de-fondo/imagen-dashboard-telefono.jpg')`,
           }}
@@ -98,7 +98,7 @@ const Dashboard = () => {
 
         {/* Video para pantallas grandes */}
         <div className="absolute inset-0 hidden sm:block">
-          <Video className="w-full h-full object-cover" />
+          <Video className="object-cover w-full h-full" />
 
           {/* Carrusel de textos */}
         </div>
@@ -108,11 +108,11 @@ const Dashboard = () => {
             <button
               id="left-button"
               onClick={prevText}
-              className="bg-gray-100 scale-50 sm:scale-100 bg-opacity-30 ms-5 border-hidden transform transition-transform duration-300 hover:scale-125 hover:bg-opacity-70"
+              className="transition-transform duration-300 transform scale-50 bg-gray-100 sm:scale-100 bg-opacity-30 ms-5 border-hidden hover:scale-125 hover:bg-opacity-70"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 inline-block" // `mr-1` añade un margen a la derecha del icono
+                className="inline-block w-6 h-6" // `mr-1` añade un margen a la derecha del icono
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -144,11 +144,11 @@ const Dashboard = () => {
             <button
               id="right-button"
               onClick={nextText}
-              className="bg-gray-100 scale-50 sm:scale-100 bg-opacity-40 border-hidden transform transition-transform duration-300 hover:scale-125 hover:bg-opacity-70"
+              className="transition-transform duration-300 transform scale-50 bg-gray-100 sm:scale-100 bg-opacity-40 border-hidden hover:scale-125 hover:bg-opacity-70"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 inline-block"
+                className="inline-block h-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -176,27 +176,27 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="w-full bg-gray-100 p-4 flex justify-center items-center h-30">
-        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl">
+      <div className="flex items-center justify-center w-full p-4 bg-gray-100 h-30">
+        <div className="flex flex-col items-center justify-between w-full max-w-4xl md:flex-row">
           {/* Contenido de texto */}
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-slate-800 text-2xl md:text-4xl font-bold mb-2 md:mb-3">
+            <h1 className="mb-2 text-2xl font-bold text-slate-800 md:text-4xl md:mb-3">
               {t("home.customSolutions.customSolutionsText")}
             </h1>
-            <p className="text-slate-700 text-sm md:text-base">
+            <p className="text-sm text-slate-700 md:text-base">
               {t("home.customSolutions.subtitleOfCustomSolutionsText")}
             </p>
           </div>
 
           {/* Botón */}
-          <button className="mt-6 md:mt-0 bg-sky-600 text-white rounded-full py-2 px-6 text-sm md:text-base scale-100 md:scale-125 hover:bg-sky-500 transform transition-transform duration-300 hover:scale-110">
+          <button className="px-6 py-2 mt-6 text-sm text-white transition-transform duration-300 transform scale-100 rounded-full md:mt-0 bg-sky-600 md:text-base md:scale-125 hover:bg-sky-500 hover:scale-110">
             {t("home.customSolutions.freeQuoteButton")}
           </button>
         </div>
       </div>
       <div>
         {/* Botones */}
-        <div className="w-full h-20 flex justify-center gap-1 mt-4">
+        <div className="flex justify-center w-full h-20 gap-1 mt-4">
           <button
             className={`h-12 w-80 sm:w-80 md:w-80 lg:w-96 text-sm sm:text-2x1 md:text-2x1 lg:text-2x1 p-2 ${
               activeTab === "sectores"
@@ -222,7 +222,7 @@ const Dashboard = () => {
         {/* Condicionalmente renderiza los grids según el estado */}
 
         {activeTab === "sectores" ? (
-          <div className="grid grid-cols-1 gap-2 h-auto p-10 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
+          <div className="grid h-auto grid-cols-1 gap-2 p-10 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
             {sectors.map((sector, index) => (
               <SectorCard
                 key={index}
@@ -232,7 +232,7 @@ const Dashboard = () => {
             ))}
           </div>
         ) : (
-          <div className="grid gap-4 h-auto p-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid h-auto grid-cols-1 gap-4 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {machineTypes.map((machineType, index) => {
               return (
                 <MachineCard
@@ -254,12 +254,12 @@ const Dashboard = () => {
         <img
           src="/img/imagen1.jpg"
           alt="Image Blur"
-          className="w-full h-full object-cover md:filter md:blur-sm"
+          className="object-cover w-full h-full md:filter md:blur-sm"
         />
 
         {/* Máscara del círculo */}
         <div
-          className="absolute inset-0 pointer-events-none hidden md:block"
+          className="absolute inset-0 hidden pointer-events-none md:block"
           style={{
             background: `radial-gradient(circle 100px at ${mousePosition.x}px ${mousePosition.y}px, transparent, rgba(0, 0, 0, 0))`,
           }}
@@ -269,7 +269,7 @@ const Dashboard = () => {
         <img
           src="/img/imagen1.jpg"
           alt="Image Revealed"
-          className="absolute top-0 left-0 w-full h-full object-cover hidden md:block"
+          className="absolute top-0 left-0 hidden object-cover w-full h-full md:block"
           style={{
             clipPath: `circle(150px at ${mousePosition.x}px ${mousePosition.y}px)`,
           }}
@@ -278,7 +278,7 @@ const Dashboard = () => {
         {/* Botón 1 */}
         <button
           onClick={() => togglePopup(1)}
-          className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+          className="absolute flex items-center justify-center w-12 h-12 text-white rounded-full bg-sky-600 animate-pulse hover:scale-110"
           style={{
             top: "30%", // Ajusta la posición vertical
             left: "25%", // Ajusta la posición horizontal
@@ -286,7 +286,7 @@ const Dashboard = () => {
         ></button>
         {activePopup === 1 && (
           <div
-            className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
+            className="absolute p-4 bg-white border border-gray-300 rounded-lg shadow-lg"
             style={{
               top: "30%", // Mismo valor que el botón
               left: "30%", // Posición al lado del botón
@@ -295,7 +295,7 @@ const Dashboard = () => {
             <p>Ventana emergente</p>
             <button
               onClick={() => togglePopup(1)}
-              className="mt-2 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+              className="px-2 py-1 mt-2 bg-gray-200 rounded hover:bg-gray-300"
             >
               Cerrar
             </button>
@@ -305,7 +305,7 @@ const Dashboard = () => {
         {/* Botón 2 */}
         <button
           onClick={() => togglePopup(2)}
-          className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+          className="absolute flex items-center justify-center w-12 h-12 text-white rounded-full bg-sky-600 animate-pulse hover:scale-110"
           style={{
             top: "40%", // Ajusta la posición vertical
             left: "75%", // Ajusta la posición horizontal
@@ -313,7 +313,7 @@ const Dashboard = () => {
         ></button>
         {activePopup === 2 && (
           <div
-            className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
+            className="absolute p-4 bg-white border border-gray-300 rounded-lg shadow-lg"
             style={{
               top: "40%", // Mismo valor que el botón
               left: "80%", // Posición al lado del botón
@@ -322,7 +322,7 @@ const Dashboard = () => {
             <p>Ventana emergente</p>
             <button
               onClick={() => togglePopup(2)}
-              className="mt-2 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+              className="px-2 py-1 mt-2 bg-gray-200 rounded hover:bg-gray-300"
             >
               Cerrar
             </button>
@@ -332,7 +332,7 @@ const Dashboard = () => {
         {/* Botón 3 */}
         <button
           onClick={() => togglePopup(3)}
-          className="absolute bg-sky-600 text-white w-12 h-12 flex items-center justify-center animate-pulse rounded-full hover:scale-110"
+          className="absolute flex items-center justify-center w-12 h-12 text-white rounded-full bg-sky-600 animate-pulse hover:scale-110"
           style={{
             top: "50%", // Ajusta la posición vertical
             left: "50%", // Ajusta la posición horizontal
@@ -340,7 +340,7 @@ const Dashboard = () => {
         ></button>
         {activePopup === 3 && (
           <div
-            className="absolute bg-white border border-gray-300 rounded-lg shadow-lg p-4"
+            className="absolute p-4 bg-white border border-gray-300 rounded-lg shadow-lg"
             style={{
               top: "50%", // Mismo valor que el botón
               left: "55%", // Posición al lado del botón
@@ -349,7 +349,7 @@ const Dashboard = () => {
             <p>Ventana emergente</p>
             <button
               onClick={() => togglePopup(3)}
-              className="mt-2 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+              className="px-2 py-1 mt-2 bg-gray-200 rounded hover:bg-gray-300"
             >
               Cerrar
             </button>

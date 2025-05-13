@@ -12,7 +12,7 @@ const MachineCard = ({ machine, data }) => {
 
   return (
     <div
-      className="relative h-72 w-full rounded-md overflow-hidden transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
+      className="relative w-full overflow-hidden transition duration-300 ease-in-out transform rounded-md h-72 hover:scale-105 hover:shadow-2xl"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -27,7 +27,7 @@ const MachineCard = ({ machine, data }) => {
 
       {/* Nombre de la máquina solo cuando no se hace hover */}
       {!hovered && (
-        <div className="absolute text-white text-2xl font-bold z-30 p-4">
+        <div className="absolute z-30 p-4 text-2xl font-bold text-white">
           {machine}
         </div>
       )}
@@ -38,9 +38,7 @@ const MachineCard = ({ machine, data }) => {
           {Object.keys(data)
             .filter(
               (key) =>
-                key !== "titles" &&
-                key !== "title" &&
-                key !== "characteristics"
+                key !== "titles" && key !== "title" && key !== "characteristics"
             )
             .map((subMachine, index) => (
               <SubMachineButton

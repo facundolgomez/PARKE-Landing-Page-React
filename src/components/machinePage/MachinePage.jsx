@@ -1,3 +1,4 @@
+import QuoteForm from "../quoteForm/QuoteForm";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { solutionsByMachineType } from "../data/solutionsByMachineType/SolutionsByMachineType";
@@ -8,6 +9,7 @@ const MachinePage = () => {
   const [isImageModalOpen, setImageModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("descripcion");
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
 
   const machineData = Object.values(solutionsByMachineType)
     .flatMap((types) => Object.values(types))
@@ -163,12 +165,20 @@ const MachinePage = () => {
 
           {/* Botón de cotización */}
           <div className="mt-6">
-            <button className="w-full sm:w-auto px-6 py-3 bg-sky-600 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-sky-700 transition duration-300">
+            <button onClick={() => setShowQuoteForm(true)} className="w-full sm:w-auto px-6 py-3 bg-sky-600 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-sky-700 transition duration-300">
               Solicitar Cotización
             </button>
           </div>
         </div>
       </div>
+
+      {showQuoteForm && (
+        <QuoteForm 
+          machineType={machine.typeOfForm}
+          machineModel={machine.title}
+          onClose={() => setShowQuoteForm(false)}
+        />
+      )}
 
       {/* Modal para ver la imagen ampliada */}
       {isImageModalOpen && (
